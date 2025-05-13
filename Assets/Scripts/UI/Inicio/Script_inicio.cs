@@ -10,7 +10,7 @@ public class Script_inicio : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         
