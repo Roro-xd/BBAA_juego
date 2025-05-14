@@ -10,10 +10,13 @@ public class Script_inicio : MonoBehaviour
     GameObject panelAjustes;
     GameObject panelExtras;
     GameObject panelCreditos;
+    GameObject objAudioManager;
+    AudioManager scriptAudioManager;
 
 
     void Start()
     {
+        //Encontrar y establecer estados de los paneles
         panelInicio = GameObject.Find("Panel_inicio");
         
         panelAjustes = GameObject.Find("Panel_ajustes");
@@ -24,6 +27,11 @@ public class Script_inicio : MonoBehaviour
 
         panelCreditos = GameObject.Find("Panel_creditos");
         panelCreditos.SetActive(false);
+
+
+        //Enlazar con el audio
+        objAudioManager = GameObject.Find("ObjAudioManager"); 
+        scriptAudioManager = objAudioManager.GetComponent<AudioManager>();
     }
 
    
@@ -68,19 +76,18 @@ public class Script_inicio : MonoBehaviour
         }
 
     public void botonAjustesCreditosVolver() {
-        /*if (panelAjustes.SetActive(true) == true) {
-            panelAjustes.SetActive(false);
-        };
-
-        if (panelCreditos.SetActive(true) == true) {}
-            panelCreditos.SetActive(false);
-        };*/
         panelAjustes.SetActive(false);
         panelCreditos.SetActive(false);
     }
 
 
-    //AÑADIR SONIDOS DE LOS BOTONES
+    //SONIDOS DE LOS BOTONES
+    public void SuenaBoton(){
+        scriptAudioManager.audioSource.PlayOneShot(scriptAudioManager.botones);
+    }
 
+    public void SuenaVolver(){
+        scriptAudioManager.audioSource.PlayOneShot(scriptAudioManager.menuYflechas);
+    }
 
 }
