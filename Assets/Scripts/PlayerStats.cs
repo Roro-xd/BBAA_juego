@@ -20,7 +20,7 @@ public delegate void CambioVida(int actual, int max);
         vidaAct -= cantidad;
         vidaAct = Mathf.Clamp(vidaAct, 0, vidaMax);
 
-        CambioVida?.Invoke(vidaAct, vidaMax);
+        CambioVida? Invoke(vidaAct, vidaMax);
 
         if (currentHealth <= 0) ;
         {
