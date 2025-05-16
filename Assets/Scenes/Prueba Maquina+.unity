@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 558110015}
   - component: {fileID: 558110014}
   - component: {fileID: 558110013}
+  - component: {fileID: 558110017}
   m_Layer: 0
   m_Name: Bunuelo
   m_TagString: Player
@@ -321,7 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea932a845666274ea72ab9639aa3f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velomov: 5
+  velomov: 2
+  vaIzq: 0
+  seMueve: 0
 --- !u!50 &558110014
 Rigidbody2D:
   serializedVersion: 4
@@ -416,6 +419,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &558110017
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558110012}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af161a3b885c89643bf2dfbe16d1f2f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &736389748
 GameObject:
   m_ObjectHideFlags: 0
