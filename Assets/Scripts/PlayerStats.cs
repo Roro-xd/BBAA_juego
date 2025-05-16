@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
-{
-    public int vidaMax = 4;
+{ /*
+ public int vidaMax = 4;
     public int vidaAct;
 
 public delegate void CambioVida(int actual, int max);
@@ -24,8 +24,8 @@ public delegate void CambioVida(int actual, int max);
 
         if (currentHealth <= 0) ;
         {
-            Muerto();
-            }
+            Muerto(); *
+            }*/
         
-    }
+    
 }

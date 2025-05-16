@@ -11,13 +11,13 @@ public class Caminar : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
     void Update()
     {
         movimiento.x = Input.GetAxisRaw("Horizontal");
         movimiento.y = Input.GetAxisRaw("Vertical");
         movimiento = movimiento.normalized;
-
     }
 
     void FixedUpdate()
@@ -27,4 +27,5 @@ public class Caminar : MonoBehaviour
 
 
     }
+    
 }
