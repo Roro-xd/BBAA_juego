@@ -10,6 +10,10 @@ public class Script_inicio : MonoBehaviour
     GameObject panelAjustes;
     GameObject panelExtras;
     GameObject panelCreditos;
+    GameObject panelPlayers;
+    GameObject panelEnemigos;
+    GameObject panelBosses;
+    GameObject panelItems;
     GameObject objAudioManager;
     AudioManager scriptAudioManager;
 
@@ -27,6 +31,18 @@ public class Script_inicio : MonoBehaviour
 
         panelCreditos = GameObject.Find("Panel_creditos");
         panelCreditos.SetActive(false);
+
+        panelPlayers = GameObject.Find("Panel_players");
+        panelPlayers.SetActive(false);
+
+        panelEnemigos = GameObject.Find("Panel_enemigos");
+        panelEnemigos.SetActive(false);
+
+        panelBosses = GameObject.Find("Panel_bosses");
+        panelBosses.SetActive(false);
+
+        panelItems =  GameObject.Find("Panel_items");
+        panelItems.SetActive(false);
 
 
         //Enlazar con el audio
@@ -75,7 +91,33 @@ public class Script_inicio : MonoBehaviour
             panelExtras.SetActive(false);
         }
 
-    public void botonAjustesCreditosVolver() {
+    //Dentro de los extras
+        public void botonDentroExtrasVolver(){
+            panelPlayers.SetActive(false);
+            panelEnemigos.SetActive(false);
+            panelBosses.SetActive(false);
+            panelItems.SetActive(false);
+        }
+        
+        public void botonExtrasPlayers() {
+            panelPlayers.SetActive(true);
+        }
+
+        public void botonExtrasEnemigos() {
+            panelEnemigos.SetActive(true);
+        }
+
+        public void botonExtrasBosses() {
+            panelBosses.SetActive(true);
+        }
+
+        public void botonExtrasItems() {
+            panelItems.SetActive(true);
+        }
+
+
+        public void botonAjustesCreditosVolver()
+    {
         panelAjustes.SetActive(false);
         panelCreditos.SetActive(false);
     }

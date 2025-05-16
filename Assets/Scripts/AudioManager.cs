@@ -16,6 +16,7 @@ public AudioClip bossFinal;
 
 
 //Para incluir los SFX
+public AudioClip subtitulo;
 public AudioClip botones;
 public AudioClip menuYflechas;
 public AudioClip churroHabla;
@@ -66,7 +67,14 @@ public static AudioManager Instance;
 
 
     //Cuando suenen los personajes hablando
-    public void SuenaChurro() {
+    public void AudioSubtitulo() {
+        audioSource.PlayOneShot(subtitulo);
+    }
+
+
+    //Cuando suenen los personajes hablando
+    public void SuenaChurro()
+    {
         audioSource.PlayOneShot(churroHabla);
     }
 
