@@ -8,14 +8,14 @@ public class PlayerStats : MonoBehaviour
     public int vidaAct;
 
 public delegate void CambioVida(int actual, int max);
-    public event CambioVida CambioVida;
+    //public event CambioVida CambioVida;
 
     void Start()
     {
         vidaAct = vidaMax;
         
     }
-    public void Daño()
+    /*public void Daño()
     {
         vidaAct -= cantidad;
         vidaAct = Mathf.Clamp(vidaAct, 0, vidaMax);
@@ -27,5 +27,5 @@ public delegate void CambioVida(int actual, int max);
             Muerto();
             }
         
-    }
+    }*/
 }
