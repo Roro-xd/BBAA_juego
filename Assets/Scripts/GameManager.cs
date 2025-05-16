@@ -23,4 +23,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void UnlockNextLevel()
+    {
+        if (currentLevel >= maxUnlockedLevel)
+        {
+            maxUnlockedLevel = Mathf.Clamp(currentLevel + 1, 1, 4); // 4 niveles máximo
+        }
+    }
 }
