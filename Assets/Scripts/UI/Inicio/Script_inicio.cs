@@ -15,14 +15,14 @@ public class Script_inicio : MonoBehaviour
     GameObject panelBosses;
     GameObject panelItems;
     GameObject objAudioManager;
-    AudioManager scriptAudioManager;
+    //AudioManager scriptAudioManager;
 
 
     void Start()
     {
         //Encontrar y establecer estados de los paneles
         panelInicio = GameObject.Find("Panel_inicio");
-        
+
         panelAjustes = GameObject.Find("Panel_ajustes");
         panelAjustes.SetActive(false);
 
@@ -41,100 +41,121 @@ public class Script_inicio : MonoBehaviour
         panelBosses = GameObject.Find("Panel_bosses");
         panelBosses.SetActive(false);
 
-        panelItems =  GameObject.Find("Panel_items");
+        panelItems = GameObject.Find("Panel_items");
         panelItems.SetActive(false);
 
 
-        //Enlazar con el audio
-        objAudioManager = GameObject.Find("ObjAudioManager"); 
-        scriptAudioManager = objAudioManager.GetComponent<AudioManager>();
+        StartCoroutine("sonidoSubtitulo");
+
+
+
     }
 
-   
+
     void Update()
     {
-        
+
     }
 
 
     //Para los botones de la pantalla de inicio
-    public void botonInicioSalir() {
+    public void botonInicioSalir()
+    {
         Application.Quit();
     }
 
 
-    public void botonInicioJugar() {
+    public void botonInicioJugar()
+    {
         SceneManager.LoadScene("Lobby"); //CAMBIAR A NOMBRE QUE VAYA A TENER AL FINAL
     }
 
-    
-    public void botonInicioAjustes() {
+
+    public void botonInicioAjustes()
+    {
         panelAjustes.SetActive(true);
     }
 
 
-    public void botonInicioCreditos() {
+    public void botonInicioCreditos()
+    {
         panelCreditos.SetActive(true);
     }
 
 
     //Para los botones de la pantalla de ajustes
 
-        //PONER LAS COSAS DEL VOLUMEN
-        
-        //Para los botones de la pantalla de extras
-        public void botonAjustesExtras() {
-            panelExtras.SetActive(true);
-        }
+    //PONER LAS COSAS DEL VOLUMEN
 
-        public void botonExtrasVolver() {
-            panelExtras.SetActive(false);
-        }
+    //Para los botones de la pantalla de extras
+    public void botonAjustesExtras()
+    {
+        panelExtras.SetActive(true);
+    }
+
+    public void botonExtrasVolver()
+    {
+        panelExtras.SetActive(false);
+    }
 
     //Dentro de los extras
-        public void botonDentroExtrasVolver(){
-            panelPlayers.SetActive(false);
-            panelEnemigos.SetActive(false);
-            panelBosses.SetActive(false);
-            panelItems.SetActive(false);
-        }
-        
-        public void botonExtrasPlayers() {
-            panelPlayers.SetActive(true);
-        }
+    public void botonDentroExtrasVolver()
+    {
+        panelPlayers.SetActive(false);
+        panelEnemigos.SetActive(false);
+        panelBosses.SetActive(false);
+        panelItems.SetActive(false);
+    }
 
-        public void botonExtrasEnemigos() {
-            panelEnemigos.SetActive(true);
-        }
+    public void botonExtrasPlayers()
+    {
+        panelPlayers.SetActive(true);
+    }
 
-        public void botonExtrasBosses() {
-            panelBosses.SetActive(true);
-        }
+    public void botonExtrasEnemigos()
+    {
+        panelEnemigos.SetActive(true);
+    }
 
-        public void botonExtrasItems() {
-            panelItems.SetActive(true);
-        }
+    public void botonExtrasBosses()
+    {
+        panelBosses.SetActive(true);
+    }
+
+    public void botonExtrasItems()
+    {
+        panelItems.SetActive(true);
+    }
 
 
-        public void botonAjustesVolver()
-        {
-            panelAjustes.SetActive(false);
-        }
-        
-        public void botonCreditosVolver()
-        {
-            panelCreditos.SetActive(false);
-        }
+    public void botonAjustesVolver()
+    {
+        panelAjustes.SetActive(false);
+    }
+
+    public void botonCreditosVolver()
+    {
+        panelCreditos.SetActive(false);
+    }
 
 
     //SONIDOS DE LOS BOTONES
     public void SuenaBoton()
     {
-        scriptAudioManager.audioSource.PlayOneShot(scriptAudioManager.botones);
+        AudioManager.Instance.PlaySFX("Botones");
     }
 
-    public void SuenaVolver(){
-        scriptAudioManager.audioSource.PlayOneShot(scriptAudioManager.menuYflechas);
+    public void SuenaVolver()
+    {
+        AudioManager.Instance.PlaySFX("Volver");
+
+    }
+
+    IEnumerator sonidoSubtitulo()
+    {
+        yield return new WaitForSeconds(0.33f);
+        AudioManager.Instance.PlaySFX("Subtítulo");
+
     }
 
 }
