@@ -116,15 +116,20 @@ public class Script_inicio : MonoBehaviour
         }
 
 
-        public void botonAjustesCreditosVolver()
-    {
-        panelAjustes.SetActive(false);
-        panelCreditos.SetActive(false);
-    }
+        public void botonAjustesVolver()
+        {
+            panelAjustes.SetActive(false);
+        }
+        
+        public void botonCreditosVolver()
+        {
+            panelCreditos.SetActive(false);
+        }
 
 
     //SONIDOS DE LOS BOTONES
-    public void SuenaBoton(){
+    public void SuenaBoton()
+    {
         scriptAudioManager.audioSource.PlayOneShot(scriptAudioManager.botones);
     }
 
