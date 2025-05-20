@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentLevel >= maxUnlockedLevel)
         {
-            maxUnlockedLevel = Mathf.Clamp(currentLevel + 1, 1, 4); // 4 niveles máximo
+            maxUnlockedLevel = Mathf.Clamp(currentLevel + 1, 1, 3); // 3 niveles máximo
         }
     }
 }
