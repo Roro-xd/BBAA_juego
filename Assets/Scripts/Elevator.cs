@@ -4,77 +4,116 @@ using UnityEngine.SceneManagement;
 
 public class Elevator : MonoBehaviour
 {
-    [Header("Referencias UI")]
-    public GameObject levelSelectUI;         // Panel padre con toda la interfaz
-    public Button[] levelButtons;            // Botones de niveles (0 = Nivel 1, 1 = Nivel 2, etc)
-    public Button backButton;                // Botón para cerrar el menú
+    [Header("UI References")]
+    public GameObject levelSelectUI;
+    public Button[] levelButtons;  // Debes asignar 3 botones en el Inspector
+    public Button backButton;
 
-    [Header("Configuración")]
-    public string levelPrefix = "Level_";    // Prefijo de nombre de escenas
+    [Header("Configuration")]
+    public string levelPrefix = "Level_";
+    public Color unlockedColor = Color.green;
+    public Color lockedColor = Color.red;
 
     private bool isPlayerNear;
 
     void Start()
     {
-        // Configurar listeners de botones
-        backButton.onClick.AddListener(CloseLevelSelect);
-        
+        // Configurar botones dinámicamente según cuántos tengas asignados
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            int levelIndex = i + 1; // Los niveles empiezan en 1
-            levelButtons[i].onClick.AddListener(() => SelectLevel(levelIndex));
+            int levelNumber = i + 1;  // Los niveles empiezan en 1
+            levelButtons[i].onClick.AddListener(() => SelectLevel(levelNumber));
         }
+
+        backButton.onClick.AddListener(CloseLevelSelect);
     }
 
     void Update()
     {
-        // Solo detectar input si el jugador está cerca
         if (isPlayerNear && Input.GetKeyDown(KeyCode.E) && !levelSelectUI.activeSelf)
         {
             OpenLevelSelect();
         }
     }
 
-    // Actualiza el estado de los botones (niveles bloqueados/desbloqueados)
+    void OpenLevelSelect()
+    {
+        if (levelSelectUI == null)
+        {
+            Debug.LogError("¡No hay UI asignada para selección de niveles!");
+            return;
+        }
+
+        levelSelectUI.SetActive(true);
+        UpdateLevelButtons();
+        Time.timeScale = 0f;
+    }
+
     void UpdateLevelButtons()
     {
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager no encontrado en la escena!");
+            return;
+        }
+
+        if (levelButtons == null || levelButtons.Length == 0)
+        {
+            Debug.LogError("No hay botones de nivel asignados en el Inspector!");
+            return;
+        }
+
         for (int i = 0; i < levelButtons.Length; i++)
         {
+            if (levelButtons[i] == null)
+            {
+                Debug.LogError($"Botón del nivel {i + 1} no asignado!");
+                continue;
+            }
+
             bool isUnlocked = (i + 1) <= GameManager.Instance.maxUnlockedLevel;
             levelButtons[i].interactable = isUnlocked;
 
-            // Opcional: Cambiar color para feedback visual
-            levelButtons[i].image.color = isUnlocked ? Color.green : Color.red;
+            Image buttonImage = levelButtons[i].GetComponent<Image>();
+            if (buttonImage != null)
+            {
+                buttonImage.color = isUnlocked ? unlockedColor : lockedColor;
+            }
+            else
+            {
+                Debug.LogError($"Botón del nivel {i + 1} no tiene componente Image!");
+            }
         }
     }
 
-    void OpenLevelSelect()
+    public void SelectLevel(int levelNumber)
     {
-        levelSelectUI.SetActive(true);
-        UpdateLevelButtons();
-        Time.timeScale = 0f; // Pausar el juego
+        if (levelNumber < 1 || levelNumber > levelButtons.Length)
+        {
+            Debug.LogError($"Número de nivel inválido: {levelNumber}");
+            return;
+        }
+
+        GameManager.Instance.currentLevel = levelNumber;
+        CloseLevelSelect();
+        SceneManager.LoadScene($"{levelPrefix}{levelNumber}");
     }
 
     void CloseLevelSelect()
     {
-        levelSelectUI.SetActive(false);
-        Time.timeScale = 1f; // Reanudar juego
+        if (levelSelectUI != null)
+        {
+            levelSelectUI.SetActive(false);
+        }
+        Time.timeScale = 1f;
     }
 
-    void SelectLevel(int levelNumber)
-    {
-        GameManager.Instance.currentLevel = levelNumber;
-        CloseLevelSelect();
-        SceneManager.LoadScene(levelPrefix + levelNumber);
-    }
-
-    // Detección del jugador
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
-            // Opcional: Mostrar texto "Presiona E"
+            Debug.Log("Jugador en zona de ascensor");
         }
     }
 
@@ -83,7 +122,7 @@ public class Elevator : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            CloseLevelSelect(); // Cerrar menú si el jugador se aleja
+            CloseLevelSelect();
         }
     }
 }
