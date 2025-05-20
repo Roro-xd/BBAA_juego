@@ -15,7 +15,6 @@ public class Script_inicio : MonoBehaviour
     GameObject panelBosses;
     GameObject panelItems;
     GameObject objAudioManager;
-    //AudioManager scriptAudioManager;
 
 
     void Start()
@@ -67,7 +66,7 @@ public class Script_inicio : MonoBehaviour
 
     public void botonInicioJugar()
     {
-        SceneManager.LoadScene("Lobby"); //CAMBIAR A NOMBRE QUE VAYA A TENER AL FINAL
+        SceneManager.LoadScene("InicioLobby"); //CAMBIAR A NOMBRE QUE VAYA A TENER AL FINAL
     }
 
 
@@ -82,10 +81,6 @@ public class Script_inicio : MonoBehaviour
         panelCreditos.SetActive(true);
     }
 
-
-    //Para los botones de la pantalla de ajustes
-
-    //PONER LAS COSAS DEL VOLUMEN
 
     //Para los botones de la pantalla de extras
     public void botonAjustesExtras()
