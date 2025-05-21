@@ -37,14 +37,14 @@ public class Caminar : MonoBehaviour
             this.GetComponent<Animator>().SetBool("siCamina", seMueve);
 
             //PRUEBA PARA PROBAR LA ANIMACIÓN DE ATAQUE -- SUSTITUIR POR LA TECLA QUE TOQUE //BUEGGUEADO, NO CONSIGO QUE SALGA DE LA ANIMACIÓN DE ATAQUE
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+           /* if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 this.GetComponent<Animator>().SetBool("siAtaca", true);
             }
             else if (Input.GetKeyUp(KeyCode.Mouse0) && this.GetComponent<Animator>().GetBool("siAtaca") == true)
             {
                 this.GetComponent<Animator>().SetBool("siAtaca", false);
-            }
+            }*/
 
             if (sePuedeMover== false) { rb = null; } // cancela el rigidbody para anular el movimiento 
         Debug.Log(sePuedeMover);

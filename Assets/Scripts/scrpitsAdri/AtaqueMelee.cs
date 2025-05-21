@@ -17,11 +17,13 @@ public class AtaqueMelee : MonoBehaviour
     private Camera camara;
     private Animator animator;
 
+    bool siEsperaAtaque = false;
+
     void Start()
     {
         camara = Camera.main;
         animator = GetComponent<Animator>();
-        cooldownActual = cooldownBase; 
+        cooldownActual = cooldownBase;
     }
 
     void Update()
@@ -33,7 +35,10 @@ public class AtaqueMelee : MonoBehaviour
 
             if (animator != null)
             {
-                animator.SetBool("siAtaca",true);
+                if (siEsperaAtaque == false) //Llama a la animación de ataque solo cuando se ataca
+                    animator.SetBool("siAtaca", true);
+                    siEsperaAtaque = true;
+                AnimacionAtac();
             }
         }
     }
@@ -58,7 +63,7 @@ public class AtaqueMelee : MonoBehaviour
         }
     }
 
-    
+
     public void ReducirCooldown(float cantidad)
     {
         cooldownActual -= cantidad;
@@ -93,5 +98,13 @@ public class AtaqueMelee : MonoBehaviour
             Gizmos.DrawLine(puntoAtaque.position, puntoAtaque.position + (Vector3)izquierda * radioAtaque);
             Gizmos.DrawLine(puntoAtaque.position, puntoAtaque.position + (Vector3)derecha * radioAtaque);
         }
+    }
+
+
+
+    IEnumerator AnimacionAtac()
+    {
+        yield return new WaitForSeconds(0.6f);
+        siEsperaAtaque = false;
     }
 }
