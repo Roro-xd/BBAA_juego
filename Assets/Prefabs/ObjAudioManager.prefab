@@ -185,6 +185,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7347685d5cc5ea84e8ccbe3ad2947e1d, type: 3}
   - nombreSonido: Boss
     clip: {fileID: 8300000, guid: cd5b53563029a804ab53b81049b58282, type: 3}
+  - nombreSonido: VocesFondo
+    clip: {fileID: 8300000, guid: b83c07da9d4d3d74eae8478984a04918, type: 3}
   sfx:
   - nombreSonido: "Subt\xEDtulo"
     clip: {fileID: 8300000, guid: cc80e6791306e21419787c02d2f1f6e7, type: 3}
@@ -218,15 +220,39 @@ MonoBehaviour:
     clip: {fileID: 0}
   - nombreSonido: vidaRecoger
     clip: {fileID: 0}
+  - nombreSonido: Error
+    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
+  - nombreSonido: VocesGente
+    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
   voces:
   - nombreSonido: VozPrueba
     clip: {fileID: 8300000, guid: b32642a8ea979554bae62acd6996b316, type: 3}
-  - nombreSonido: 
-    clip: {fileID: 0}
-  - nombreSonido: 
-    clip: {fileID: 0}
-  - nombreSonido: 
-    clip: {fileID: 0}
+  - nombreSonido: Bun1
+    clip: {fileID: 8300000, guid: 5e07bcf7a7f0aec4ba8d7ca318a87ac1, type: 3}
+  - nombreSonido: Bun2
+    clip: {fileID: 8300000, guid: 671298f427589ef408799d6ccd6d9cee, type: 3}
+  - nombreSonido: Bun3
+    clip: {fileID: 8300000, guid: 6af5df724a0f24b42bf058c0002e3fe6, type: 3}
+  - nombreSonido: Bun4
+    clip: {fileID: 8300000, guid: 8eab150680eb3914da5c9aab8bf67c02, type: 3}
+  - nombreSonido: Napo1
+    clip: {fileID: 8300000, guid: e83c8919438f82e4a97d85f6f0e9a97c, type: 3}
+  - nombreSonido: Napo2
+    clip: {fileID: 8300000, guid: 37019e9cb564bf54aa483c941ed0ca48, type: 3}
+  - nombreSonido: Napo3
+    clip: {fileID: 8300000, guid: c9e1080997401884eaa37a59161ab72d, type: 3}
+  - nombreSonido: Napo4
+    clip: {fileID: 8300000, guid: 903b7307e8d92e94398452025be7cb7c, type: 3}
+  - nombreSonido: Yor1
+    clip: {fileID: 8300000, guid: ff2033055db1d7245be1bd49def5fa1b, type: 3}
+  - nombreSonido: Yor2
+    clip: {fileID: 8300000, guid: 424822651106219468e902f085ef67dc, type: 3}
+  - nombreSonido: Churro1
+    clip: {fileID: 8300000, guid: 17372a81f49de2c468fd51212d8d144a, type: 3}
+  - nombreSonido: Churro2
+    clip: {fileID: 8300000, guid: 039dfe91feb070942b73b30917a05086, type: 3}
+  - nombreSonido: Churro3
+    clip: {fileID: 8300000, guid: 0f32fdbe2a136d042a5e3bd2b76fb6de, type: 3}
   musicaSource: {fileID: 7190842299637886227}
   sfxSource: {fileID: 5274133024142157374}
   vocesSource: {fileID: 2091970973800861904}
@@ -237,7 +263,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2398726402772772408}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}

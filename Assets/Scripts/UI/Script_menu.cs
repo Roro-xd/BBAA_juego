@@ -41,14 +41,14 @@ public class Script_menu : MonoBehaviour
         }
 
 
-        if (panelMenu.activeSelf == true || panelSeguro.activeSelf == true || panelVolumen.activeSelf == true || panelControles.activeSelf == true)
+        /*if (panelMenu.activeSelf == true || panelSeguro.activeSelf == true || panelVolumen.activeSelf == true || panelControles.activeSelf == true)
         {
             panelGuion.SetActive(false);
         }
         else
         { 
             panelGuion.SetActive(true);
-        }
+        }*/
     }
 
     public void AbrirVol()
