@@ -58,7 +58,7 @@ public class AtaqueMelee : MonoBehaviour
         }
     }
 
-    // Método para mejorar el cooldown (reducirlo)
+    
     public void ReducirCooldown(float cantidad)
     {
         cooldownActual -= cantidad;
@@ -66,7 +66,6 @@ public class AtaqueMelee : MonoBehaviour
         Debug.Log("Cooldown reducido a: " + cooldownActual);
     }
 
-    // Método para resetear el cooldown al base (por si quieres)
     public void ResetearCooldown()
     {
         cooldownActual = cooldownBase;
