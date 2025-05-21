@@ -34,17 +34,18 @@ public class Script_guion_inicio : MonoBehaviour
     public GameObject yori;
     private Animator yoriAnim;*/
 
-
+    //private float volumeMusica;
 
     void Start()
     {
+        //volumeMusica = PlayerPrefs.GetFloat("MusicaGuardada", 1f);
 
         animPersonajes = personajes.GetComponent<Animator>();
         animLobby = lobby.GetComponent<Animator>();
 
         bunAnim = bun.GetComponent<Animator>();
 
-        StartCoroutine("pausaTexto5s");
+        StartCoroutine("pausaTexto6s");
 
         //AudioManager.Instance.PlayMusica("VocesFondo");
 
@@ -244,9 +245,9 @@ public class Script_guion_inicio : MonoBehaviour
 
     }
 
-    IEnumerator pausaTexto5s()
+    IEnumerator pausaTexto6s()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(6);
         dialogo1.SetActive(true);
         cuadroTexto.SetActive(true);
     }

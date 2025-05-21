@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
 
+
     //Para incluir los sonidos
     public Sonido[] musica;
     public Sonido[] sfx;

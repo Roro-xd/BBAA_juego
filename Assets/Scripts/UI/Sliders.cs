@@ -7,8 +7,18 @@ public class Sliders : MonoBehaviour
 {
     public Slider musicaSlider, sfxSlider, vocesSlider;
 
+    /*public void GuardarVolMusica(float newValue)
+    {
+        PlayerPrefs.SetFloat("MusicaGuardada", musicaSlider.value);
+        PlayerPrefs.Save();
+    }
 
-        public void VolMusica(float volumen)
+    public void CargarVolMusica()
+    {
+        musicaSlider.value = PlayerPrefs.GetFloat("MusicaGuardada", 1f);
+    }*/
+
+    public void VolMusica(float volumen)
     {
         AudioManager.Instance.VolMusica(musicaSlider.value);
     }
