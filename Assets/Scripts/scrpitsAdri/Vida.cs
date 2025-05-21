@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Vida : MonoBehaviour
 {
     public int vidaMax = 4;
     private int vidaActual;
+
+    public event Action OnDanoRecibido; // evento para notificar dano recibido
 
     void Start()
     {
@@ -16,7 +19,10 @@ public class Vida : MonoBehaviour
     {
         vidaActual -= cantidad;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
+
         Debug.Log("Vida actual: " + vidaActual);
+
+        OnDanoRecibido?.Invoke(); // aviso que se recibio dano
 
         if (vidaActual <= 0)
         {
@@ -28,6 +34,7 @@ public class Vida : MonoBehaviour
     {
         vidaActual += cantidad;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
+
         Debug.Log("Curado. Vida actual: " + vidaActual);
     }
 
@@ -37,7 +44,7 @@ public class Vida : MonoBehaviour
         if (curarFull)
             vidaActual = vidaMax;
 
-        Debug.Log("Nueva vida máxima: " + vidaMax + " | Vida actual: " + vidaActual);
+        Debug.Log("Nueva vida maxima: " + vidaMax + " | Vida actual: " + vidaActual);
     }
 
     private void Muerte()
@@ -46,13 +53,6 @@ public class Vida : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public int GetCurrentHealth()
-    {
-        return vidaActual;
-    }
-
-    public int GetMaxHealth()
-    {
-        return vidaMax;
-    }
+    public int GetCurrentHealth() => vidaActual;
+    public int GetMaxHealth() => vidaMax;
 }

@@ -14,7 +14,6 @@ public class Caminar : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
     void Update()
     {
@@ -27,28 +26,26 @@ public class Caminar : MonoBehaviour
         else if (movimiento.x > 0) { vaIzq = false; this.GetComponent<SpriteRenderer>().flipX = false; }
 
         //detecta si el personaje se está moviendo
-        if (movimiento == new Vector2(0, 0)) { seMueve = false; }
+        if (movimiento == Vector2.zero) { seMueve = false; }
         else { seMueve = true; }
 
         //activa la animación de caminado
-        if (seMueve == true) { this.GetComponent<Animator>().SetBool("siCamina", true); }
-        else { this.GetComponent<Animator>().SetBool("siCamina", false); }
-
+        this.GetComponent<Animator>().SetBool("siCamina", seMueve);
 
         //PRUEBA PARA PROBAR LA ANIMACIÓN DE ATAQUE -- SUSTITUIR POR LA TECLA QUE TOQUE //BUEGGUEADO, NO CONSIGO QUE SALGA DE LA ANIMACIÓN DE ATAQUE
         if (Input.GetKeyDown(KeyCode.Mouse0))
-        { this.GetComponent<Animator>().SetBool("siAtaca", true); }
-        else if (Input.GetKeyUp(KeyCode.Mouse0) & this.GetComponent<Animator>().GetBool("siAtaca") == true)
-        { this.GetComponent<Animator>().SetBool("siAtaca", false); }
-
+        {
+            this.GetComponent<Animator>().SetBool("siAtaca", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0) && this.GetComponent<Animator>().GetBool("siAtaca") == true)
+        {
+            this.GetComponent<Animator>().SetBool("siAtaca", false);
+        }
     }
 
     void FixedUpdate()
-    {          
-
+    {
+        // Permite mover al personaje incluso con la habilidad activa
         rb.velocity = movimiento * velomov;
-
-
     }
-    
 }
