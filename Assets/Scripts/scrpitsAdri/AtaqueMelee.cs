@@ -33,7 +33,7 @@ public class AtaqueMelee : MonoBehaviour
 
             if (animator != null)
             {
-                animator.SetTrigger("Bu_Attack");
+                animator.SetBool("siAtaca",true);
             }
         }
     }

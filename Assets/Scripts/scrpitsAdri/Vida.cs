@@ -10,6 +10,8 @@ public class Vida : MonoBehaviour
 
     public event Action OnDanoRecibido; // evento para notificar dano recibido
 
+    bool siEsperamos = false;//variable para espera de la animación de muerte
+
     void Start()
     {
         vidaActual = vidaMax;
@@ -50,9 +52,29 @@ public class Vida : MonoBehaviour
     private void Muerte()
     {
         Debug.Log("El jugador ha muerto.");
-        gameObject.SetActive(false);
+        if (siEsperamos == false) //comprueba que la animación solo se active una vez
+        {
+            StartCoroutine(TiempoEspera());
+            siEsperamos = true;
+            this.GetComponent<Animator>().SetBool("siMuere", true);
+            Debug.Log("reproduciendo animación de muerte");
+            this.GetComponent<Caminar>().sePuedeMover = false; //hace que el jugador ya no se pueda
+        }
     }
 
     public int GetCurrentHealth() => vidaActual;
     public int GetMaxHealth() => vidaMax;
+
+
+
+    //tiempo a esperar para que se vea la animación de muerte
+    IEnumerator TiempoEspera()
+    {
+
+        yield return new WaitForSeconds(4f);
+        gameObject.SetActive(false); siEsperamos = false;
+         
+         
+         
+    }
 }

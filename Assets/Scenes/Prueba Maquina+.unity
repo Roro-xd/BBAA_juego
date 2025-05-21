@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 558110022}
   - component: {fileID: 558110021}
   m_Layer: 0
-  m_Name: Bunuelo
+  m_Name: ' Bunuelo'
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
