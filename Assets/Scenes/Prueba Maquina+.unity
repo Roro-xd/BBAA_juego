@@ -418,6 +418,7 @@ MonoBehaviour:
   velomov: 2
   vaIzq: 0
   seMueve: 0
+  sePuedeMover: 1
 --- !u!50 &558110014
 Rigidbody2D:
   serializedVersion: 4

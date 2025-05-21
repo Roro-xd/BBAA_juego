@@ -10,7 +10,7 @@ public class Caminar : MonoBehaviour
     public bool vaIzq = false;
     public bool seMueve = false;
 
-    public bool sePuedeMover = true;
+    public bool sePuedeMover = true; //dicta si se puede mover
 
     private Rigidbody2D rb;
     void Start()
@@ -20,7 +20,7 @@ public class Caminar : MonoBehaviour
     }
     void Update()
     {
-        {
+        
             movimiento.x = Input.GetAxisRaw("Horizontal");
             movimiento.y = Input.GetAxisRaw("Vertical");
             movimiento = movimiento.normalized;
@@ -46,16 +46,17 @@ public class Caminar : MonoBehaviour
                 this.GetComponent<Animator>().SetBool("siAtaca", false);
             }
 
-            if (sePuedeMover== false) { rb = null; }
+            if (sePuedeMover== false) { rb = null; } // cancela el rigidbody para anular el movimiento 
+        Debug.Log(sePuedeMover);
 
 
-            void FixedUpdate()
+        
+    }
+                void FixedUpdate()
             {
 
                 // Permite mover al personaje incluso con la habilidad activa
                 rb.velocity = movimiento * velomov;
 
             }
-        }
-    }
 }

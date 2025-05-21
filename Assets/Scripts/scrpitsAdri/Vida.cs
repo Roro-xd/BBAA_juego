@@ -30,6 +30,8 @@ public class Vida : MonoBehaviour
         {
             Muerte();
         }
+        AnimacionHerido(); //llama a un método para animar el daño
+
     }
 
     public void Curar(int cantidad)
@@ -52,7 +54,7 @@ public class Vida : MonoBehaviour
     private void Muerte()
     {
         Debug.Log("El jugador ha muerto.");
-        if (siEsperamos == false) //comprueba que la animación solo se active una vez
+        if (siEsperamos == false) //comprueba que la animación de meurte solo se active una vez
         {
             StartCoroutine(TiempoEspera());
             siEsperamos = true;
@@ -73,8 +75,15 @@ public class Vida : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
         gameObject.SetActive(false); siEsperamos = false;
-         
-         
-         
     }
+
+    void AnimacionHerido() {
+        if (siEsperamos == false)
+        {
+         this.GetComponent<Animator>().SetBool("siHerido", true);
+        }
+    }
+    
+        
+    
 }
