@@ -11,6 +11,7 @@ public class Vida : MonoBehaviour
     public event Action OnDanoRecibido; // evento para notificar dano recibido
 
     bool siEsperamos = false;//variable para espera de la animación de muerte
+    bool siEsperaDano = false;
 
     void Start()
     {
@@ -30,7 +31,11 @@ public class Vida : MonoBehaviour
         {
             Muerte();
         }
-        AnimacionHerido(); //llama a un método para animar el daño
+        if (siEsperaDano == false) {
+            siEsperaDano = true;
+            AnimacionHerido(); //llama a un método para animar el daño
+            
+            }
 
     }
 
@@ -80,10 +85,15 @@ public class Vida : MonoBehaviour
     void AnimacionHerido() {
         if (siEsperamos == false)
         {
-         this.GetComponent<Animator>().SetBool("siHerido", true);
+            this.GetComponent<Animator>().SetBool("siHerido", true);
+            StartCoroutine(TiempoAnim());
+         
         }
     }
-    
-        
-    
+    IEnumerator TiempoAnim()
+    {
+        yield return new WaitForSeconds(0.4f);
+        this.GetComponent<Animator>().SetBool("siHerido", false);
+        siEsperaDano = false;
+    }
 }
