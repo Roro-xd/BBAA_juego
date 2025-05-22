@@ -132,6 +132,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X) && cuadroTexto.activeSelf == true)
         {
+            // hola
             if (selectedDialogue == 23)
             {
 
@@ -146,6 +147,7 @@ public class Script_guion_inicio : MonoBehaviour
             else
             {
                 AudioManager.Instance.PlaySFX("Botones");
+
 
                 if (selectedDialogue == 1)
                 {
@@ -179,32 +181,57 @@ public class Script_guion_inicio : MonoBehaviour
                 else
                 {
                     AvanceDialogo();
-                    if (selectedDialogue == 7) {
-                    AudioManager.Instance.PlayVoces("Churro1");
-                    } else if (selectedDialogue == 8) {
-                    AudioManager.Instance.PlayVoces("Churro2");
-                    } else if (selectedDialogue == 9) {
-                    AudioManager.Instance.PlayVoces("Churro3");
-                    } else if (selectedDialogue == 10) {
-                    AudioManager.Instance.PlayVoces("Bun1");
-                    } else if (selectedDialogue == 11) {
-                    AudioManager.Instance.PlayVoces("Bun2");
-                    } else if (selectedDialogue == 12) {
-                    AudioManager.Instance.PlayVoces("Bun3");
-                    } else if (selectedDialogue == 13) {
-                    AudioManager.Instance.PlayVoces("Bun4");
-                    } else if (selectedDialogue == 14) {
-                    AudioManager.Instance.PlayVoces("Napo1");
-                    } else if (selectedDialogue == 15) {
-                    AudioManager.Instance.PlayVoces("Napo2");
-                    } else if (selectedDialogue == 16) {
-                    AudioManager.Instance.PlayVoces("Napo3");
-                    } else if (selectedDialogue == 17) {
-                    AudioManager.Instance.PlayVoces("Napo4");
-                    } else if (selectedDialogue == 18) {
-                    AudioManager.Instance.PlayVoces("Yor1");
-                    } else if (selectedDialogue == 19) {
-                    AudioManager.Instance.PlayVoces("Yor2");
+                    if (selectedDialogue == 7)
+                    {
+                        AudioManager.Instance.PlayVoces("Churro1");
+                    }
+                    else if (selectedDialogue == 8)
+                    {
+                        AudioManager.Instance.PlayVoces("Churro2");
+                    }
+                    else if (selectedDialogue == 9)
+                    {
+                        AudioManager.Instance.PlayVoces("Churro3");
+                    }
+                    else if (selectedDialogue == 10)
+                    {
+                        AudioManager.Instance.PlayVoces("Bun1");
+                    }
+                    else if (selectedDialogue == 11)
+                    {
+                        AudioManager.Instance.PlayVoces("Bun2");
+                    }
+                    else if (selectedDialogue == 12)
+                    {
+                        AudioManager.Instance.PlayVoces("Bun3");
+                    }
+                    else if (selectedDialogue == 13)
+                    {
+                        AudioManager.Instance.PlayVoces("Bun4");
+                    }
+                    else if (selectedDialogue == 14)
+                    {
+                        AudioManager.Instance.PlayVoces("Napo1");
+                    }
+                    else if (selectedDialogue == 15)
+                    {
+                        AudioManager.Instance.PlayVoces("Napo2");
+                    }
+                    else if (selectedDialogue == 16)
+                    {
+                        AudioManager.Instance.PlayVoces("Napo3");
+                    }
+                    else if (selectedDialogue == 17)
+                    {
+                        AudioManager.Instance.PlayVoces("Napo4");
+                    }
+                    else if (selectedDialogue == 18)
+                    {
+                        AudioManager.Instance.PlayVoces("Yor1");
+                    }
+                    else if (selectedDialogue == 19)
+                    {
+                        AudioManager.Instance.PlayVoces("Yor2");
                     }
                 }
             }
