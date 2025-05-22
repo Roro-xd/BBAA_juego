@@ -66,6 +66,7 @@ public class HabilidadCuracion : MonoBehaviour
         estaCurando = true;
         caminar.velomov *= reduccionVelocidad;
         spriteRenderer.color = Color.yellow;
+        this.GetComponent<Animator>().SetBool("siCura", true); //Activa la animación
     }
 
     void TerminarCuracion()
@@ -73,6 +74,7 @@ public class HabilidadCuracion : MonoBehaviour
         estaCurando = false;
         caminar.velomov = velocidadOriginal;
         spriteRenderer.color = colorOriginal;
+        this.GetComponent<Animator>().SetBool("siCura",false);//termina la animación
     }
 
     void CancelarCuracion()
@@ -80,6 +82,8 @@ public class HabilidadCuracion : MonoBehaviour
         if (estaCurando)
         {
             Debug.Log("Curacion cancelada por dano recibido.");
+            this.GetComponent<Animator>().SetBool("siCura",false);//cancela la animación de curado
+
             TerminarCuracion();
             tiempoPresionado = 0f;
             StartCoroutine(Cooldown());
