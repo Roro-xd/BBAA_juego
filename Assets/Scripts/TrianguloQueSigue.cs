@@ -8,13 +8,16 @@ public class TrianguloQueSigue : MonoBehaviour
     public Transform spawner;
     private SpriteRenderer spriteRenderer;
 
+    private Animator animator;
+
      private Color colorOriginal;
 
     bool siAtaco = false;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-         colorOriginal = spriteRenderer.color;
+        colorOriginal = spriteRenderer.color;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -51,6 +54,7 @@ public class TrianguloQueSigue : MonoBehaviour
             {
                 spriteRenderer.color = Color.yellow;
                 siAtaco = true;
+                animator.SetBool("siAtaca", true);
                 StartCoroutine(Ataque()) ;
             }
         }
@@ -61,6 +65,7 @@ public class TrianguloQueSigue : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         spriteRenderer.color = colorOriginal;
         siAtaco = false;
+        animator.SetBool("siAtaca", false) ;
     }
 }
 
