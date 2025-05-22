@@ -34,7 +34,6 @@ public class Vida : MonoBehaviour
         if (siEsperaDano == false) {
             siEsperaDano = true;
             AnimacionHerido(); //llama a un método para animar el daño
-            
             }
 
     }
