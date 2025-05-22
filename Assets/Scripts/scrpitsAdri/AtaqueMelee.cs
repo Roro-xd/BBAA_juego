@@ -17,7 +17,7 @@ public class AtaqueMelee : MonoBehaviour
     private Camera camara;
     private Animator animator;
 
-    bool siEsperaAtaque = false;
+    bool siEsperaAtaque = false; 
 
     void Start()
     {
@@ -35,16 +35,19 @@ public class AtaqueMelee : MonoBehaviour
 
             if (animator != null)
             {
-                if (siEsperaAtaque == false) //Llama a la animación de ataque solo cuando se ataca
-                    animator.SetBool("siAtaca", true);
-                    siEsperaAtaque = true;
-                AnimacionAtac();
+
             }
+            
+            if (siEsperaAtaque == false){//Llama a la animación de ataque solo cuando se ataca
+            animator.SetBool("siAtaca", true);
+            siEsperaAtaque = true;
+            StartCoroutine (AnimacionAtac());} 
         }
     }
 
     void Atacar()
-    {
+    {   
+
         Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
 
@@ -106,5 +109,6 @@ public class AtaqueMelee : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         siEsperaAtaque = false;
+        animator.SetBool("siAtaca", false);
     }
 }
