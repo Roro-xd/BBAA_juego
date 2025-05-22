@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_3.unity
     guid: 16adbcf62e6642d40a87f6a7168565e9
+  - enabled: 1
+    path: Assets/Scenes/Derrota.unity
+    guid: 2b01ac8f35cbfca4c9648ff9b3574711
   m_configObjects: {}
