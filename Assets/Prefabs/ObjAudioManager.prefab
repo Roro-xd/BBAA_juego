@@ -195,34 +195,44 @@ MonoBehaviour:
   - nombreSonido: Volver
     clip: {fileID: 8300000, guid: 87c34e2a32f5db546977fc14c0f72d4b, type: 3}
   - nombreSonido: Atacando
+    clip: {fileID: 8300000, guid: 9db2523516ea6264fbc117df3246ecfc, type: 3}
+  - nombreSonido: RoroAtaca
     clip: {fileID: 0}
-  - nombreSonido: Atacan
+  - nombreSonido: BunMuerte
     clip: {fileID: 0}
-  - nombreSonido: Muerte
+  - nombreSonido: MuerteRoro
     clip: {fileID: 0}
-  - nombreSonido: MuerteEnemigo
+  - nombreSonido: MuerteNapo
     clip: {fileID: 0}
-  - nombreSonido: MuerteJefe
+  - nombreSonido: RoroPupa
     clip: {fileID: 0}
-  - nombreSonido: Danhando
-    clip: {fileID: 0}
-  - nombreSonido: Danhado
-    clip: {fileID: 0}
+  - nombreSonido: BunPupa
+    clip: {fileID: 8300000, guid: 48bdb86ac4894784dbf4db014a74db3a, type: 3}
   - nombreSonido: habEspecial
-    clip: {fileID: 0}
-  - nombreSonido: Caminar
+    clip: {fileID: 8300000, guid: fc634670c5cca26408c394277a5be648, type: 3}
+  - nombreSonido: BunCaminar
     clip: {fileID: 0}
   - nombreSonido: MaquinaExp
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 7c2039ed8b169f64292f18f6fb9c4fee, type: 3}
   - nombreSonido: itemRecoger
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 697f6480afa56f1478978de375ad7934, type: 3}
   - nombreSonido: dineroRecoger
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: dc3fae245bd665f43a711522a3047971, type: 3}
   - nombreSonido: vidaRecoger
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 63b529a2b1fe9df4391b675316ed964a, type: 3}
   - nombreSonido: Error
     clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
-  - nombreSonido: VocesGente
+  - nombreSonido: AdrianaAtaca
+    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
+  - nombreSonido: AdrielAtaca
+    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
+  - nombreSonido: LuismiAtaca
+    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
+  - nombreSonido: NapoAtaca
+    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
+  - nombreSonido: YorAtaca
+    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
+  - nombreSonido: ChurroAtaca
     clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
   voces:
   - nombreSonido: VozPrueba
