@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
 
-    //Para incluir la banda sonora
+
+    //Para incluir los sonidos
     public Sonido[] musica;
     public Sonido[] sfx;
     public Sonido[] voces;
@@ -21,8 +22,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine("musicaInicio"); //PlayMusica("Lobby");
-        //PlayVoces("VozPrueba");
+        StartCoroutine("musicaInicio");
     }
 
     void Update()
@@ -101,11 +101,12 @@ public class AudioManager : MonoBehaviour
     {
         vocesSource.volume = volumen;
     }
-    
+
     IEnumerator musicaInicio()
     {
         yield return new WaitForSeconds(2f);
         AudioManager.Instance.PlayMusica("Lobby");
 
     }
+    
 }

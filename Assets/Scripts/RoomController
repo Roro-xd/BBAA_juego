@@ -1,0 +1,15 @@
+using UnityEngine;
+
+public class RoomController : MonoBehaviour
+{
+    public Vector2Int gridPosition; // Asignar en el Inspector según la generación procedural
+    public RoomType roomType;
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            MiniMapManager.Instance.UpdatePlayerPosition(gridPosition, roomType);
+        }
+    }
+}

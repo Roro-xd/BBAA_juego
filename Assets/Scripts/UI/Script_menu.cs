@@ -36,18 +36,16 @@ public class Script_menu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            panelMenu.SetActive(true);
-            AudioManager.Instance.PlaySFX("Botones");
-        }
-
-
-        if (panelMenu.activeSelf == true || panelSeguro.activeSelf == true || panelVolumen.activeSelf == true || panelControles.activeSelf == true)
-        {
-            panelGuion.SetActive(false);
-        }
-        else
-        { 
-            panelGuion.SetActive(true);
+            if (panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
+            {
+                panelMenu.SetActive(true);
+                AudioManager.Instance.PlaySFX("Botones");
+            }
+            else if (panelMenu.activeSelf == true && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
+            {
+                panelMenu.SetActive(false);
+                AudioManager.Instance.PlaySFX("Volver");
+            }
         }
     }
 
