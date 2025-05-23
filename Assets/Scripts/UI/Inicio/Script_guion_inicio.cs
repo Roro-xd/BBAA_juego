@@ -18,6 +18,7 @@ public class Script_guion_inicio : MonoBehaviour
     public GameObject panelSeguro;
     public GameObject panelVolumen;
     public GameObject panelControles;
+    public GameObject panelTextoInicioCurso;
 
 
     //Hago tabla de conversaciones
@@ -74,6 +75,7 @@ public class Script_guion_inicio : MonoBehaviour
         audioManager.PlayOtros("VocesFondo");
         audioManager.PlayMusica("Lobby");
 
+        Destroy(panelTextoInicioCurso, 4.5f);
     }
 
 
@@ -335,7 +337,6 @@ public class Script_guion_inicio : MonoBehaviour
         cuadroTexto.SetActive(true);
         AvanceDialogo();
     }
-
 
     //Que le de tiempo a animar el panel negro antes de pasar de escena
     IEnumerator cambioEscena()
