@@ -9144,7 +9144,7 @@ MonoBehaviour:
   puntoAtaque: {fileID: 1928470057}
   radioAtaque: 1.5
   anguloCono: 60
-  "da\xF1o": 1
+  dano: 1
   capaEnemigos:
     serializedVersion: 2
     m_Bits: 64
