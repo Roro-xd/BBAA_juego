@@ -35,5 +35,8 @@ public class SubeStats : MonoBehaviour
         player.GetComponent<Vida>().Curar(seCuraTanto);//se cura según la cantidad dicha
         player.GetComponent<AtaqueMelee>().SubeAtaque(subeAtaque); //sube el daño por ataque
 
+        //Activa la animación de haber tomado el objeto y lo destruye
+        this.GetComponent<Animator> ().SetBool("siUsado",true);
+        Destroy(this.gameObject, 1f);
     }
 }
