@@ -11,6 +11,7 @@ public class TrianguloQueSigue : MonoBehaviour
     private Animator animator;
 
      private Color colorOriginal;
+    public GameObject player;
 
     bool siAtaco = false;
     void Start()
@@ -18,12 +19,15 @@ public class TrianguloQueSigue : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         colorOriginal = spriteRenderer.color;
         animator = GetComponent<Animator>();
+        player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
         RotateTowardsMouse();
         CheckFiring();
+
+        
     }
 
     private void RotateTowardsMouse()
@@ -48,21 +52,30 @@ public class TrianguloQueSigue : MonoBehaviour
 
     private void CheckFiring()
     {
+        //si se puede aracar se pone a color, si no en gris
+        if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco==false)
+        {
+            this.spriteRenderer.color = Color.gray;
+        }
+        else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco == true && player.GetComponent<AtaqueMelee>().siAcierta== false) { spriteRenderer.color = colorOriginal; }
+        else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco == true && player.GetComponent<AtaqueMelee>().siAcierta== true) { spriteRenderer.color = Color.yellow; }
+        else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == true) { this.spriteRenderer.color = colorOriginal; }
+        
+
         if (Input.GetMouseButtonDown(0))
         {
             if (siAtaco == false)
             {
-                spriteRenderer.color = Color.yellow;
                 siAtaco = true;
                 animator.SetBool("siAtaca", true);
-                StartCoroutine(Ataque()) ;
+                StartCoroutine(Ataque());
             }
         }
     }
 
     IEnumerator Ataque()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         spriteRenderer.color = colorOriginal;
         siAtaco = false;
         animator.SetBool("siAtaca", false) ;

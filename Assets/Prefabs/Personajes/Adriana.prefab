@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 83027416902297234}
   - component: {fileID: 5177374259926398112}
   - component: {fileID: 6232437985159601656}
+  - component: {fileID: 2749225387448820750}
   m_Layer: 0
   m_Name: Adriana
   m_TagString: Enemigo
@@ -142,3 +143,18 @@ CircleCollider2D:
   m_Offset: {x: -0.043821335, y: -0.17966652}
   serializedVersion: 2
   m_Radius: 0.30280495
+--- !u!114 &2749225387448820750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944964137615107742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f0c9f33f32c9045aa9b6f6d8bac0d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  siPersigue: 1
+  velocidadAtac: 2
