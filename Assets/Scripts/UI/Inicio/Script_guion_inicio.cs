@@ -8,46 +8,63 @@ using UnityEngine.UI;
 public class Script_guion_inicio : MonoBehaviour
 {
 
+    //Indico elementos de UI
     public GameObject indicarZ;
-    public GameObject dialogo1;
-    public GameObject dialogo2;
-    public GameObject dialogo3;
-    public GameObject dialogo4;
-    public GameObject dialogo5;
+    public GameObject botonSaltar;
     public GameObject cuadroTexto;
+    public GameObject panelMenu;
+    public GameObject panelSeguro;
+    public GameObject panelVolumen;
+    public GameObject panelControles;
 
 
+    //Hago tabla de conversaciones
     public GameObject[] conversaciones;
     public int selectedDialogue = 0;
 
+
+    //Indico lo relativo a las animaciones
     public GameObject personajes;
     private Animator animPersonajes;
+
     public GameObject lobby;
     private Animator animLobby;
+
     public GameObject bun;
     private Animator bunAnim;
-    //SÉ QUE ESTÁIS HACIENDO LOS SPRITES, PERO AUN NO HE HECHO COMIT
-    /*public GameObject churro;
+
+    public GameObject churro;
     private Animator churroAnim;
+
     public GameObject napo;
     private Animator napoAnim;
-    public GameObject yori;
-    private Animator yoriAnim;*/
 
-    //private float volumeMusica;
+    public GameObject yori;
+    private Animator yoriAnim;
+
+    public GameObject panelN;
+    private Animator animPanelN;
+
+
+    //private float volumeMusica; ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
 
     void Start()
     {
-        //volumeMusica = PlayerPrefs.GetFloat("MusicaGuardada", 1f);
+        //volumeMusica = PlayerPrefs.GetFloat("MusicaGuardada", 1f); ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
 
+        //Llamo a cada Animator
         animPersonajes = personajes.GetComponent<Animator>();
         animLobby = lobby.GetComponent<Animator>();
-
+        animPanelN = panelN.GetComponent<Animator>();
         bunAnim = bun.GetComponent<Animator>();
+        churroAnim = churro.GetComponent<Animator>();
+        napoAnim = napo.GetComponent<Animator>();
+        yoriAnim = yori.GetComponent<Animator>();
 
+        //Pasan 6s hasta que aparecen los dialogos
         StartCoroutine("pausaTexto6s");
 
-        //AudioManager.Instance.PlayMusica("VocesFondo");
+        //AudioManager.Instance.PlayMusica("VocesFondo"); ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
 
     }
 
@@ -56,12 +73,15 @@ public class Script_guion_inicio : MonoBehaviour
     void Update()
     {
 
+        //ANIMACIONES DE CADA PERSONAJE SEGÚN LOS DIALOGOS
+        //Silueta de Buñuelo se aproxima
         if (selectedDialogue == 2)
         {
             bunAnim.SetBool("BuParado", true);
             bunAnim.SetBool("BuCamina", false);
 
         }
+        //El resto de siluetas se aproximan ---------------------------INCLUIR CUANDO ESTÉN LOS CAMINADOS
         /*else if (selectedDialogue == 4)
         {
             churroAnim.SetBool("ChurroParado", true);
@@ -72,115 +92,117 @@ public class Script_guion_inicio : MonoBehaviour
             yoriAnim.SetBool("YoriCamina", false);
 
         }*/
-        else if (selectedDialogue == 5)
+        //CHURRO ACTIVO
+        else if (selectedDialogue == 6 || selectedDialogue == 7 || selectedDialogue == 8 || selectedDialogue == 9)
         {
-            bunAnim.SetBool("BuParado", false);
-            bunAnim.SetBool("BuCamina", true);
-        }
-        else if (selectedDialogue == 6 || selectedDialogue == 7 || selectedDialogue == 8 || selectedDialogue == 9) //CHURRO ACTIVO
-        {
-            /*churroAnim.SetBool("ChurroIdle", true);
-            churroAnim.SetBool("ChurroParado", false);*/
+            churroAnim.SetBool("ChurroIdle", true);
+            churroAnim.SetBool("ChurroParado", false);
             bunAnim.SetBool("BuParado", true);
             bunAnim.SetBool("BuIdle", false);
             bunAnim.SetBool("BuCamina", false);
-            /*napoAnim.SetBool("NapoParada", true);
+            napoAnim.SetBool("NapoParada", true);
             napoAnim.SetBool("NapoIdle", false);
             yoriAnim.SetBool("YoriParado", true);
-            yoriAnim.SetBool("YoriIdle", false);*/
+            yoriAnim.SetBool("YoriIdle", false);
 
         }
-        else if (selectedDialogue == 10 || selectedDialogue == 11 || selectedDialogue == 12 || selectedDialogue == 13) //BUN ACTIVO
+        //BUN ACTIVO
+        else if (selectedDialogue == 10 || selectedDialogue == 11 || selectedDialogue == 12 || selectedDialogue == 13)
         {
-            /*churroAnim.SetBool("ChurroIdle", false);
-            churroAnim.SetBool("ChurroParado", true);*/
+            churroAnim.SetBool("ChurroIdle", false);
+            churroAnim.SetBool("ChurroParado", true);
             bunAnim.SetBool("BuParado", false);
             bunAnim.SetBool("BuIdle", true);
-            /*napoAnim.SetBool("NapoParada", true);
+            napoAnim.SetBool("NapoParada", true);
             napoAnim.SetBool("NapoIdle", false);
-            yoriAnim.SetBool("YoriParado", true);
-            yoriAnim.SetBool("YoriIdle", false);*/
 
         }
-        else if (selectedDialogue == 14 || selectedDialogue == 15 || selectedDialogue == 16 || selectedDialogue == 17) //NAPO ACTIVO
+        //NAPO ACTIVO
+        else if (selectedDialogue == 14 || selectedDialogue == 15 || selectedDialogue == 16 || selectedDialogue == 17)
         {
-            /*churroAnim.SetBool("ChurroIdle", false);
-            churroAnim.SetBool("ChurroParado", true);*/
             bunAnim.SetBool("BuParado", true);
             bunAnim.SetBool("BuIdle", false);
-            /*napoAnim.SetBool("NapoParada", false);
+            napoAnim.SetBool("NapoParada", false);
             napoAnim.SetBool("NapoIdle", true);
             yoriAnim.SetBool("YoriParado", true);
-            yoriAnim.SetBool("YoriIdle", false);*/
+            yoriAnim.SetBool("YoriIdle", false);
 
         }
-        else if (selectedDialogue == 10 || selectedDialogue == 11 || selectedDialogue == 12 || selectedDialogue == 13) //YORI ACTIVO
+        //YORI ACTIVO
+        else if (selectedDialogue == 18 || selectedDialogue == 19 || selectedDialogue == 20 || selectedDialogue == 21 || selectedDialogue == 22)
         {
-            /*churroAnim.SetBool("ChurroIdle", false);
-            churroAnim.SetBool("ChurroParado", true);*/
-            //bunAnim.SetBool("BuParado", true);
-            //bunAnim.SetBool("BuIdle", false);
-            /*napoAnim.SetBool("NapoParada", true);
+            napoAnim.SetBool("NapoParada", true);
             napoAnim.SetBool("NapoIdle", false);
             yoriAnim.SetBool("YoriParado", false);
-            yoriAnim.SetBool("YoriIdle", true);*/
+            yoriAnim.SetBool("YoriIdle", true);
 
+        }
+        //Ultimo dialogo
+        else if (selectedDialogue == 23)
+        {
+            yoriAnim.SetBool("YoriParado", true);
+            yoriAnim.SetBool("YoriIdle", false);
         }
 
 
 
-
-        if (Input.GetKeyDown(KeyCode.X) && cuadroTexto.activeSelf == true)
+        //PRESIONAR TECLA INDICADA (X) --- AVANZAR (+que el texto esté activo porque sino se pasan los dialogos sin leer)
+        //Todo lo extra de los paneles para que no se pueda retroceder mientras se está en pausa
+        if (Input.GetKeyDown(KeyCode.X) && cuadroTexto.activeSelf == true && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
-            // hola
+            //Indicación de qué ocurre cuando se avanza en el último diálogo
             if (selectedDialogue == 23)
             {
-
+                //Ocultar toda la UI
                 cuadroTexto.SetActive(false);
-                dialogo5.SetActive(false);
-                animPersonajes.SetBool("DesPjs", true);
-                animLobby.SetBool("Desaparecer", true);
+                botonSaltar.SetActive(false);
+                conversaciones[23].SetActive(false);
+                //Activar panel negro (fundido en negro)
+                animPanelN.SetBool("Panel_in", true);
 
+                //Que pasen unos segundos hasta el cambio de escena
                 StartCoroutine("cambioEscena");
 
             }
             else
             {
+                //Si no es la ultima escena, que suene el boton, PERO
                 AudioManager.Instance.PlaySFX("Botones");
 
-
+                //ANIMACIÓN 1 EN LA ESCENA
                 if (selectedDialogue == 1)
                 {
                     cuadroTexto.SetActive(false);
-                    dialogo2.SetActive(false);
+                    conversaciones[1].SetActive(false);
                     animPersonajes.SetBool("Silueta1", true);
                     StartCoroutine("pausaTexto3s");
-                    StartCoroutine("pausaAvanceTextos3s");
-
                 }
+
+                //ANIMACIÓN 2 EN LA ESCENA
                 else if (selectedDialogue == 3)
                 {
-
                     cuadroTexto.SetActive(false);
-                    dialogo3.SetActive(false);
+                    conversaciones[3].SetActive(false);
                     animPersonajes.SetBool("Siluetas", true);
                     StartCoroutine("pausaTexto3s");
-                    StartCoroutine("pausaAvanceTextos3s");
-
                 }
+
+                //ANIMACIÓN 3 EN LA ESCENA
                 else if (selectedDialogue == 5)
                 {
-
                     cuadroTexto.SetActive(false);
-                    dialogo4.SetActive(false);
+                    conversaciones[5].SetActive(false);
+                    bunAnim.SetBool("BuParado", false);
+                    bunAnim.SetBool("BuCamina", true);
                     animPersonajes.SetBool("PosPjs", true);
                     StartCoroutine("pausaTexto3s");
-                    StartCoroutine("pausaAvanceTextos3s");
-
                 }
+
                 else
-                {
+                {   //SI NO HAY ANIM EN EL DIALOGO, avanzar dialogo
                     AvanceDialogo();
+
+                    //En los casos especificados, reproducir audio al avanzar
                     if (selectedDialogue == 7)
                     {
                         AudioManager.Instance.PlayVoces("Churro1");
@@ -238,14 +260,18 @@ public class Script_guion_inicio : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Z) && cuadroTexto.activeSelf == true)
+        //PRESIONAR TECLA INDICADA (Z) --- RETROCEDER (+que el texto esté activo porque sino se pasan los dialogos sin leer)
+        //Todo lo extra de los paneles para que no se pueda retroceder mientras se está en pausa
+        if (Input.GetKeyDown(KeyCode.Z) && cuadroTexto.activeSelf == true && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
+            //No dejar que se retroceda en algunos puntos
             if (selectedDialogue == 0 || selectedDialogue == 2 || selectedDialogue == 4 || selectedDialogue == 6)
             {
                 AudioManager.Instance.PlaySFX("Error");
             }
             else
             {
+                //Si deja, retroceder
                 AudioManager.Instance.PlaySFX("Volver");
                 conversaciones[selectedDialogue].SetActive(false);
                 selectedDialogue--;
@@ -259,7 +285,7 @@ public class Script_guion_inicio : MonoBehaviour
             }
         }
 
-
+        //Esto para que visualmente no aparezca el boton de retroceder cuando no se pueda
         if (selectedDialogue == 0 || selectedDialogue == 2 || selectedDialogue == 4 || selectedDialogue == 6)
         {
             indicarZ.SetActive(false);
@@ -272,39 +298,46 @@ public class Script_guion_inicio : MonoBehaviour
 
     }
 
+
+    //Aparición inicial del texto despues de unos segundos
     IEnumerator pausaTexto6s()
     {
         yield return new WaitForSeconds(6);
-        dialogo1.SetActive(true);
+        conversaciones[0].SetActive(true);
         cuadroTexto.SetActive(true);
+        botonSaltar.SetActive(true);
     }
 
+    //Aparicion del texto despues de una anim
     IEnumerator pausaTexto3s()
     {
         yield return new WaitForSeconds(3);
         cuadroTexto.SetActive(true);
-    }
-
-
-    IEnumerator pausaAvanceTextos3s()
-    {
-        yield return new WaitForSeconds(3);
         AvanceDialogo();
     }
 
+
+    //Que le de tiempo a animar el panel negro antes de pasar de escena
     IEnumerator cambioEscena()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Inicio"); //CAMBIAR A PARTIDA CUANDO ESTÉ PREPARADO
 
     }
 
+
     public void AvanceDialogo()
-    { 
+    {
         conversaciones[selectedDialogue].SetActive(false);
         selectedDialogue = (selectedDialogue + 1) % conversaciones.Length;
         conversaciones[selectedDialogue].SetActive(true);
     }
-    
+
+
+    //Para el boton de saltar la escena
+    public void Saltar()
+    {
+        SceneManager.LoadScene("Inicio");
+    }
 
 }
