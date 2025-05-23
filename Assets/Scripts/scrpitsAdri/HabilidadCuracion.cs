@@ -97,5 +97,3 @@ public class HabilidadCuracion : MonoBehaviour
         enCooldown = false;
     }
 }
-
-//FALTARIA PONER LA ANIMACION DE BUÑUELO FUMANDO MIENTRAS HACE ESTO
