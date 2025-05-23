@@ -12,7 +12,7 @@ public class VidaEnemigo : MonoBehaviour
         vidaActual = vidaMaxima;
     }
 
-    public void RecibirDaño(int cantidad)
+    public void RecibirDano(int cantidad)
     {
         vidaActual -= cantidad;
         Debug.Log(gameObject.name + " recibió daño. Vida restante: " + vidaActual);

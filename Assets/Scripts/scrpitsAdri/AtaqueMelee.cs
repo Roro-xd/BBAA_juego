@@ -7,7 +7,7 @@ public class AtaqueMelee : MonoBehaviour
     public Transform puntoAtaque;
     public float radioAtaque = 2f;
     public float anguloCono = 60f;
-    public int daño = 1;
+    public int dano = 1;
     public LayerMask capaEnemigos;
 
     public float cooldownBase = 1f;  // Cooldown inicial
@@ -19,7 +19,7 @@ public class AtaqueMelee : MonoBehaviour
 
     bool siEsperaAtaque = false;
     public bool siPuedoAtacar = true;
-    public bool siAcierta=false;
+    public bool siAcierta = false;
     void Start()
     {
         camara = Camera.main;
@@ -47,12 +47,12 @@ public class AtaqueMelee : MonoBehaviour
                 StartCoroutine(AnimacionAtac());
             }
         }
-        
-        if (Time.time >= tiempoUltimoAtaque + cooldownActual){siPuedoAtacar = true;} else { siPuedoAtacar = false; } //determina si está en cooldown o no
+
+        if (Time.time >= tiempoUltimoAtaque + cooldownActual) { siPuedoAtacar = true; } else { siPuedoAtacar = false; } //determina si está en cooldown o no
     }
 
     void Atacar()
-    {   
+    {
 
         Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
@@ -66,10 +66,10 @@ public class AtaqueMelee : MonoBehaviour
 
             if (anguloEntre <= anguloCono / 2f)
             {
-                enemigo.GetComponent<VidaEnemigo>()?.RecibirDaño(daño);
-                enemigo.GetComponent<Persecución>().siHerido= true;
+                enemigo.GetComponent<VidaEnemigo>()?.RecibirDano(dano);
+                enemigo.GetComponent<Persecución>().siHerido = true;
                 siAcierta = true;
-                
+
                 Debug.Log("Golpe");
             }
         }
@@ -120,5 +120,11 @@ public class AtaqueMelee : MonoBehaviour
         siEsperaAtaque = false;
         animator.SetBool("siAtaca", false);
         siAcierta = false;
+    }
+
+    public void SubeAtaque(int cantidad)
+    {
+        dano += cantidad;
+        Debug.Log("Tu ataque ahora hace esta cantidad de daño:" + dano);
     }
 }

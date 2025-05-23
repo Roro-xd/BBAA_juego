@@ -64,7 +64,7 @@ public class Vida : MonoBehaviour
             siEsperamos = true;
             this.GetComponent<Animator>().SetBool("siMuere", true);
             Debug.Log("reproduciendo animación de muerte");
-            this.GetComponent<Caminar>().sePuedeMover = false; //hace que el jugador ya no se pueda
+            this.GetComponent<Caminar>().sePuedeMover = false; //hace que el jugador ya no se pueda mover
         }
     }
 

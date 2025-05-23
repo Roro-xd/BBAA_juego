@@ -95,7 +95,6 @@ public class HabilidadCuracion : MonoBehaviour
         enCooldown = true;
         yield return new WaitForSeconds(cooldown);
         enCooldown = false;
+       
     }
 }
-
-//FALTARIA PONER LA ANIMACION DE BUÑUELO FUMANDO MIENTRAS HACE ESTO

@@ -20,43 +20,41 @@ public class Caminar : MonoBehaviour
     }
     void Update()
     {
-        
-            movimiento.x = Input.GetAxisRaw("Horizontal");
-            movimiento.y = Input.GetAxisRaw("Vertical");
-            movimiento = movimiento.normalized;
 
-            //flipea en dirección 
-            if (movimiento.x < 0) { vaIzq = true; this.GetComponent<SpriteRenderer>().flipX = true; }
-            else if (movimiento.x > 0) { vaIzq = false; this.GetComponent<SpriteRenderer>().flipX = false; }
+        movimiento.x = Input.GetAxisRaw("Horizontal");
+        movimiento.y = Input.GetAxisRaw("Vertical");
+        movimiento = movimiento.normalized;
 
-            //detecta si el personaje se está moviendo
-            if (movimiento == Vector2.zero) { seMueve = false; }
-            else { seMueve = true; }
+        //flipea en dirección 
+        if (movimiento.x < 0) { vaIzq = true; this.GetComponent<SpriteRenderer>().flipX = true; }
+        else if (movimiento.x > 0) { vaIzq = false; this.GetComponent<SpriteRenderer>().flipX = false; }
 
-            //activa la animación de caminado
-            this.GetComponent<Animator>().SetBool("siCamina", seMueve);
+        //detecta si el personaje se está moviendo
+        if (movimiento == Vector2.zero) { seMueve = false; }
+        else { seMueve = true; }
 
-            //PRUEBA PARA PROBAR LA ANIMACIÓN DE ATAQUE -- SUSTITUIR POR LA TECLA QUE TOQUE //BUEGGUEADO, NO CONSIGO QUE SALGA DE LA ANIMACIÓN DE ATAQUE
-           /* if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                this.GetComponent<Animator>().SetBool("siAtaca", true);
-            }
-            else if (Input.GetKeyUp(KeyCode.Mouse0) && this.GetComponent<Animator>().GetBool("siAtaca") == true)
-            {
-                this.GetComponent<Animator>().SetBool("siAtaca", false);
-            }*/
-
-            if (sePuedeMover== false) { rb = null; } // cancela el rigidbody para anular el movimiento 
-       
+        //activa la animación de caminado
+        this.GetComponent<Animator>().SetBool("siCamina", seMueve);
 
 
-        
+        if (sePuedeMover == false) { rb = null; } // cancela el rigidbody para anular el movimiento 
+
+
+
+
     }
-                void FixedUpdate()
-            {
+    void FixedUpdate()
+    {
 
-                // Permite mover al personaje incluso con la habilidad activa
-                rb.velocity = movimiento * velomov;
+        // Permite mover al personaje incluso con la habilidad activa
+        rb.velocity = movimiento * velomov;
 
-            }
+    }
+
+    public void AumentaVelocidad(float cantidad)
+    {
+        velomov += cantidad; 
+        Debug.Log("Ha subido la velocidad en"+ cantidad);
+    }
+    
 }
