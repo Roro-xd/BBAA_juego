@@ -5,7 +5,7 @@ using UnityEngine;
 public class VidaEnemigo : MonoBehaviour
 {
     public int vidaMaxima = 3;
-    private int vidaActual;
+    public int vidaActual;
 
     private void Start()
     {
