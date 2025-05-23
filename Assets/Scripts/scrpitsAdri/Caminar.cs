@@ -47,7 +47,7 @@ public class Caminar : MonoBehaviour
             }*/
 
             if (sePuedeMover== false) { rb = null; } // cancela el rigidbody para anular el movimiento 
-        //Debug.Log(sePuedeMover);
+       
 
 
         
