@@ -31,13 +31,12 @@ public class AudioManager : MonoBehaviour
 
         if (escena.name == "Inicio")
         {
-            StartCoroutine("musicaInicio");
+            StartCoroutine("musicaInicio"); //HACER OTRA
 
         }
         else if (escena.name == "InicioLobby" || escena.name == "Level_3") //Poner "Lobby" o en la que vaya a estar el lobby realmente
         {
-            AudioManager.Instance.PlayMusica("Lobby"); 
-            //StartCoroutine("musicaInicio");
+            PlayMusica("Lobby"); 
         }
         else if (escena.name == "Level_1")
         {
@@ -50,7 +49,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             musicaSource.Stop();
-        }
+        } //AÑADIR PARA DERROTA (nueva) Y PARA VICTORIA (= Inicio)
     }
 
 

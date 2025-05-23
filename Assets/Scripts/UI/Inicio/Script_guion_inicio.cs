@@ -10,6 +10,8 @@ public class Script_guion_inicio : MonoBehaviour
 
     //Indico elementos de UI
     public GameObject indicarZ;
+    public GameObject indicarXbase;
+    public GameObject indicarXmod;
     public GameObject botonSaltar;
     public GameObject cuadroTexto;
     public GameObject panelMenu;
@@ -78,6 +80,30 @@ public class Script_guion_inicio : MonoBehaviour
 
     void Update()
     {
+        //QUÉ INDICADOR DE X SACAR SEGÚN DIÁLOGO
+        if ((selectedDialogue <= 5 || selectedDialogue >= 20) && cuadroTexto.activeSelf == true)
+        {
+            indicarXbase.SetActive(true);
+            indicarXmod.SetActive(false);
+        }
+        else if (selectedDialogue >= 6 && selectedDialogue <= 19 && cuadroTexto.activeSelf == true)
+        { 
+            indicarXbase.SetActive(false);
+            indicarXmod.SetActive(true);
+        }
+
+
+        //Esto para que visualmente no aparezca el boton de retroceder cuando no se pueda
+        if (selectedDialogue == 0 || selectedDialogue == 2 || selectedDialogue == 4 || selectedDialogue == 6)
+        {
+            indicarZ.SetActive(false);
+        }
+        else
+        {
+            indicarZ.SetActive(true);
+        }
+
+
 
         //ANIMACIONES DE CADA PERSONAJE SEGÚN LOS DIALOGOS
         //Silueta de Buñuelo se aproxima
@@ -99,7 +125,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }*/
         //CHURRO ACTIVO
-        else if (selectedDialogue == 6 || selectedDialogue == 7 || selectedDialogue == 8 || selectedDialogue == 9)
+        else if (selectedDialogue >= 6 && selectedDialogue <= 9)
         {
             churroAnim.SetBool("ChurroIdle", true);
             churroAnim.SetBool("ChurroParado", false);
@@ -113,7 +139,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }
         //BUN ACTIVO
-        else if (selectedDialogue == 10 || selectedDialogue == 11 || selectedDialogue == 12 || selectedDialogue == 13)
+        else if (selectedDialogue >= 10 && selectedDialogue <= 13)
         {
             churroAnim.SetBool("ChurroIdle", false);
             churroAnim.SetBool("ChurroParado", true);
@@ -124,7 +150,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }
         //NAPO ACTIVO
-        else if (selectedDialogue == 14 || selectedDialogue == 15 || selectedDialogue == 16 || selectedDialogue == 17)
+        else if (selectedDialogue >= 14 && selectedDialogue <= 17)
         {
             bunAnim.SetBool("BuParado", true);
             bunAnim.SetBool("BuIdle", false);
@@ -135,7 +161,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }
         //YORI ACTIVO
-        else if (selectedDialogue == 18 || selectedDialogue == 19 || selectedDialogue == 20 || selectedDialogue == 21 || selectedDialogue == 22)
+        else if (selectedDialogue >= 18 && selectedDialogue <= 22)
         {
             napoAnim.SetBool("NapoParada", true);
             napoAnim.SetBool("NapoIdle", false);
@@ -290,18 +316,6 @@ public class Script_guion_inicio : MonoBehaviour
 
             }
         }
-
-        //Esto para que visualmente no aparezca el boton de retroceder cuando no se pueda
-        if (selectedDialogue == 0 || selectedDialogue == 2 || selectedDialogue == 4 || selectedDialogue == 6)
-        {
-            indicarZ.SetActive(false);
-        }
-        else
-        {
-            indicarZ.SetActive(true);
-        }
-
-
     }
 
 
@@ -327,6 +341,7 @@ public class Script_guion_inicio : MonoBehaviour
     IEnumerator cambioEscena()
     {
         yield return new WaitForSeconds(3);
+        audioManager.otrosSource.Stop();
         SceneManager.LoadScene("Inicio"); //CAMBIAR A PARTIDA CUANDO ESTÉ PREPARADO
 
     }
@@ -343,6 +358,7 @@ public class Script_guion_inicio : MonoBehaviour
     //Para el boton de saltar la escena
     public void Saltar()
     {
+        audioManager.otrosSource.Stop();
         SceneManager.LoadScene("Level_1");
     }
 
