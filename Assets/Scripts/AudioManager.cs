@@ -82,7 +82,10 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            vocesSource.Stop();
+
             vocesSource.PlayOneShot(s.clip);
+            vocesSource.Play();
         }
     }
 
