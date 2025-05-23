@@ -54,9 +54,9 @@ public class Persecución : MonoBehaviour
     void Herido()
     {
         if (siEspera == false)
-        {
+        {   siPersigue=false; 
             StartCoroutine(TiempoReaccion());
-            transform.Translate(direccionMov * -1);
+            transform.Translate( direccionMov  *-1);
             siEspera = true;
             this.GetComponent<SpriteRenderer>().color=Color.red;
         }
@@ -67,9 +67,10 @@ public class Persecución : MonoBehaviour
     {
         yield return new WaitForSeconds(tiempoEspera);
         transform.position = direccionMov;
-        this.GetComponent<SpriteRenderer>().color=Color.white;
+        this.GetComponent<SpriteRenderer>().color = Color.white;
         siEspera = false;
-        siHerido =false;
+        siHerido = false;
+        siPersigue =true;
     }
     
 }
