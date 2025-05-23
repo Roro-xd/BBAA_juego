@@ -42,16 +42,19 @@ public class Script_guion_inicio : MonoBehaviour
     public GameObject yori;
     private Animator yoriAnim;
 
+
+    //Panel negro para fundido
     public GameObject panelN;
     private Animator animPanelN;
 
+    //Para reproducir Otros (si lo pongo solo con .Instance. me da error)
+    private AudioManager audioManager;
+    public GameObject objAudioManager;
 
-    //private float volumeMusica; ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
+
 
     void Start()
     {
-        //volumeMusica = PlayerPrefs.GetFloat("MusicaGuardada", 1f); ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
-
         //Llamo a cada Animator
         animPersonajes = personajes.GetComponent<Animator>();
         animLobby = lobby.GetComponent<Animator>();
@@ -64,7 +67,10 @@ public class Script_guion_inicio : MonoBehaviour
         //Pasan 6s hasta que aparecen los dialogos
         StartCoroutine("pausaTexto6s");
 
-        //AudioManager.Instance.PlayMusica("VocesFondo"); ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
+        //Que se reproduzcan los audios indicados
+        audioManager = objAudioManager.GetComponent<AudioManager>();
+        audioManager.PlayOtros("VocesFondo");
+        audioManager.PlayMusica("Lobby");
 
     }
 
@@ -337,7 +343,7 @@ public class Script_guion_inicio : MonoBehaviour
     //Para el boton de saltar la escena
     public void Saltar()
     {
-        SceneManager.LoadScene("Inicio");
+        SceneManager.LoadScene("Level_1");
     }
 
 }

@@ -14,15 +14,49 @@ public class AudioManager : MonoBehaviour
     public Sonido[] musica;
     public Sonido[] sfx;
     public Sonido[] voces;
-    public AudioSource musicaSource, sfxSource, vocesSource;
+    public Sonido[] otros;
+    public AudioSource musicaSource, sfxSource, vocesSource, otrosSource;
 
     public static AudioManager Instance;
 
 
 
+    void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+
+    void OnSceneLoaded(Scene escena, LoadSceneMode modoEscena) {
+
+        if (escena.name == "Inicio")
+        {
+            StartCoroutine("musicaInicio");
+
+        }
+        else if (escena.name == "InicioLobby" || escena.name == "Level_3") //Poner "Lobby" o en la que vaya a estar el lobby realmente
+        {
+            AudioManager.Instance.PlayMusica("Lobby"); 
+            //StartCoroutine("musicaInicio");
+        }
+        else if (escena.name == "Level_1")
+        {
+            AudioManager.Instance.PlayMusica("Piso");
+        }
+        else if (escena.name == "Level_2") //Cambiar a nombre real
+        {
+            AudioManager.Instance.PlayMusica("MiniBoss");
+        }
+        else
+        {
+            musicaSource.Stop();
+        }
+    }
+
+
     void Start()
     {
-        StartCoroutine("musicaInicio");
+       //StartCoroutine("musicaInicio");
     }
 
     void Update()
@@ -89,15 +123,31 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayOtros(string nombreSonido)
+    {
+        Sonido s = Array.Find(otros, x => x.nombreSonido == nombreSonido);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+        else
+        {
+            otrosSource.clip = s.clip;
+            otrosSource.Play();
+        }
+    }
+
 
     public void VolMusica(float volumen)
     {
         musicaSource.volume = volumen;
     }
 
-    public void VolSFX(float volumen)
+    public void VolSFX(float volumen) ////+Otros
     {
         sfxSource.volume = volumen;
+        otrosSource.volume = volumen;
     }
 
     public void VolVoces(float volumen)
