@@ -394,6 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1469339651}
   spawner: {fileID: 0}
+  player: {fileID: 0}
 --- !u!95 &482046047
 Animator:
   serializedVersion: 5
@@ -759,6 +760,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   cooldownBase: 1
+  siPuedoAtacar: 1
+  siAcierta: 0
 --- !u!61 &558110021
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1671,6 +1674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaMaxima: 3
+  vidaActual: 0
 --- !u!212 &1012913038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2016,7 +2020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
+  m_ShowCameraFrustum: 0
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
