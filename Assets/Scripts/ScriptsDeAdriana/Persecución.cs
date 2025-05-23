@@ -8,7 +8,15 @@ public class Persecución : MonoBehaviour
     public bool siPersigue = true;
 
     public float velocidadAtac = 1; //velocidad a la que te persigue
-    
+
+    Vector3 direccionMov;//vector de movimiento del enemigo
+
+    public float tiempoEspera = 1f;
+
+    public bool siEspera = false;
+
+    public bool siHerido=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +26,50 @@ public class Persecución : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    if (siPersigue==true){
+        if (siPersigue == true)
+        {
 
-        transform.position= Vector3.MoveTowards(transform.position, player.transform.position,velocidadAtac*Time.deltaTime); //se m ueve hacia jugador
-        
-        //voltea el sprite en dirección al jugador
-        if (player.transform.position.x <= transform.position.x)
+            direccionMov = Vector3.MoveTowards(transform.position, player.transform.position, velocidadAtac * Time.deltaTime);
+
+            transform.position = direccionMov; //se m ueve hacia jugador
+           
+
+            //voltea el sprite en dirección al jugador
+            if (player.transform.position.x <= transform.position.x)
             {
                 this.GetComponent<SpriteRenderer>().flipX = false;
             }
             else { this.GetComponent<SpriteRenderer>().flipX = true; }
+        }
+
+        if (siHerido == true)
+        {
+            Herido();
+        }
+
+
+
     }
+
+    void Herido()
+    {
+        if (siEspera == false)
+        {
+            StartCoroutine(TiempoReaccion());
+            transform.Translate(direccionMov * -1);
+            siEspera=true;
+        }
+
     }
+
+    IEnumerator TiempoReaccion()
+    {
+        yield return new WaitForSeconds(tiempoEspera);
+        transform.position = direccionMov;
+       
+
+        siEspera = false;
+        siHerido =false;
+    }
+    
 }
