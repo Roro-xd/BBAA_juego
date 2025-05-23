@@ -11,6 +11,7 @@ public class SubeStats : MonoBehaviour
     public float reduceCooldownAtaque = 0f; //en cuantos segundos redece el cooldown de ataque
     public int seCuraTanto = 0; //numero de corazones que cura el objeto
     public float subeVelocidad = 0f; //aumenta la velocidad de caminado
+    public int subeAtaque = 0; //aumenta la cantidad de daño inflijido por ataque
     public GameObject player;
 
 
@@ -32,6 +33,7 @@ public class SubeStats : MonoBehaviour
         player.GetComponent<Vida>().AumentoVidaMax(aumentaVidaMax, siCuraVidaMax); //aumenta la vida max y la cura al max si es el caso
         player.GetComponent<Caminar>().AumentaVelocidad(subeVelocidad); //sube velocidad caminado
         player.GetComponent<Vida>().Curar(seCuraTanto);//se cura según la cantidad dicha
+        player.GetComponent<AtaqueMelee>().SubeAtaque(subeAtaque); //sube el daño por ataque
 
     }
 }
