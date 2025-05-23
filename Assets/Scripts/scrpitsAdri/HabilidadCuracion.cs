@@ -95,5 +95,6 @@ public class HabilidadCuracion : MonoBehaviour
         enCooldown = true;
         yield return new WaitForSeconds(cooldown);
         enCooldown = false;
+       
     }
 }
