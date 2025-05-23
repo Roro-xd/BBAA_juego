@@ -18,7 +18,8 @@ public class AtaqueMelee : MonoBehaviour
     private Animator animator;
 
     bool siEsperaAtaque = false;
-
+    public bool siPuedoAtacar = true;
+    public bool siAcierta=false;
     void Start()
     {
         camara = Camera.main;
@@ -30,21 +31,29 @@ public class AtaqueMelee : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= tiempoUltimoAtaque + cooldownActual)
         {
+            siPuedoAtacar = true;
             Atacar();
             tiempoUltimoAtaque = Time.time;
 
             if (animator != null)
             {
-                if (siEsperaAtaque == false) //Llama a la animación de ataque solo cuando se ataca
-                    animator.SetBool("siAtaca", true);
-                    siEsperaAtaque = true;
-                AnimacionAtac();
+
+            }
+
+            if (siEsperaAtaque == false)
+            {//Llama a la animación de ataque solo cuando se ataca
+                animator.SetBool("siAtaca", true);
+                siEsperaAtaque = true;
+                StartCoroutine(AnimacionAtac());
             }
         }
+        
+        if (Time.time >= tiempoUltimoAtaque + cooldownActual){siPuedoAtacar = true;} else { siPuedoAtacar = false; } //determina si está en cooldown o no
     }
 
     void Atacar()
-    {
+    {   
+
         Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
 
@@ -58,6 +67,9 @@ public class AtaqueMelee : MonoBehaviour
             if (anguloEntre <= anguloCono / 2f)
             {
                 enemigo.GetComponent<VidaEnemigo>()?.RecibirDaño(daño);
+                enemigo.GetComponent<Persecución>().siHerido= true;
+                siAcierta = true;
+                
                 Debug.Log("Golpe");
             }
         }
@@ -104,7 +116,9 @@ public class AtaqueMelee : MonoBehaviour
 
     IEnumerator AnimacionAtac()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.3f);
         siEsperaAtaque = false;
+        animator.SetBool("siAtaca", false);
+        siAcierta = false;
     }
 }

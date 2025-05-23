@@ -6,7 +6,31 @@ public class ItemsExtras : MonoBehaviour
 {
 
     public GameObject[] items;
-    public int selectedItem = 3;
+    public int selectedItem = 0;
+
+    public GameObject flachePrev;
+    public GameObject flacheNext;
+
+
+    void Update()
+    {
+        if (selectedItem == 0)
+        {
+            flacheNext.SetActive(true);
+            flachePrev.SetActive(false);
+        }
+        else if (selectedItem == 18)
+        {
+            flachePrev.SetActive(true);
+            flacheNext.SetActive(false);
+        }
+        else
+        {
+            flacheNext.SetActive(true);
+            flachePrev.SetActive(true);
+        }
+    }
+
 
 
     public void NextItem()

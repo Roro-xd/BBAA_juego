@@ -5,8 +5,30 @@ using UnityEngine;
 public class EnemigosExtras : MonoBehaviour
 {
     public GameObject[] enemigos;
-    public int selectedEnemigo = 3;
+    public int selectedEnemigo = 0;
 
+    public GameObject flachePrev;
+    public GameObject flacheNext;
+
+
+    void Update()
+    {
+        if (selectedEnemigo == 0)
+        {
+            flacheNext.SetActive(true);
+            flachePrev.SetActive(false);
+        }
+        else if (selectedEnemigo == 3)
+        {
+            flachePrev.SetActive(true);
+            flacheNext.SetActive(false);
+        }
+        else
+        {
+            flacheNext.SetActive(true);
+            flachePrev.SetActive(true);
+        }
+    }
 
     public void NextEnemigo()
     {
