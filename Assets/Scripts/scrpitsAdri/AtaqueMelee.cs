@@ -116,7 +116,7 @@ public class AtaqueMelee : MonoBehaviour
 
     IEnumerator AnimacionAtac()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.3f);
         siEsperaAtaque = false;
         animator.SetBool("siAtaca", false);
         siAcierta = false;
