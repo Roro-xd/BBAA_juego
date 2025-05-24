@@ -33,8 +33,6 @@ public class ChurroBossController : MonoBehaviour
         float distancia = Vector2.Distance(transform.position, jugador.position);
         jugadorEnRango = distancia < rangoDeteccion;
 
-       // animator.SetBool("JugadorEnRango", jugadorEnRango);
-        //aun no pongo animaciones
         if (jugadorEnRango && Time.time > tiempoUltimoAtaque + tiempoEntreAtaques)
         {
             Atacar();
@@ -44,7 +42,6 @@ public class ChurroBossController : MonoBehaviour
 
     void Atacar()
     {
-        // Esto es un Place Holder, no funciona
         animator.SetTrigger("Ataca");
         Debug.Log("El jefe ataca!");
     }
@@ -58,7 +55,19 @@ public class ChurroBossController : MonoBehaviour
 
         if (vidaActual <= 0)
         {
-            Morir();
+            Morir(); // Ahora el método existe
         }
+    }
+
+    // Método Morir() añadido
+    void Morir()
+    {
+        estaMuerto = true;
+        animator.SetTrigger("Morir");
+        Debug.Log("¡Jefe derrotado!");
+
+        // Ejemplo de acciones al morir:
+        GetComponent<Collider2D>().enabled = false; // Desactiva colisiones
+        Destroy(gameObject, 2f); // Destruye el objeto después de 2 segundos
     }
 }
