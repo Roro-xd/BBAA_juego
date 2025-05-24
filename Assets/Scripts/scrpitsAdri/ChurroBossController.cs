@@ -61,13 +61,4 @@ public class ChurroBossController : MonoBehaviour
             Morir();
         }
     }
-
-    void Morir()
-    {
-        estaMuerto = true;
-        animator.SetTrigger("Muere");
-        Debug.Log("El jefe ha muerto.");
-        // Aqui tenia pensado que se quede en el suelo y puedas interactuar con elle para besarlo XD
-    }
 }
-
