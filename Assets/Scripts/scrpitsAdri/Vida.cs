@@ -6,7 +6,7 @@ using UnityEngine;
 public class Vida : MonoBehaviour
 {
     public int vidaMax = 4;
-    private int vidaActual;
+    public int vidaActual;
 
     public event Action OnDanoRecibido; // evento para notificar dano recibido
 

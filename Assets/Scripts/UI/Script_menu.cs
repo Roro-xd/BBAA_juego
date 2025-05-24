@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class Script_menu : MonoBehaviour
 {
 
+    //Control de los paneles
     GameObject panelMenu;
     GameObject panelSeguro;
     GameObject panelVolumen;
     GameObject panelControles;
 
-    GameObject panelGuion;
+    //GameObject panelGuion;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class Script_menu : MonoBehaviour
         panelControles = GameObject.Find("Panel_controles");
         panelControles.SetActive(false);
 
-        panelGuion = GameObject.Find("Panel_guion");
+        //panelGuion = GameObject.Find("Panel_guion");
 
     }
 

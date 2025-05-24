@@ -12,7 +12,7 @@ public class AtaqueMelee : MonoBehaviour
 
     public float cooldownBase = 1f;  // Cooldown inicial
     private float cooldownActual;
-    private float tiempoUltimoAtaque = -999f;
+    public float tiempoUltimoAtaque = -999f;
 
     private Camera camara;
     private Animator animator;
@@ -66,7 +66,7 @@ public class AtaqueMelee : MonoBehaviour
 
             if (anguloEntre <= anguloCono / 2f)
             {
-                enemigo.GetComponent<VidaEnemigo>()?.RecibirDano(dano);
+                enemigo.GetComponent<VidaEnemigo>().RecibirDano(dano);
                 enemigo.GetComponent<Persecución>().siHerido = true;
                 siAcierta = true;
 
