@@ -50,10 +50,6 @@ public class Script_guion_inicio : MonoBehaviour
     public GameObject panelN;
     private Animator animPanelN;
 
-    //Para reproducir Otros (si lo pongo solo con .Instance. me da error)
-    private AudioManager audioManager;
-    public GameObject objAudioManager;
-
 
 
     void Start()
@@ -69,11 +65,6 @@ public class Script_guion_inicio : MonoBehaviour
 
         //Pasan 6s hasta que aparecen los dialogos
         StartCoroutine("pausaTexto6s");
-
-        //Que se reproduzcan los audios indicados
-        audioManager = objAudioManager.GetComponent<AudioManager>();
-        audioManager.PlayOtros("VocesFondo");
-        audioManager.PlayMusica("Lobby");
 
         Destroy(panelTextoInicioCurso, 4.5f);
     }
@@ -342,7 +333,7 @@ public class Script_guion_inicio : MonoBehaviour
     IEnumerator cambioEscena()
     {
         yield return new WaitForSeconds(3);
-        audioManager.otrosSource.Stop();
+        /////audioManager.otrosSource.Stop();
         SceneManager.LoadScene("Inicio"); //CAMBIAR A PARTIDA CUANDO ESTÉ PREPARADO
 
     }

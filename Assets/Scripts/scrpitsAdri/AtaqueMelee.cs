@@ -12,7 +12,7 @@ public class AtaqueMelee : MonoBehaviour
 
     public float cooldownBase = 1f;  // Cooldown inicial
     private float cooldownActual;
-    private float tiempoUltimoAtaque = -999f;
+    public float tiempoUltimoAtaque = -999f;
 
     private Camera camara;
     private Animator animator;
