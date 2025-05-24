@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2679545567361195820}
   - component: {fileID: 7679261117755082007}
   - component: {fileID: 1148833541618085568}
+  - component: {fileID: 8029080456401317810}
   m_Layer: 0
   m_Name: Bunuelo
   m_TagString: Player
@@ -176,6 +177,7 @@ MonoBehaviour:
   velomov: 2
   vaIzq: 0
   seMueve: 0
+  sePuedeMover: 1
 --- !u!114 &7679261117755082007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,3 +212,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8029080456401317810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7307694682505071130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfb1ff4f686e014a858ed2c0c0c06e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 0}
+  healthBar: {fileID: 0}
