@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "BBAA.sln"
+    "dotnet.defaultSolution": "BBAA_juego.sln"
 }

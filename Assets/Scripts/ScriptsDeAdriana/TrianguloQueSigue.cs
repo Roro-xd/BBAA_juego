@@ -53,10 +53,7 @@ public class TrianguloQueSigue : MonoBehaviour
     private void CheckFiring()
     {
         //si se puede aracar se pone a color, si no en gris
-        if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco==false)
-        {
-            this.spriteRenderer.color = Color.gray;
-        }
+        if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco==false){ this.spriteRenderer.color = Color.gray; }
         else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco == true && player.GetComponent<AtaqueMelee>().siAcierta== false) { spriteRenderer.color = colorOriginal; }
         else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco == true && player.GetComponent<AtaqueMelee>().siAcierta== true) { spriteRenderer.color = Color.yellow; }
         else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == true) { this.spriteRenderer.color = colorOriginal; }
