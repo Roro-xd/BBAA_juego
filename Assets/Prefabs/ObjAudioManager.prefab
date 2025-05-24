@@ -315,7 +315,7 @@ MonoBehaviour:
   - nombreSonido: Boss
     clip: {fileID: 8300000, guid: cd5b53563029a804ab53b81049b58282, type: 3}
   - nombreSonido: Intro
-    clip: {fileID: 8300000, guid: 87094437858f6cc41a3082b8027f15ec, type: 3}
+    clip: {fileID: 8300000, guid: a87aeb124c9eb1d4f9780edd40cd1db2, type: 3}
   - nombreSonido: Derrota
     clip: {fileID: 8300000, guid: 77d142095b72c3540bdb056f31a2467d, type: 3}
   sfx:

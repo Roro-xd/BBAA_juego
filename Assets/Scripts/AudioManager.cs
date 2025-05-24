@@ -31,34 +31,42 @@ public class AudioManager : MonoBehaviour
 
         if (escena.name == "Inicio" || escena.name == "Victoria")
         {
-            StartCoroutine("musicaInicio");
+            otrosSource.Stop();
+            PlayMusica("Intro");
         }
         else if (escena.name == "InicioLobby" || escena.name == "Level_3") //Poner "Lobby" o en la que vaya a estar el lobby realmente
         {
-            AudioManager.Instance.PlayMusica("Lobby");
+            sfxSource.Stop();
+            sfxSource.Play();
+            otrosSource.Play();
+            PlayMusica("Lobby");
+            PlayOtros("VocesFondo");
         }
         else if (escena.name == "Level_1")
         {
+            otrosSource.Stop();
             AudioManager.Instance.PlayMusica("Piso");
         }
         else if (escena.name == "Level_2") //Cambiar a nombre real
         {
+            otrosSource.Stop();
             AudioManager.Instance.PlayMusica("MiniBoss");
         }
         else if (escena.name == "Derrota")
         {
-            AudioManager.Instance.PlayMusica("Derrota");
+            otrosSource.Stop();
+            PlayMusica("Derrota");
         }
         else
         {
             musicaSource.Stop();
-        } //AÑADIR PARA DERROTA (nueva) Y PARA VICTORIA (= Inicio)
+        }
     }
 
 
     void Start()
     {
-       //StartCoroutine("musicaInicio");
+
     }
 
     void Update()
@@ -157,11 +165,5 @@ public class AudioManager : MonoBehaviour
         vocesSource.volume = volumen;
     }
 
-    IEnumerator musicaInicio()
-    {
-        yield return new WaitForSeconds(2f);
-        AudioManager.Instance.PlayMusica("Intro");
-
-    }
     
 }
