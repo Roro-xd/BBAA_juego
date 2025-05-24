@@ -349,7 +349,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600705591}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -380,11 +380,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8994fb17d9c93b943bed8a4f2dbb46a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 100
-  rangoDeteccion: 10
-  tiempoEntreAtaques: 2
   jugador: {fileID: 1615482183}
-  animator: {fileID: 600705598}
+  rangoDeteccion: 10
+  areaWanderMin: {x: -12.03, y: -10.64}
+  areaWanderMax: {x: 11.15, y: 10}
+  velocidadMovimiento: 2
+  tiempoCambioDireccionMin: 2
+  tiempoCambioDireccionMax: 5
+  proyectilPrefab: {fileID: 6834387837120495789, guid: df19d01419f4ec84fba4145d396d7646, type: 3}
+  puntoDisparo: {fileID: 1105294157}
+  tiempoEntreRafagas: 5
+  balasPorRafaga: 5
+  tiempoEntreBalas: 0.2
+  velocidadProyectil: 10
+  anguloRafaga: 45
+  spriteRenderer: {fileID: 0}
+  colorNormal: {r: 1, g: 1, b: 1, a: 1}
+  colorAdvertencia: {r: 1, g: 0, b: 0, a: 1}
+  tiempoParpadeo: 0.5
+  duracionVibracion: 0.3
+  intensidadVibracion: 0.1
 --- !u!95 &600705598
 Animator:
   serializedVersion: 5
@@ -1687,7 +1702,7 @@ Transform:
   m_GameObject: {fileID: 1105294156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.118, y: -0.199, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9209,7 +9224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea932a845666274ea72ab9639aa3f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velomov: 2
+  velomov: 3
   vaIzq: 0
   seMueve: 0
   sePuedeMover: 1

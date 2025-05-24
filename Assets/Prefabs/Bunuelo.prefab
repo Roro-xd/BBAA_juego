@@ -176,6 +176,7 @@ MonoBehaviour:
   velomov: 2
   vaIzq: 0
   seMueve: 0
+  sePuedeMover: 1
 --- !u!114 &7679261117755082007
 MonoBehaviour:
   m_ObjectHideFlags: 0
