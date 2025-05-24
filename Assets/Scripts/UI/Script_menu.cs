@@ -96,12 +96,12 @@ public class Script_menu : MonoBehaviour
     }
     
 
+    //Respecto a sonidos
     public void SuenaBoton()
     {
         AudioManager.Instance.PlaySFX("Botones");
     }
 
-    //Respecto a sonidos
     public void SuenaVolver()
     {
         AudioManager.Instance.PlaySFX("Volver");
