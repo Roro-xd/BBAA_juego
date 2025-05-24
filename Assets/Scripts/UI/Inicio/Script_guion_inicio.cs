@@ -359,7 +359,7 @@ public class Script_guion_inicio : MonoBehaviour
     //Para el boton de saltar la escena
     public void Saltar()
     {
-        audioManager.otrosSource.Stop();
+        //audioManager.otrosSource.Stop();
         SceneManager.LoadScene("Level_1");
     }
 

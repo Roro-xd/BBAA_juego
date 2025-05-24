@@ -29,14 +29,13 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene escena, LoadSceneMode modoEscena) {
 
-        if (escena.name == "Inicio")
+        if (escena.name == "Inicio" || escena.name == "Victoria")
         {
-            StartCoroutine("musicaInicio"); //HACER OTRA
-
+            StartCoroutine("musicaInicio");
         }
         else if (escena.name == "InicioLobby" || escena.name == "Level_3") //Poner "Lobby" o en la que vaya a estar el lobby realmente
         {
-            PlayMusica("Lobby"); 
+            AudioManager.Instance.PlayMusica("Lobby");
         }
         else if (escena.name == "Level_1")
         {
@@ -45,6 +44,10 @@ public class AudioManager : MonoBehaviour
         else if (escena.name == "Level_2") //Cambiar a nombre real
         {
             AudioManager.Instance.PlayMusica("MiniBoss");
+        }
+        else if (escena.name == "Derrota")
+        {
+            AudioManager.Instance.PlayMusica("Derrota");
         }
         else
         {
@@ -157,7 +160,7 @@ public class AudioManager : MonoBehaviour
     IEnumerator musicaInicio()
     {
         yield return new WaitForSeconds(2f);
-        AudioManager.Instance.PlayMusica("Lobby");
+        AudioManager.Instance.PlayMusica("Intro");
 
     }
     

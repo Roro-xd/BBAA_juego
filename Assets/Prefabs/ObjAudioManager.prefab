@@ -314,6 +314,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7347685d5cc5ea84e8ccbe3ad2947e1d, type: 3}
   - nombreSonido: Boss
     clip: {fileID: 8300000, guid: cd5b53563029a804ab53b81049b58282, type: 3}
+  - nombreSonido: Intro
+    clip: {fileID: 8300000, guid: 87094437858f6cc41a3082b8027f15ec, type: 3}
+  - nombreSonido: Derrota
+    clip: {fileID: 8300000, guid: 77d142095b72c3540bdb056f31a2467d, type: 3}
   sfx:
   - nombreSonido: "Subt\xEDtulo"
     clip: {fileID: 8300000, guid: cc80e6791306e21419787c02d2f1f6e7, type: 3}
