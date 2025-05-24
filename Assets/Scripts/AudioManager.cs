@@ -14,15 +14,59 @@ public class AudioManager : MonoBehaviour
     public Sonido[] musica;
     public Sonido[] sfx;
     public Sonido[] voces;
-    public AudioSource musicaSource, sfxSource, vocesSource;
+    public Sonido[] otros;
+    public AudioSource musicaSource, sfxSource, vocesSource, otrosSource;
 
     public static AudioManager Instance;
 
 
 
+    void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+
+    void OnSceneLoaded(Scene escena, LoadSceneMode modoEscena) {
+
+        if (escena.name == "Inicio" || escena.name == "Victoria")
+        {
+            otrosSource.Stop();
+            PlayMusica("Intro");
+        }
+        else if (escena.name == "InicioLobby" || escena.name == "Level_3") //Poner "Lobby" o en la que vaya a estar el lobby realmente
+        {
+            sfxSource.Stop();
+            sfxSource.Play();
+            otrosSource.Play();
+            PlayMusica("Lobby");
+            PlayOtros("VocesFondo");
+        }
+        else if (escena.name == "Level_1")
+        {
+            otrosSource.Stop();
+            AudioManager.Instance.PlayMusica("Piso");
+        }
+        else if (escena.name == "Level_2") //Cambiar a nombre real
+        {
+            otrosSource.Stop();
+            AudioManager.Instance.PlayMusica("MiniBoss");
+        }
+        else if (escena.name == "Derrota")
+        {
+            otrosSource.Stop();
+            PlayMusica("Derrota");
+        }
+        else
+        {
+            musicaSource.Stop();
+        }
+    }
+
+
     void Start()
     {
-        StartCoroutine("musicaInicio");
+
     }
 
     void Update()
@@ -82,7 +126,25 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            vocesSource.Stop();
+
             vocesSource.PlayOneShot(s.clip);
+            vocesSource.Play();
+        }
+    }
+
+    public void PlayOtros(string nombreSonido)
+    {
+        Sonido s = Array.Find(otros, x => x.nombreSonido == nombreSonido);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+        else
+        {
+            otrosSource.clip = s.clip;
+            otrosSource.Play();
         }
     }
 
@@ -92,9 +154,10 @@ public class AudioManager : MonoBehaviour
         musicaSource.volume = volumen;
     }
 
-    public void VolSFX(float volumen)
+    public void VolSFX(float volumen) ////+Otros
     {
         sfxSource.volume = volumen;
+        otrosSource.volume = volumen;
     }
 
     public void VolVoces(float volumen)
@@ -102,11 +165,5 @@ public class AudioManager : MonoBehaviour
         vocesSource.volume = volumen;
     }
 
-    IEnumerator musicaInicio()
-    {
-        yield return new WaitForSeconds(2f);
-        AudioManager.Instance.PlayMusica("Lobby");
-
-    }
     
 }
