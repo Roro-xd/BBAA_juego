@@ -52,28 +52,40 @@ public class AtaqueMelee : MonoBehaviour
     }
 
     void Atacar()
+{
+    Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
+    Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
+
+    Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, capaEnemigos);
+
+    foreach (Collider2D enemigo in enemigosCerca)
     {
+        Vector2 direccionAlEnemigo = (Vector2)(enemigo.transform.position - puntoAtaque.position);
+        float anguloEntre = Vector2.Angle(direccionAtaque, direccionAlEnemigo);
 
-        Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
-
-        Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, capaEnemigos);
-
-        foreach (Collider2D enemigo in enemigosCerca)
+        if (anguloEntre <= anguloCono / 2f)
         {
-            Vector2 direccionAlEnemigo = (Vector2)(enemigo.transform.position - puntoAtaque.position);
-            float anguloEntre = Vector2.Angle(direccionAtaque, direccionAlEnemigo);
-
-            if (anguloEntre <= anguloCono / 2f)
+            var vidaEnemigo = enemigo.GetComponent<VidaEnemigo>();
+            if (vidaEnemigo != null)
             {
-                enemigo.GetComponent<VidaEnemigo>()?.RecibirDano(dano);
-                enemigo.GetComponent<Persecución>().siHerido = true;
-                siAcierta = true;
-
-                Debug.Log("Golpe");
+                vidaEnemigo.RecibirDano(dano);
             }
+            else
+            {
+                var jefe = enemigo.GetComponent<VidaJefe>();
+                if (jefe != null)
+                {
+                    jefe.RecibirDano(dano);
+                }
+            }
+
+            enemigo.GetComponent<Persecución>().siHerido = true;
+            siAcierta = true;
+
+            Debug.Log("Golpe");
         }
     }
+}
 
 
     public void ReducirCooldown(float cantidad)
