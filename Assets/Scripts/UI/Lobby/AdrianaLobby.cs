@@ -10,7 +10,7 @@ public class AdrianaLobby : MonoBehaviour
     {
         adrianaAnim = this.GetComponent<Animator>();
         adrianaAnim.SetBool("A_Inquieta", true);
-        adrianaAnim.SetBool("A_Inquieta", true);
+        //adrianaAnim.SetBool("A_Inquieta", true);
     }
 
     void Update()

@@ -80,29 +80,32 @@ public class PersDialogosLobby : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        indX.SetActive(true);
 
         if (col.gameObject.name == "ZonaAdriel")
         {
+            indX.SetActive(true);
             indX.transform.position = posXadriel.transform.position;
         }
         else if (col.gameObject.name == "ZonaLuismi")
         {
+            indX.SetActive(true);
             indX.transform.position = posXluismi.transform.position;
         }
         else if (col.gameObject.name == "ZonaRoro")
         {
+            indX.SetActive(true);
             indX.transform.position = posXroro.transform.position;
         }
         else if (col.gameObject.name == "ZonaChurro")
         {
+            indX.SetActive(true);
             indX.transform.position = posXchurro.transform.position;
         }
         else if (col.gameObject.name == "ZonaNapoYori")
         {
+            indX.SetActive(true);
             indX.transform.position = posXnapoyori.transform.position;
         }
-
     }
 
     void OnTriggerExit2D(Collider2D col)

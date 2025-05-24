@@ -7,17 +7,17 @@ public class Script_menu : MonoBehaviour
 {
 
     //Control de los paneles
-    GameObject panelMenu;
-    GameObject panelSeguro;
-    GameObject panelVolumen;
-    GameObject panelControles;
+    public GameObject panelMenu;
+    public GameObject panelSeguro;
+    public GameObject panelVolumen;
+    public GameObject panelControles;
 
     //GameObject panelGuion;
 
     void Start()
     {
 
-        panelMenu = GameObject.Find("Panel_menu");
+        /*panelMenu = GameObject.Find("Panel_menu");
         panelMenu.SetActive(false);
 
         panelSeguro = GameObject.Find("Panel_seguro");
@@ -27,7 +27,7 @@ public class Script_menu : MonoBehaviour
         panelVolumen.SetActive(false);
 
         panelControles = GameObject.Find("Panel_controles");
-        panelControles.SetActive(false);
+        panelControles.SetActive(false);*/
 
         //panelGuion = GameObject.Find("Panel_guion");
 
