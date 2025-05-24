@@ -68,6 +68,7 @@ public class Vida : MonoBehaviour
         }
     }
 
+
     public int GetCurrentHealth() => vidaActual;
     public int GetMaxHealth() => vidaMax;
 

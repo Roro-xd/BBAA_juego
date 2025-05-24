@@ -24,7 +24,7 @@ public class Stats_contador : MonoBehaviour
     public int dano;
 
     //Los scripts pertenecen al player
-    public GameObject player;
+    private GameObject player;
 
 
 
@@ -39,6 +39,7 @@ public class Stats_contador : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
 
         player.GetComponent<Vida>().vidaActual = vidaActual;
         //DIENRO:player.GetComponent<Vida>().vidaActual = vidaActual;
