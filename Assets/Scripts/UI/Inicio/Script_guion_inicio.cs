@@ -10,12 +10,15 @@ public class Script_guion_inicio : MonoBehaviour
 
     //Indico elementos de UI
     public GameObject indicarZ;
+    public GameObject indicarXbase;
+    public GameObject indicarXmod;
     public GameObject botonSaltar;
     public GameObject cuadroTexto;
     public GameObject panelMenu;
     public GameObject panelSeguro;
     public GameObject panelVolumen;
     public GameObject panelControles;
+    public GameObject panelTextoInicioCurso;
 
 
     //Hago tabla de conversaciones
@@ -42,16 +45,19 @@ public class Script_guion_inicio : MonoBehaviour
     public GameObject yori;
     private Animator yoriAnim;
 
+
+    //Panel negro para fundido
     public GameObject panelN;
     private Animator animPanelN;
 
+    //Para reproducir Otros (si lo pongo solo con .Instance. me da error)
+    private AudioManager audioManager;
+    public GameObject objAudioManager;
 
-    //private float volumeMusica; ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
+
 
     void Start()
     {
-        //volumeMusica = PlayerPrefs.GetFloat("MusicaGuardada", 1f); ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
-
         //Llamo a cada Animator
         animPersonajes = personajes.GetComponent<Animator>();
         animLobby = lobby.GetComponent<Animator>();
@@ -64,14 +70,42 @@ public class Script_guion_inicio : MonoBehaviour
         //Pasan 6s hasta que aparecen los dialogos
         StartCoroutine("pausaTexto6s");
 
-        //AudioManager.Instance.PlayMusica("VocesFondo"); ---------------PREGUNTAR CUAL ES LA FORMA CORRECTA
+        //Que se reproduzcan los audios indicados
+        audioManager = objAudioManager.GetComponent<AudioManager>();
+        audioManager.PlayOtros("VocesFondo");
+        audioManager.PlayMusica("Lobby");
 
+        Destroy(panelTextoInicioCurso, 4.5f);
     }
 
 
 
     void Update()
     {
+        //QUÉ INDICADOR DE X SACAR SEGÚN DIÁLOGO
+        if ((selectedDialogue <= 5 || selectedDialogue >= 20) && cuadroTexto.activeSelf == true)
+        {
+            indicarXbase.SetActive(true);
+            indicarXmod.SetActive(false);
+        }
+        else if (selectedDialogue >= 6 && selectedDialogue <= 19 && cuadroTexto.activeSelf == true)
+        { 
+            indicarXbase.SetActive(false);
+            indicarXmod.SetActive(true);
+        }
+
+
+        //Esto para que visualmente no aparezca el boton de retroceder cuando no se pueda
+        if (selectedDialogue == 0 || selectedDialogue == 2 || selectedDialogue == 4 || selectedDialogue == 6)
+        {
+            indicarZ.SetActive(false);
+        }
+        else
+        {
+            indicarZ.SetActive(true);
+        }
+
+
 
         //ANIMACIONES DE CADA PERSONAJE SEGÚN LOS DIALOGOS
         //Silueta de Buñuelo se aproxima
@@ -93,7 +127,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }*/
         //CHURRO ACTIVO
-        else if (selectedDialogue == 6 || selectedDialogue == 7 || selectedDialogue == 8 || selectedDialogue == 9)
+        else if (selectedDialogue >= 6 && selectedDialogue <= 9)
         {
             churroAnim.SetBool("ChurroIdle", true);
             churroAnim.SetBool("ChurroParado", false);
@@ -107,7 +141,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }
         //BUN ACTIVO
-        else if (selectedDialogue == 10 || selectedDialogue == 11 || selectedDialogue == 12 || selectedDialogue == 13)
+        else if (selectedDialogue >= 10 && selectedDialogue <= 13)
         {
             churroAnim.SetBool("ChurroIdle", false);
             churroAnim.SetBool("ChurroParado", true);
@@ -118,7 +152,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }
         //NAPO ACTIVO
-        else if (selectedDialogue == 14 || selectedDialogue == 15 || selectedDialogue == 16 || selectedDialogue == 17)
+        else if (selectedDialogue >= 14 && selectedDialogue <= 17)
         {
             bunAnim.SetBool("BuParado", true);
             bunAnim.SetBool("BuIdle", false);
@@ -129,7 +163,7 @@ public class Script_guion_inicio : MonoBehaviour
 
         }
         //YORI ACTIVO
-        else if (selectedDialogue == 18 || selectedDialogue == 19 || selectedDialogue == 20 || selectedDialogue == 21 || selectedDialogue == 22)
+        else if (selectedDialogue >= 18 && selectedDialogue <= 22)
         {
             napoAnim.SetBool("NapoParada", true);
             napoAnim.SetBool("NapoIdle", false);
@@ -284,18 +318,6 @@ public class Script_guion_inicio : MonoBehaviour
 
             }
         }
-
-        //Esto para que visualmente no aparezca el boton de retroceder cuando no se pueda
-        if (selectedDialogue == 0 || selectedDialogue == 2 || selectedDialogue == 4 || selectedDialogue == 6)
-        {
-            indicarZ.SetActive(false);
-        }
-        else
-        {
-            indicarZ.SetActive(true);
-        }
-
-
     }
 
 
@@ -316,11 +338,11 @@ public class Script_guion_inicio : MonoBehaviour
         AvanceDialogo();
     }
 
-
     //Que le de tiempo a animar el panel negro antes de pasar de escena
     IEnumerator cambioEscena()
     {
         yield return new WaitForSeconds(3);
+        audioManager.otrosSource.Stop();
         SceneManager.LoadScene("Inicio"); //CAMBIAR A PARTIDA CUANDO ESTÉ PREPARADO
 
     }
@@ -337,7 +359,8 @@ public class Script_guion_inicio : MonoBehaviour
     //Para el boton de saltar la escena
     public void Saltar()
     {
-        SceneManager.LoadScene("Inicio");
+        //audioManager.otrosSource.Stop();
+        SceneManager.LoadScene("Level_1");
     }
 
 }
