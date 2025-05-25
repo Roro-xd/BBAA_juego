@@ -41,9 +41,9 @@ public class Stats_contador : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
-        player.GetComponent<Vida>().vidaActual = vidaActual;
-        //DIENRO:player.GetComponent<Vida>().vidaActual = vidaActual;
-        velMov= player.GetComponent<Caminar>().velomov;
+        vidaActual = player.GetComponent<Vida>().vidaActual;
+        //DINERO:player.GetComponent<Vida>().vidaActual = vidaActual;
+        velMov = player.GetComponent<Caminar>().velomov;
         velAtk = player.GetComponent<AtaqueMelee>().tiempoUltimoAtaque;
         dano = player.GetComponent<AtaqueMelee>().dano;
 
@@ -52,8 +52,16 @@ public class Stats_contador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float velAtkMap = Map(velAtk, -999, 0, 1, 10);
+        velAtkMap = (int)velAtkMap;
+
         textoDano.GetComponent<TextMeshProUGUI>().text = dano.ToString();
         textoVel.GetComponent<TextMeshProUGUI>().text = velMov.ToString();
-        textoVelAtk.GetComponent<TextMeshProUGUI>().text = velAtk.ToString();
+        textoVelAtk.GetComponent<TextMeshProUGUI>().text = velAtkMap.ToString();
+    }
+
+    static public float Map(float value, float inicioA, float finalA, float inicioB, float finalB)
+    {
+        return inicioB + (finalB - inicioB) * ((value - inicioA) / (finalA - inicioA));
     }
 }

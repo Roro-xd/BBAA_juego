@@ -102,26 +102,32 @@ public class Script_guion_inicio : MonoBehaviour
         //Silueta de Buñuelo se aproxima
         if (selectedDialogue == 2)
         {
-            bunAnim.SetBool("BuParado", true);
+            bunAnim.SetBool("BuIdle", true);
             bunAnim.SetBool("BuCamina", false);
+            churroAnim.SetBool("ChurroParado", false);
+            churroAnim.SetBool("ChurroCamina", true);
+            //napoAnim.SetBool("NapoParada", false);
+            //napoAnim.SetBool("NapoCamina", true); //cuando esté
+            //yoriAnim.SetBool("YoriParado", false);
+            //yoriAnim.SetBool("YoriCamina", true); //cuando esté
 
         }
         //El resto de siluetas se aproximan ---------------------------INCLUIR CUANDO ESTÉN LOS CAMINADOS
-        /*else if (selectedDialogue == 4)
+        else if (selectedDialogue == 4)
         {
-            churroAnim.SetBool("ChurroParado", true);
+            churroAnim.SetBool("ChurroIdle", true);
             churroAnim.SetBool("ChurroCamina", false);
-            napoAnim.SetBool("NapoParada", true);
-            napoAnim.SetBool("NapoCamina", false);
-            yoriAnim.SetBool("YoriParado", true);
-            yoriAnim.SetBool("YoriCamina", false);
+            napoAnim.SetBool("NapoIdle", true);
+            napoAnim.SetBool("NapoParada", false); //Cambiar por NapoCamina cuando esté
+            yoriAnim.SetBool("YoriIdle", true); 
+            yoriAnim.SetBool("YoriParado", false); //Cambiar por YoriCamina
 
-        }*/
+        }
         //CHURRO ACTIVO
         else if (selectedDialogue >= 6 && selectedDialogue <= 9)
         {
             churroAnim.SetBool("ChurroIdle", true);
-            churroAnim.SetBool("ChurroParado", false);
+            churroAnim.SetBool("ChurroCamina", false);
             bunAnim.SetBool("BuParado", true);
             bunAnim.SetBool("BuIdle", false);
             bunAnim.SetBool("BuCamina", false);
@@ -217,8 +223,12 @@ public class Script_guion_inicio : MonoBehaviour
                 {
                     cuadroTexto.SetActive(false);
                     conversaciones[5].SetActive(false);
-                    bunAnim.SetBool("BuParado", false);
+
+                    bunAnim.SetBool("BuIdle", false);
                     bunAnim.SetBool("BuCamina", true);
+                    churroAnim.SetBool("ChurroIdle", false);
+                    churroAnim.SetBool("ChurroCamina", true);
+
                     animPersonajes.SetBool("PosPjs", true);
                     StartCoroutine("pausaTexto3s");
                 }

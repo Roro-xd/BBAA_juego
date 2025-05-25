@@ -18,7 +18,7 @@ public class Script_menu : MonoBehaviour
     {
 
         panelMenu = GameObject.Find("Panel_menu");
-        panelMenu.SetActive(false);
+        panelMenu.SetActive(false); 
 
         panelSeguro = GameObject.Find("Panel_seguro");
         panelSeguro.SetActive(false);
@@ -82,7 +82,9 @@ public class Script_menu : MonoBehaviour
 
     public void ContinuarJuego()
     {
+        Debug.Log("Continuar");
         panelMenu.SetActive(false);
+        
     }
 
     public void SiQuiero()
@@ -96,12 +98,12 @@ public class Script_menu : MonoBehaviour
     }
     
 
+    //Respecto a sonidos
     public void SuenaBoton()
     {
         AudioManager.Instance.PlaySFX("Botones");
     }
 
-    //Respecto a sonidos
     public void SuenaVolver()
     {
         AudioManager.Instance.PlaySFX("Volver");

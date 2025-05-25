@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212961fac23ef964681058367c2b5b53, type: 3}
+  m_Name: "Bu\xF1uelo"
+  m_EditorClassIdentifier: 
+  baseHealth: 100
+  baseDamage: 20
+  abilityCooldown: 5
+  moveSpeed: 5
+  attackSpeed: 1
+  projectileQuantity: 1
+  dodgeChance: 0.1
+  healthModifier: 0
+  damageModifier: 0
+  cooldownModifier: 0
+  speedModifier: 0
+  attackSpeedModifier: 0
+  projectileModifier: 0
+  dodgeModifier: 0

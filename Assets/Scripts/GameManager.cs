@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,10 @@ public class GameManager : MonoBehaviour
     [Header("UI de Vida")]
     public Image healthBarFill; // Asigna aquí el fill de tu barra de vida
 
+    [Header("Coin System")]
+    public TextMeshProUGUI coinsText;
+
+
     void Awake()
     {
         if (Instance == null)
@@ -30,6 +36,24 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void AddCoins(int amount)
+    {
+        currentCoins += amount;
+        UpdateCoinUI();
+    }
+
+    public void UpdateCoinUI()
+    {
+        coinsText.text = currentCoins.ToString();
+    }
+
+    // Para resetear en nueva partida
+    public void ResetGame()
+    {
+        currentCoins = 0;
+        UpdateCoinUI();
     }
 
     public void UnlockNextLevel()

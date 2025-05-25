@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8689609677711952570}
   - component: {fileID: 6737226921845397159}
   - component: {fileID: 7103895875772226011}
-  - component: {fileID: 1304937250355495753}
+  - component: {fileID: 3704927754854943823}
   m_Layer: 0
   m_Name: Napo
   m_TagString: Enemigo
@@ -107,13 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &1304937250355495753
-CapsuleCollider:
+--- !u!70 &3704927754854943823
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8817887605809146763}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -122,11 +124,21 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3181435
-  m_Height: 0.85204905
-  m_Direction: 1
-  m_Center: {x: 0.0030823946, y: -0.055481583, z: 0}
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0029230118, y: -0.07308364}
+  m_Size: {x: 0.63165855, y: 0.8538327}
+  m_Direction: 0
