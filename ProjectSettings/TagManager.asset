@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Dinero
   - Interact
   - Collect
   - Enemigo
   - BalaArea
+  - Moneda
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,8 @@ public class CharacterStats : MonoBehaviour
     public Stat damage = new Stat { baseValue = 20 };
     public Stat moveSpeed = new Stat { baseValue = 5 };
     public Stat attackSpeed = new Stat { baseValue = 1 };
+    public Stat projectileQuantity = new Stat { baseValue = 1 };
+    public Stat dodgeChance = new Stat { baseValue = 0 }; // en porcentaje, por ejemplo 20 = 20%
 
     [Header("Estado Actual")]
     public float currentHealth;
@@ -33,17 +35,25 @@ public class CharacterStats : MonoBehaviour
                 health.modifier += value;
                 currentHealth = Mathf.Clamp(currentHealth + value, 0, health.TotalValue);
                 break;
-                
+
             case StatType.Damage:
                 damage.modifier += value;
                 break;
-                
+
             case StatType.MoveSpeed:
                 moveSpeed.modifier += value;
                 break;
-                
+
             case StatType.AttackSpeed:
                 attackSpeed.modifier += value;
+                break;
+
+            case StatType.ProjectileQuantity:
+                projectileQuantity.modifier += value;
+                break;
+
+            case StatType.DodgeChance:
+                dodgeChance.modifier += value;
                 break;
         }
         UpdateHealthUI();

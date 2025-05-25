@@ -1,6 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
+
 
 public class VendingMachine : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class VendingMachine : MonoBehaviour
     public Transform itemSpawnPoint;
     
     [Header("Referencias")]
-    public Text coinsText;
+    public TMP_Text coinsText;
     private bool playerInRange;
     private GameObject currentDroppedItem;
     private CharacterStats playerStats;
@@ -48,14 +49,18 @@ public class VendingMachine : MonoBehaviour
     }
 
     void TryPurchase()
+{
+    if(GameManager.Instance.currentCoins >= machineCost)
     {
-        if(GameManager.Instance.currentCoins >= machineCost)
-        {
-            GameManager.Instance.currentCoins -= machineCost;
-            DispenseRandomItem();
-            UpdateUI();
-        }
+        GameManager.Instance.currentCoins -= machineCost;
+        GameManager.Instance.UpdateCoinUI(); // Actualizar UI
+        DispenseRandomItem();
     }
+    else
+    {
+        Debug.Log("¡No tienes suficientes monedas!");
+    }
+}
 
     void DispenseRandomItem()
     {
