@@ -28,6 +28,7 @@ public class PersDialogosLobby : MonoBehaviour
 
     void Update()
     {
+        //Interactuar
         if (Input.GetKeyDown(KeyCode.X) && indX.activeSelf)
         {
             SuenaBoton();
@@ -57,12 +58,16 @@ public class PersDialogosLobby : MonoBehaviour
             indX.SetActive(false);
         }
 
+
+        //Pasar texto de Yori
         if (Input.GetKeyDown(KeyCode.Z) && indZ.activeSelf && textoYori.activeSelf)
         {
             textoYori.SetActive(false);
             textoNapo.SetActive(true);
         }
 
+
+        //Quitar texto
 
         if (Input.GetKeyDown(KeyCode.Z) && indZ.activeSelf && textoYori.activeSelf == false)
         {
@@ -108,10 +113,10 @@ public class PersDialogosLobby : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D col)
+    /*void OnTriggerExit2D(Collider2D col)
     {
         indX.SetActive(false);
-    }
+    }*/
 
 
     public void AparicionTexto()
