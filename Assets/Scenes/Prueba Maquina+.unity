@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monedas: 0
+  conteoMonedas: {fileID: 1359590156}
 --- !u!224 &560595042 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4508966903871823941, guid: 5d4ec25f64b851c4f8f0073ed7905eae, type: 3}
@@ -1609,7 +1610,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3631357014592507531, guid: 5d4ec25f64b851c4f8f0073ed7905eae, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4508966903871823941, guid: 5d4ec25f64b851c4f8f0073ed7905eae, type: 3}
       propertyPath: m_Pivot.x
@@ -1962,6 +1963,11 @@ PrefabInstance:
       addedObject: {fileID: 560595042}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+--- !u!1 &1359590156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6238942638527770856, guid: 5d4ec25f64b851c4f8f0073ed7905eae, type: 3}
+  m_PrefabInstance: {fileID: 1072093810}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1386031142 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5933405352587241213, guid: 2fe1edb050c98bd4e854b1a370898a1a, type: 3}
