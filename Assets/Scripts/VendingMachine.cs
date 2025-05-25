@@ -1,6 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
+
 
 public class VendingMachine : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class VendingMachine : MonoBehaviour
     public Transform itemSpawnPoint;
     
     [Header("Referencias")]
-    public Text coinsText;
+    public TMP_Text coinsText;
     private bool playerInRange;
     private GameObject currentDroppedItem;
     private CharacterStats playerStats;

@@ -11175,7 +11175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 413, y: 192}
+  m_AnchoredPosition: {x: 366, y: 159}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491048668
@@ -11198,7 +11198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Coin
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11619,6 +11619,70 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d411bfb41daa0aa44944b15b52d7c18e, type: 3}
+--- !u!1001 &754493880
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_Name
+      value: Dinero
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.97846
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483590502908185751, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192345104707898820, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1194810855}
+  m_SourcePrefab: {fileID: 100100000, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
 --- !u!1 &771800355
 GameObject:
   m_ObjectHideFlags: 0
@@ -12438,6 +12502,24 @@ MonoBehaviour:
   levelPrefix: Level_
   unlockedColor: {r: 0, g: 1, b: 0, a: 1}
   lockedColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!1 &1194810851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+  m_PrefabInstance: {fileID: 754493880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1194810855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194810851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8369fe842031ad848bdfbb93f8879472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinValue: 50
 --- !u!1 &1349405572
 GameObject:
   m_ObjectHideFlags: 0
@@ -13664,12 +13746,12 @@ MonoBehaviour:
   - itemName: Monster
     itemPrefab: {fileID: 461290540910913998, guid: dbad961e8fbe8c44eaf9e6c9e08fa16e, type: 3}
     price: 50
-    statType: 0
-    value: 50
+    statType: 3
+    value: 5
     collected: 0
   machineCost: 50
   itemSpawnPoint: {fileID: 1732058713}
-  coinsText: {fileID: 0}
+  coinsText: {fileID: 491048668}
 --- !u!61 &1521264694
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17364,6 +17446,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2679545567361195820, guid: 35c7d3298ca1cd24e8ce5f42bb758f05, type: 3}
+      propertyPath: seMueve
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679545567361195820, guid: 35c7d3298ca1cd24e8ce5f42bb758f05, type: 3}
+      propertyPath: velomov
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679545567361195820, guid: 35c7d3298ca1cd24e8ce5f42bb758f05, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -17378,6 +17468,10 @@ PrefabInstance:
     - target: {fileID: 7679261117755082007, guid: 35c7d3298ca1cd24e8ce5f42bb758f05, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029080456401317810, guid: 35c7d3298ca1cd24e8ce5f42bb758f05, type: 3}
+      propertyPath: moveSpeed.baseValue
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17403,6 +17497,6 @@ SceneRoots:
   - {fileID: 882963326}
   - {fileID: 31720069}
   - {fileID: 1732058713}
-  - {fileID: 1320401845}
   - {fileID: 97089058}
   - {fileID: 621235143}
+  - {fileID: 754493880}
