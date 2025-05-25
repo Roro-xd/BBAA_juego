@@ -43,9 +43,9 @@ public class Stats_contador : MonoBehaviour
 
         player.GetComponent<Vida>().vidaActual = vidaActual;
         //DIENRO:player.GetComponent<Vida>().vidaActual = vidaActual;
-        player.GetComponent<Caminar>().velomov = velMov;
-        player.GetComponent<AtaqueMelee>().tiempoUltimoAtaque = velAtk;
-        player.GetComponent<AtaqueMelee>().dano = dano;
+        velMov= player.GetComponent<Caminar>().velomov;
+        velAtk = player.GetComponent<AtaqueMelee>().tiempoUltimoAtaque;
+        dano = player.GetComponent<AtaqueMelee>().dano;
 
     }
 
