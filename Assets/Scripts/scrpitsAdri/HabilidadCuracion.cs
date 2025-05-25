@@ -20,6 +20,13 @@ public class HabilidadCuracion : MonoBehaviour
     private Color colorOriginal;
     private float velocidadOriginal;
     //PORFA REVISAR SI AL CAMINAR EN DIAGONAL Y AL USAR LA HABILIDAD SIGUE BLOQUEANDOSE
+
+
+    //RORO: INCLUYO AQUI LA ANIMACION DE LA BARRA DE TIEMPO
+    private GameObject barraHabEsp;
+    Animator animBarra;
+
+
     void Start()
     {
         caminar = GetComponent<Caminar>();
@@ -29,6 +36,10 @@ public class HabilidadCuracion : MonoBehaviour
         velocidadOriginal = caminar.velomov;
 
         vida.OnDanoRecibido += CancelarCuracion;
+
+
+        barraHabEsp = GameObject.Find("VisualHabEsp");
+        animBarra = barraHabEsp.GetComponent<Animator>();
     }
 
     void Update()
@@ -67,6 +78,8 @@ public class HabilidadCuracion : MonoBehaviour
         caminar.velomov *= reduccionVelocidad;
         spriteRenderer.color = Color.yellow;
         this.GetComponent<Animator>().SetBool("siCura", true); //Activa la animación
+        animBarra.SetBool("HabUsando", true);
+        animBarra.SetBool("HabUsable", false);
     }
 
     void TerminarCuracion()
@@ -74,7 +87,7 @@ public class HabilidadCuracion : MonoBehaviour
         estaCurando = false;
         caminar.velomov = velocidadOriginal;
         spriteRenderer.color = colorOriginal;
-        this.GetComponent<Animator>().SetBool("siCura",false);//termina la animación
+        this.GetComponent<Animator>().SetBool("siCura", false);//termina la animación
     }
 
     void CancelarCuracion()
@@ -82,7 +95,7 @@ public class HabilidadCuracion : MonoBehaviour
         if (estaCurando)
         {
             Debug.Log("Curacion cancelada por dano recibido.");
-            this.GetComponent<Animator>().SetBool("siCura",false);//cancela la animación de curado
+            this.GetComponent<Animator>().SetBool("siCura", false);//cancela la animación de curado
 
             TerminarCuracion();
             tiempoPresionado = 0f;
@@ -93,8 +106,11 @@ public class HabilidadCuracion : MonoBehaviour
     IEnumerator Cooldown()
     {
         enCooldown = true;
+        animBarra.SetBool("HabCooldown", true);
         yield return new WaitForSeconds(cooldown);
         enCooldown = false;
-       
+        animBarra.SetBool("HabUsable", true);
+
     }
+
 }

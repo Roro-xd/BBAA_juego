@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Vida : MonoBehaviour
 {
+    //OLA SOY RORO YO PONDRÍA vidaBase = 4; y crearía un vidaMax = 10; ADIOS
     public int vidaMax = 4;
     public int vidaActual;
 
