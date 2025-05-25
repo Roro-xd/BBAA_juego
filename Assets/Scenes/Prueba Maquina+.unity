@@ -495,20 +495,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1835437402169476512, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
   m_PrefabInstance: {fileID: 2578906978567031755}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &558110026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558110012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7701727216e6340a61facc4d98f943, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monedas: 0
-  conteoMonedas: {fileID: 1359590156}
 --- !u!224 &560595042 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4508966903871823941, guid: 5d4ec25f64b851c4f8f0073ed7905eae, type: 3}
@@ -4502,13 +4488,14 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1469339651}
+    - target: {fileID: 9142078574540369454, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
+      propertyPath: conteoMonedas
+      value: 
+      objectReference: {fileID: 1359590156}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4602898886488504364, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 558110026}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
 --- !u!1001 &2813629719786255617
 PrefabInstance:

@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 7300384374746034283}
   - component: {fileID: 820048908689774764}
   - component: {fileID: 6356202727981922353}
+  - component: {fileID: 9142078574540369454}
   m_Layer: 0
   m_Name: Bunuelo
   m_TagString: Player
@@ -299,6 +300,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6982498, y: 0.5775497}
   m_EdgeRadius: 0
+--- !u!114 &9142078574540369454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4602898886488504364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7701727216e6340a61facc4d98f943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monedas: 0
+  conteoMonedas: {fileID: 0}
 --- !u!1 &6443275972073544994
 GameObject:
   m_ObjectHideFlags: 0
