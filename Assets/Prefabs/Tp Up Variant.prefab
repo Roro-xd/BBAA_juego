@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tp Up Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5590241801799193262, guid: bf3c2894d71a3d84b950657fdf5e1812, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6687029502291625899, guid: bf3c2894d71a3d84b950657fdf5e1812, type: 3}
       propertyPath: m_LocalPosition.x
       value: 95.16238
