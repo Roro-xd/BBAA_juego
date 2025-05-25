@@ -230,6 +230,8 @@ GameObject:
   - component: {fileID: 600705592}
   - component: {fileID: 600705596}
   - component: {fileID: 600705597}
+  - component: {fileID: 600705599}
+  - component: {fileID: 600705600}
   - component: {fileID: 600705598}
   m_Layer: 6
   m_Name: ChurroBoss
@@ -381,10 +383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugador: {fileID: 1615482183}
-  rangoDeteccion: 10
+  velocidadMovimiento: 2
   areaWanderMin: {x: -12.03, y: -10.64}
   areaWanderMax: {x: 11.15, y: 10}
-  velocidadMovimiento: 2
   tiempoCambioDireccionMin: 2
   tiempoCambioDireccionMax: 5
   proyectilPrefab: {fileID: 6834387837120495789, guid: df19d01419f4ec84fba4145d396d7646, type: 3}
@@ -394,12 +395,16 @@ MonoBehaviour:
   tiempoEntreBalas: 0.2
   velocidadProyectil: 10
   anguloRafaga: 45
+  balaAreaPrefab: {fileID: 6834387837120495789, guid: df19d01419f4ec84fba4145d396d7646, type: 3}
+  enemigoPrefab: {fileID: 2154926410604884350, guid: 56e4c4d56eb48cc42939063a51535923, type: 3}
+  enemigosPorSpawn: 1
+  cantidadBalasArea: 20
   spriteRenderer: {fileID: 0}
   colorNormal: {r: 1, g: 1, b: 1, a: 1}
   colorAdvertencia: {r: 1, g: 0, b: 0, a: 1}
   tiempoParpadeo: 0.5
-  duracionVibracion: 0.3
   intensidadVibracion: 0.1
+  vidaMaxima: 100
 --- !u!95 &600705598
 Animator:
   serializedVersion: 5
@@ -421,6 +426,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &600705599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600705591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8a9459d1fd54b4486ad8912e43ddb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaMaxima: 60
+  eventoSegundaFase:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 600705597}
+        m_TargetAssemblyTypeName: ChurroBossController, Assembly-CSharp
+        m_MethodName: ActivarSegundaFase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &600705600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600705591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0d4dc9a1a9d0f438f898f619b56959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dano: 1
+  tiempoEntreDanos: 1
 --- !u!1 &628942937
 GameObject:
   m_ObjectHideFlags: 0
@@ -9159,11 +9206,12 @@ MonoBehaviour:
   puntoAtaque: {fileID: 1928470057}
   radioAtaque: 1.5
   anguloCono: 60
-  dano: 1
+  dano: 30
   capaEnemigos:
     serializedVersion: 2
     m_Bits: 64
   cooldownBase: 1
+  tiempoUltimoAtaque: -999
   siPuedoAtacar: 1
   siAcierta: 0
 --- !u!114 &1615482177
@@ -9191,6 +9239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaMax: 4
+  vidaActual: 0
 --- !u!95 &1615482179
 Animator:
   serializedVersion: 5

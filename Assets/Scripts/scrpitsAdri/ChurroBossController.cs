@@ -5,16 +5,15 @@ using UnityEngine;
 public class ChurroBossController : MonoBehaviour
 {
     public Transform jugador;
-    public float rangoDeteccion = 10f;
+    public float velocidadMovimiento = 2f;
 
     [Header("Movimiento Wander")]
     public Vector2 areaWanderMin;
     public Vector2 areaWanderMax;
-    public float velocidadMovimiento = 2f;
     public float tiempoCambioDireccionMin = 2f;
     public float tiempoCambioDireccionMax = 5f;
 
-    [Header("Ataque")]
+    [Header("Ataque Primera Fase")]
     public GameObject proyectilPrefab;
     public Transform puntoDisparo;
     public float tiempoEntreRafagas = 5f;
@@ -23,47 +22,69 @@ public class ChurroBossController : MonoBehaviour
     public float velocidadProyectil = 10f;
     public float anguloRafaga = 45f;
 
+    [Header("Ataque Segunda Fase")]
+    public GameObject balaAreaPrefab; // Bala para ataque en área
+    public GameObject enemigoPrefab;  // Enemigos que spawneará alrededor
+    public int enemigosPorSpawn = 3;
+
+    // Variable para controlar la cantidad de balas en área
+    public int cantidadBalasArea = 8; 
+    
     [Header("Señales Visuales")]
     public SpriteRenderer spriteRenderer;
     public Color colorNormal = Color.white;
     public Color colorAdvertencia = Color.red;
     public float tiempoParpadeo = 0.5f;
-    public float duracionVibracion = 0.3f;
     public float intensidadVibracion = 0.1f;
+
+    [Header("Vida")]
+    public int vidaMaxima = 100;
+    private int vidaActual;
 
     private Vector2 direccionMovimiento;
     private float tiempoSiguienteCambioDireccion;
     private float tiempoSiguienteRafaga;
-
-    private bool estaDisparando = false;
-
     private Vector3 posicionBase;
     private Vector3 offsetVibracion = Vector3.zero;
+    private bool estaDisparando = false;
+    private bool segundaFaseActiva = false;
+
+    private Collider2D jefeCollider;
 
     private void Start()
     {
-        CambiarDireccion();
+        vidaActual = vidaMaxima;
         posicionBase = transform.position;
+        CambiarDireccion();
+
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
 
-        tiempoSiguienteRafaga = Time.time + 1f;  // Primera ráfaga pronto
+        jefeCollider = GetComponent<Collider2D>();
+
+        tiempoSiguienteRafaga = Time.time + 1f;
     }
 
     private void Update()
     {
-        Debug.Log("Update ejecutado");
+        if (jugador == null) return;
 
-        if (jugador == null)
+        if (!segundaFaseActiva)
         {
-            Debug.LogWarning("Jugador no asignado!");
-            return;
+            if (!estaDisparando)
+                Mover();
+
+            if (!estaDisparando && Time.time >= tiempoSiguienteRafaga)
+                StartCoroutine(PrepararYDisparar_PrimeraFase());
         }
+        else
+        {
+            if (!estaDisparando)
+                Mover();
 
-        if (!estaDisparando)
-            Mover();
-
-        Debug.Log($"Posición base: {posicionBase}, Dirección: {direccionMovimiento}");
+            if (!estaDisparando && Time.time >= tiempoSiguienteRafaga)
+                StartCoroutine(PrepararYDisparar_SegundaFase());
+        }
 
         transform.position = posicionBase + offsetVibracion;
 
@@ -71,69 +92,64 @@ public class ChurroBossController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         else
             transform.localScale = new Vector3(-1, 1, 1);
-
-        Debug.Log($"Esta disparando: {estaDisparando}, Time.time: {Time.time}, tiempoSiguienteRafaga: {tiempoSiguienteRafaga}");
-
-        if (!estaDisparando && Time.time >= tiempoSiguienteRafaga)
-        {
-            Debug.Log("Iniciando Coroutine PrepararYDisparar");
-            StartCoroutine(PrepararYDisparar());
-        }
     }
 
     private void Mover()
     {
-        Debug.Log("Mover ejecutado");
-
         if (Time.time >= tiempoSiguienteCambioDireccion)
-        {
             CambiarDireccion();
-        }
 
         Vector2 nuevaPos = (Vector2)posicionBase + direccionMovimiento * velocidadMovimiento * Time.deltaTime;
-
-        // Limitar a área wander
         nuevaPos.x = Mathf.Clamp(nuevaPos.x, areaWanderMin.x, areaWanderMax.x);
         nuevaPos.y = Mathf.Clamp(nuevaPos.y, areaWanderMin.y, areaWanderMax.y);
-
-        Debug.Log($"Mover - Pos base: {posicionBase}, Dir: {direccionMovimiento}, Nueva pos: {nuevaPos}");
-
         posicionBase = nuevaPos;
     }
 
     private void CambiarDireccion()
     {
-        direccionMovimiento = new Vector2(
-            Random.Range(-1f, 1f),
-            Random.Range(-1f, 1f)
-        ).normalized;
-
-        Debug.Log($"Nueva dirección: {direccionMovimiento}");
-
+        direccionMovimiento = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         tiempoSiguienteCambioDireccion = Time.time + Random.Range(tiempoCambioDireccionMin, tiempoCambioDireccionMax);
     }
 
-    private IEnumerator PrepararYDisparar()
+    private IEnumerator PrepararYDisparar_PrimeraFase()
     {
         estaDisparando = true;
 
-        Debug.Log("PrepararYDisparar iniciado");
-
-        // Parpadeo y vibracion antes de disparar
         float timer = 0f;
         while (timer < tiempoParpadeo)
         {
             spriteRenderer.color = Color.Lerp(colorNormal, colorAdvertencia, Mathf.PingPong(timer * 10f, 1));
             Vibrar();
-
             timer += Time.deltaTime;
             yield return null;
         }
+
         spriteRenderer.color = colorNormal;
         offsetVibracion = Vector3.zero;
 
-        Debug.Log("Preparación terminada, disparando ráfaga");
         yield return StartCoroutine(DispararRafaga());
+
+        tiempoSiguienteRafaga = Time.time + tiempoEntreRafagas;
+        estaDisparando = false;
+    }
+
+    private IEnumerator PrepararYDisparar_SegundaFase()
+    {
+        estaDisparando = true;
+
+        float timer = 0f;
+        while (timer < tiempoParpadeo)
+        {
+            spriteRenderer.color = Color.Lerp(colorNormal, colorAdvertencia, Mathf.PingPong(timer * 10f, 1));
+            Vibrar();
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        spriteRenderer.color = colorNormal;
+        offsetVibracion = Vector3.zero;
+
+        yield return StartCoroutine(DispararArea());
 
         tiempoSiguienteRafaga = Time.time + tiempoEntreRafagas;
         estaDisparando = false;
@@ -146,54 +162,120 @@ public class ChurroBossController : MonoBehaviour
         offsetVibracion = new Vector3(offsetX, offsetY, 0);
     }
 
-   private IEnumerator DispararRafaga()
-{
-    Debug.Log("Disparando ráfaga con " + balasPorRafaga + " balas");
-
-    // Dirección base desde el punto de disparo hacia el jugador
-    Vector2 direccionBase = (jugador.position - puntoDisparo.position).normalized;
-
-    // Convertir dirección base a ángulo en grados
-    float anguloBase = Mathf.Atan2(direccionBase.y, direccionBase.x) * Mathf.Rad2Deg;
-
-    float anguloInicial = anguloBase - anguloRafaga / 2f;
-    float anguloIncremento = anguloRafaga / (balasPorRafaga - 1);
-
-    for (int i = 0; i < balasPorRafaga; i++)
+    private IEnumerator DispararRafaga()
     {
-        float anguloDisparo = anguloInicial + i * anguloIncremento;
-        Vector2 direccion = Quaternion.Euler(0, 0, anguloDisparo) * Vector2.right;
+        Vector2 direccionBase = (jugador.position - puntoDisparo.position).normalized;
+        float anguloBase = Mathf.Atan2(direccionBase.y, direccionBase.x) * Mathf.Rad2Deg;
+        float anguloInicial = anguloBase - anguloRafaga / 2f;
+        float anguloIncremento = anguloRafaga / (balasPorRafaga - 1);
 
-        GameObject proyectil = Instantiate(proyectilPrefab, puntoDisparo.position, Quaternion.identity);
+        for (int i = 0; i < balasPorRafaga; i++)
+        {
+            float angulo = anguloInicial + i * anguloIncremento;
+            Vector2 dir = Quaternion.Euler(0, 0, angulo) * Vector2.right;
+            GameObject bala = Instantiate(proyectilPrefab, puntoDisparo.position, Quaternion.identity);
 
-        Proyectil p = proyectil.GetComponent<Proyectil>();
+            Collider2D balaCollider = bala.GetComponent<Collider2D>();
+            if (balaCollider != null && jefeCollider != null)
+            {
+                Physics2D.IgnoreCollision(balaCollider, jefeCollider);
+            }
+
+            Proyectil p = bala.GetComponent<Proyectil>();
+            if (p != null)
+            {
+                p.direccion = dir.normalized;
+                p.velocidad = velocidadProyectil;
+            }
+
+            yield return new WaitForSeconds(tiempoEntreBalas);
+        }
+    }
+
+ private IEnumerator DispararArea()
+{
+    Debug.Log("DispararArea iniciado");
+
+    int balasArea = cantidadBalasArea;
+    float anguloActual = 0f;
+    float incrementoAngulo = 15f; // ángulo que girará cada bala (ajusta para más o menos espiral)
+    float delayEntreBalas = 0.1f; // tiempo entre disparos para efecto visible
+
+    for (int i = 0; i < balasArea; i++)
+    {
+        Vector2 dir = Quaternion.Euler(0, 0, anguloActual) * Vector2.right;
+        GameObject bala = Instantiate(balaAreaPrefab, puntoDisparo.position, Quaternion.Euler(0, 0, anguloActual));
+        Debug.Log("Bala area espiral instanciada en ángulo: " + anguloActual);
+
+        Collider2D balaCollider = bala.GetComponent<Collider2D>();
+        if (balaCollider != null && jefeCollider != null)
+        {
+            Physics2D.IgnoreCollision(balaCollider, jefeCollider);
+        }
+
+        // Ignorar colisión entre balas área
+        Collider2D[] colisionadoresBalas = bala.GetComponents<Collider2D>();
+        foreach (var balaCol in colisionadoresBalas)
+        {
+            Collider2D[] balasExistentes = FindObjectsOfType<Collider2D>();
+            foreach (var col in balasExistentes)
+            {
+                if (col.gameObject.CompareTag("BalaArea") && col != balaCol)
+                {
+                    Physics2D.IgnoreCollision(balaCol, col);
+                }
+            }
+        }
+
+        Proyectil p = bala.GetComponent<Proyectil>();
         if (p != null)
         {
-            p.direccion = direccion.normalized;
+            p.direccion = dir.normalized;
             p.velocidad = velocidadProyectil;
         }
         else
         {
-            Debug.LogWarning("El prefab del proyectil no tiene el script Proyectil!");
+            Debug.LogWarning("Proyectil no encontrado en balaAreaPrefab");
         }
 
-        yield return new WaitForSeconds(tiempoEntreBalas);
+        anguloActual += incrementoAngulo;
+        if (anguloActual >= 360f)
+            anguloActual -= 360f;
+
+        yield return new WaitForSeconds(delayEntreBalas);
     }
+
+    SpawnEnemigosAleatorios(enemigosPorSpawn);
 }
-    private void OnDrawGizmosSelected()
+    private void SpawnEnemigosAleatorios(int cantidad)
     {
-        Gizmos.color = new Color(0f, 1f, 0f, 0.25f);
+        for (int i = 0; i < cantidad; i++)
+        {
+            Vector2 posicionSpawn = (Vector2)transform.position + Random.insideUnitCircle * 3f;
+            Instantiate(enemigoPrefab, posicionSpawn, Quaternion.identity);
+        }
+    }
 
-        Vector3 centro = new Vector3(
-            (areaWanderMin.x + areaWanderMax.x) / 2f,
-            (areaWanderMin.y + areaWanderMax.y) / 2f,
-            transform.position.z);
+    // Método para que el jefe reciba daño y active segunda fase automáticamente
+    public void RecibeDano(int cantidad)
+    {
+        vidaActual -= cantidad;
 
-        Vector3 tamaño = new Vector3(
-            Mathf.Abs(areaWanderMax.x - areaWanderMin.x),
-            Mathf.Abs(areaWanderMax.y - areaWanderMin.y),
-            0f);
+        if (!segundaFaseActiva && vidaActual <= vidaMaxima / 2)
+        {
+            ActivarSegundaFase();
+        }
 
-        Gizmos.DrawCube(centro, tamaño);
+        if (vidaActual <= 0)
+        {
+            // Aquí lógica para la muerte del jefe (animación, desactivar, etc)
+            Destroy(gameObject);
+        }
+    }
+
+    private void ActivarSegundaFase()
+    {
+        segundaFaseActiva = true;
+        // Puedes agregar efectos, sonidos o animaciones aquí para la segunda fase
     }
 }
