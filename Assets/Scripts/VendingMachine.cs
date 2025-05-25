@@ -48,14 +48,18 @@ public class VendingMachine : MonoBehaviour
     }
 
     void TryPurchase()
+{
+    if(GameManager.Instance.currentCoins >= machineCost)
     {
-        if(GameManager.Instance.currentCoins >= machineCost)
-        {
-            GameManager.Instance.currentCoins -= machineCost;
-            DispenseRandomItem();
-            UpdateUI();
-        }
+        GameManager.Instance.currentCoins -= machineCost;
+        GameManager.Instance.UpdateCoinUI(); // Actualizar UI
+        DispenseRandomItem();
     }
+    else
+    {
+        Debug.Log("¡No tienes suficientes monedas!");
+    }
+}
 
     void DispenseRandomItem()
     {
