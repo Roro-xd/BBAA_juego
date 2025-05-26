@@ -50,7 +50,8 @@ public class AudioManager : MonoBehaviour
         else if (escena.name == "BOSS") //Cambiar a nombre real
         {
             otrosSource.Stop();
-            AudioManager.Instance.PlayMusica("MiniBoss");
+            //AudioManager.Instance.PlayMusica("MiniBoss");
+            PlayMusica("MiniBoss");
         }
         else if (escena.name == "Derrota")
         {
@@ -95,6 +96,8 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            musicaSource.Stop();
+
             musicaSource.clip = s.clip;
             musicaSource.Play();
         }

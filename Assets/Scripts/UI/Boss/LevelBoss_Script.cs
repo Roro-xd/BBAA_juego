@@ -52,7 +52,7 @@ public class LevelBoss_Script : MonoBehaviour
                 cuadrotexto.SetActive(false);
                 //textos[2].SetActive(false);
                 panelIndBoss.SetActive(true);
-                Destroy(panelIndBoss, 3.5f);
+                //Destroy(panelIndBoss, 3.5f);
                 Destroy(textosConj);
             }
         }
