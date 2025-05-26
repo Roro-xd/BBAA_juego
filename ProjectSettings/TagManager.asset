@@ -9,6 +9,7 @@ TagManager:
   - Enemigo
   - BalaArea
   - Moneda
+  - Enemy
   layers:
   - Default
   - TransparentFX

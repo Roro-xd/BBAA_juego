@@ -148,43 +148,43 @@ MonoBehaviour:
     itemPrefab: {fileID: 461290540910913998, guid: dbad961e8fbe8c44eaf9e6c9e08fa16e, type: 3}
     price: 50
     statType: 3
-    value: 5
+    value: 1
     collected: 0
   - itemName: Porro
     itemPrefab: {fileID: 3438427792906619499, guid: a29ba7377533ab143909b54ca7e4b776, type: 3}
     price: 50
     statType: 1
-    value: 5
+    value: 1
     collected: 0
   - itemName: Sandwitch
     itemPrefab: {fileID: 3346831822786365635, guid: 20b84cb4c0d7aca4cab159c14d2bf995, type: 3}
     price: 50
     statType: 1
-    value: 5
+    value: 1
     collected: 0
   - itemName: Schokobom
     itemPrefab: {fileID: 1733457549609216306, guid: 0907e0c49e0b14043b5633de48668efb, type: 3}
     price: 50
     statType: 0
-    value: 15
+    value: 1
     collected: 0
   - itemName: Cutter
     itemPrefab: {fileID: 5317395279858914327, guid: 327d5c8566c1ef5409c6a0f0b83849e4, type: 3}
     price: 50
     statType: 1
-    value: 20
+    value: 1
     collected: 0
   - itemName: Papitas
     itemPrefab: {fileID: 3393655776452158864, guid: 169fd45818ed25f40b53d0d78e1a6a27, type: 3}
     price: 50
     statType: 0
-    value: 20
+    value: 1
     collected: 0
   - itemName: "Caf\xE9 Quemado"
     itemPrefab: {fileID: 6795925944307559296, guid: 4be6ffd0a222b994d8056969b01e2b8a, type: 3}
     price: 50
     statType: 3
-    value: 5
+    value: 1
     collected: 0
   - itemName: Cola
     itemPrefab: {fileID: 7860800877076398415, guid: c15a73c3beb393844a368f0960155a58, type: 3}
@@ -202,13 +202,13 @@ MonoBehaviour:
     itemPrefab: {fileID: 7046456393521825883, guid: 644583f51bb672442b8457babc4ead13, type: 3}
     price: 50
     statType: 0
-    value: 20
+    value: 1
     collected: 0
   - itemName: ColaZero
     itemPrefab: {fileID: 3431831553446042426, guid: e93fb888ebd22544ab38024e3a183c12, type: 3}
     price: 50
     statType: 3
-    value: 5
+    value: 1
     collected: 0
   - itemName: "Cond\xF3n"
     itemPrefab: {fileID: 1508002887835340884, guid: ee487db639e40d848a0d1dfeace0149e, type: 3}
@@ -220,37 +220,37 @@ MonoBehaviour:
     itemPrefab: {fileID: 609958527225783658, guid: b480858ed0a7a304d82c12264398cdcb, type: 3}
     price: 50
     statType: 1
-    value: 10
+    value: 1
     collected: 0
   - itemName: Carboncillo
     itemPrefab: {fileID: 2529726443409422453, guid: 9dcf4af5e2e0a2249bc8e41e14b03fd5, type: 3}
     price: 50
     statType: 1
-    value: 10
+    value: 1
     collected: 0
   - itemName: Pincel grueso
     itemPrefab: {fileID: 8888231047974284601, guid: 100278eea5fd4ef42ad7a4caf05a0f5e, type: 3}
     price: 50
     statType: 1
-    value: 15
+    value: 1
     collected: 0
   - itemName: Agua
     itemPrefab: {fileID: 157856648513849556, guid: 985d70b08b8d26d409df4a000a755788, type: 3}
     price: 50
     statType: 0
-    value: 15
+    value: 1
     collected: 0
   - itemName: Churros
     itemPrefab: {fileID: 7632267042845373077, guid: 46720118f1cd58c45826a417ff3d63f8, type: 3}
     price: 50
     statType: 1
-    value: 10
+    value: 1
     collected: 0
   - itemName: "Bu\xF1uelos"
     itemPrefab: {fileID: 2246142202393475640, guid: e70bab5229d702b4d97d2993db6c2dc5, type: 3}
     price: 50
     statType: 0
-    value: 15
+    value: 1
     collected: 0
   - itemName: Napolitana
     itemPrefab: {fileID: 1680256481178832160, guid: f7b47e219e02d3b41b0b283974a10137, type: 3}

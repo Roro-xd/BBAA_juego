@@ -28,6 +28,13 @@ public class Script_victoria : MonoBehaviour
     public GameObject botonSalir;
     public GameObject gracias;
 
+    GameObject panelMenu;
+    GameObject panelSeguro;
+    GameObject panelVolumen;
+    GameObject panelControles;
+
+    public GameObject easterEgg;
+
 
     void Start()
     {
@@ -56,6 +63,13 @@ public class Script_victoria : MonoBehaviour
         StartCoroutine("ApareceTexto");
 
 
+
+        panelMenu = GameObject.Find("Panel_menu");
+        panelSeguro = GameObject.Find("Panel_seguro");
+        panelVolumen = GameObject.Find("Panel_volumen");
+        panelControles = GameObject.Find("Panel_controles");
+
+        //easterEgg = GameObject.Find("Imagen_Chulo");
     }
 
 
@@ -85,7 +99,6 @@ public class Script_victoria : MonoBehaviour
         }
 
 
-
         if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf)
         {
             if (lineaDialogo != 6)
@@ -95,7 +108,7 @@ public class Script_victoria : MonoBehaviour
 
             if (lineaDialogo == 6)
             {
-                Debug.Log("Has acabado el juego");
+                //Debug.Log("Has acabado el juego");
                 cuadrotexto.SetActive(false);
                 dialogo[5].SetActive(false);
                 StartCoroutine(AparecePanelN());
@@ -106,8 +119,18 @@ public class Script_victoria : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf)
         {
             RetrocesoDialogo();
+
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Z) && lineaDialogo == 0)
+        {
+            AudioManager.Instance.PlaySFX("Error");
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && gracias.activeSelf)
+        {
+            SalirJuego();
+        }
 
     }
 
@@ -136,7 +159,7 @@ public class Script_victoria : MonoBehaviour
 
     IEnumerator ApareceGracias()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2.5f);
         botonSalir.SetActive(true);
         gracias.SetActive(true);
     }
@@ -163,11 +186,20 @@ public class Script_victoria : MonoBehaviour
 
         dialogo[lineaDialogo].SetActive(true);
     }
-    
+
+
+    //Easter Egg
+    IEnumerator EasterEgg()
+    {
+        yield return new WaitForSeconds(0.5f);
+        easterEgg.SetActive(false);
+        Debug.Log("Sales del juego");
+        Application.Quit();
+    }
 
     public void SalirJuego()
     {
-        Debug.Log("Sales del juego");
-        Application.Quit();
+        easterEgg.SetActive(true);
+        StartCoroutine(EasterEgg());
     }
 }

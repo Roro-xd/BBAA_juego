@@ -78,10 +78,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e08e186bf68daae428ec74ddb73addcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -185,12 +185,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7307694682505071130}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 391ff9ae2dc06974faa7d1535d1201ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  baseSpeed: 5
 --- !u!95 &1148833541618085568
 Animator:
   serializedVersion: 5
@@ -204,7 +204,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: af161a3b885c89643bf2dfbe16d1f2f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -224,5 +224,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfb1ff4f686e014a858ed2c0c0c06e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 0}
-  healthBar: {fileID: 0}
+  health:
+    baseValue: 100
+    modifier: 0
+  damage:
+    baseValue: 20
+    modifier: 0
+  moveSpeed:
+    baseValue: 5
+    modifier: 0
+  attackSpeed:
+    baseValue: 1
+    modifier: 0
+  projectileQuantity:
+    baseValue: 1
+    modifier: 0
+  dodgeChance:
+    baseValue: 0
+    modifier: 0
+  currentHealth: 0
