@@ -17,14 +17,48 @@ public class AtaqueMelee : MonoBehaviour
     private Camera camara;
     private Animator animator;
 
+    private CharacterStats stats; // ← Nuevo
+
     bool siEsperaAtaque = false;
     public bool siPuedoAtacar = true;
     public bool siAcierta = false;
+
     void Start()
     {
         camara = Camera.main;
         animator = GetComponent<Animator>();
         cooldownActual = cooldownBase;
+
+        stats = GetComponent<CharacterStats>();
+        if (stats != null)
+        {
+            dano = Mathf.RoundToInt(stats.damage.TotalValue);
+            cooldownBase = 1f / stats.attackSpeed.TotalValue;
+            cooldownActual = cooldownBase;
+
+            stats.OnStatChanged += OnStatChanged;
+        }
+    }
+    void OnDestroy()
+    {
+        if (stats != null)
+            stats.OnStatChanged -= OnStatChanged;
+    }
+    void OnStatChanged(StatType type, float newValue)
+    {
+        switch (type)
+        {
+            case StatType.Damage:
+                dano = Mathf.RoundToInt(newValue);
+                Debug.Log("Daño actualizado: " + dano);
+                break;
+
+            case StatType.AttackSpeed:
+                cooldownBase = 1f / newValue;
+                cooldownActual = cooldownBase;
+                Debug.Log("Nuevo cooldown base: " + cooldownBase);
+                break;
+        }
     }
 
     void Update()
