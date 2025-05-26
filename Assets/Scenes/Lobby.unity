@@ -11550,10 +11550,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 925241304628900987, guid: e146c754ac6f87c488a2210497949673, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5277104379208453586, guid: e146c754ac6f87c488a2210497949673, type: 3}
       propertyPath: m_Name
       value: Rocio
@@ -12574,10 +12570,6 @@ PrefabInstance:
     - target: {fileID: 2154926410604884350, guid: 56e4c4d56eb48cc42939063a51535923, type: 3}
       propertyPath: m_TagString
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3526571615115237509, guid: 56e4c4d56eb48cc42939063a51535923, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3598521668598345038, guid: 56e4c4d56eb48cc42939063a51535923, type: 3}
       propertyPath: player
@@ -14024,10 +14016,6 @@ PrefabInstance:
     - target: {fileID: 2664455921320955574, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: m_Constraints
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2847643571631064773, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4538771683562536163, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: camera

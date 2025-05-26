@@ -4494,9 +4494,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2615127613265204340, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4602898886488504364, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
       propertyPath: m_Name
       value: ' Bunuelo'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4602898886488504364, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6443275972073544994, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7172132366041591864, guid: e8e4bbe516d8ab547910e4356debade6, type: 3}
       propertyPath: camera
