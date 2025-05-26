@@ -28,6 +28,11 @@ public class Script_victoria : MonoBehaviour
     public GameObject botonSalir;
     public GameObject gracias;
 
+    GameObject panelMenu;
+    GameObject panelSeguro;
+    GameObject panelVolumen;
+    GameObject panelControles;
+
 
     void Start()
     {
@@ -56,6 +61,11 @@ public class Script_victoria : MonoBehaviour
         StartCoroutine("ApareceTexto");
 
 
+
+        panelMenu = GameObject.Find("Panel_menu");
+        panelSeguro = GameObject.Find("Panel_seguro");
+        panelVolumen = GameObject.Find("Panel_volumen");
+        panelControles = GameObject.Find("Panel_controles");
     }
 
 
@@ -85,7 +95,6 @@ public class Script_victoria : MonoBehaviour
         }
 
 
-
         if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf)
         {
             if (lineaDialogo != 6)
@@ -106,9 +115,15 @@ public class Script_victoria : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf)
         {
             RetrocesoDialogo();
+
+            
+        } else if (Input.GetKeyDown(KeyCode.Z) && lineaDialogo == 0)
+        {
+            AudioManager.Instance.PlaySFX("Error");
         }
 
 
+        
     }
 
     IEnumerator ChurroAIdle()
