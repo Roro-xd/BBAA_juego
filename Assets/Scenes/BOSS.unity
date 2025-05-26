@@ -8779,6 +8779,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ' Bunuelo'
       objectReference: {fileID: 0}
+    - target: {fileID: 2847643571631064773, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4538771683562536163, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: camera
       value: 
