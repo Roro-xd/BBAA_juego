@@ -7,7 +7,14 @@ public class Sliders : MonoBehaviour
 {
     public Slider musicaSlider, sfxSlider, vocesSlider;
 
-    /*public void GuardarVolMusica(float newValue)
+    public GameObject[] sliderFondo;
+    public int sliderSelect = 0;
+
+    private float incVol = 0.1f;
+
+    public GameObject panelVolumen;
+
+    /*public void GuardarVolMusica(float newValue) ///////PREGUNTAR SI SE HACE ASÍ
     {
         PlayerPrefs.SetFloat("MusicaGuardada", musicaSlider.value);
         PlayerPrefs.Save();
@@ -17,6 +24,74 @@ public class Sliders : MonoBehaviour
     {
         musicaSlider.value = PlayerPrefs.GetFloat("MusicaGuardada", 1f);
     }*/
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && panelVolumen.activeSelf)
+        {
+            if (sliderSelect == 0)
+            {
+                musicaSlider.value += incVol;
+            }
+            else if (sliderSelect == 1)
+            {
+                sfxSlider.value += incVol;
+            }
+            else if (sliderSelect == 2)
+            {
+                vocesSlider.value += incVol;
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && panelVolumen.activeSelf)
+        {
+            if (sliderSelect == 0)
+            {
+                musicaSlider.value -= incVol;
+            }
+            else if (sliderSelect == 1)
+            {
+                sfxSlider.value -= incVol;
+            }
+            else if (sliderSelect == 2)
+            {
+                vocesSlider.value -= incVol;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && panelVolumen.activeSelf)
+        {
+            RetrasoSlider();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) && panelVolumen.activeSelf)
+        {
+            AvanceSlider();
+        }
+
+    }
+
+
+    public void AvanceSlider()
+    {
+        sliderFondo[sliderSelect].SetActive(false);
+        sliderSelect = (sliderSelect + 1) % sliderFondo.Length;
+        sliderFondo[sliderSelect].SetActive(true);
+    }
+
+    public void RetrasoSlider()
+    {
+        sliderFondo[sliderSelect].SetActive(false);
+        sliderSelect--;
+            if (sliderSelect < 0)
+            {
+                sliderSelect += sliderFondo.Length;
+            }
+
+        sliderFondo[sliderSelect].SetActive(true);
+    }
+
 
     public void VolMusica(float volumen)
     {
