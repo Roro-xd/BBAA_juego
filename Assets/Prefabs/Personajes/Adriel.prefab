@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 1706914539980135074}
   - component: {fileID: 2450699567268354746}
   - component: {fileID: 3526571615115237509}
-  - component: {fileID: 4525206642649341982}
   - component: {fileID: 1991414577068957957}
-  - component: {fileID: 3598521668598345038}
+  - component: {fileID: 6989956460612211832}
   - component: {fileID: 4898458752593496837}
   - component: {fileID: -1828854265548390660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Adriel
-  m_TagString: BalaArea
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,63 +110,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &4525206642649341982
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2154926410604884350}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.42352867, y: 0.27851486}
-      - {x: 0.23328972, y: 0.7132759}
-      - {x: 0.06552124, y: 0.8892555}
-      - {x: -0.14501572, y: 0.8297806}
-      - {x: -0.42079163, y: 0.36650085}
-      - {x: -0.47753143, y: 0.0940361}
-      - {x: -0.41805458, y: -0.26094818}
-      - {x: -0.28125, y: -0.75}
-      - {x: -0.15625, y: -0.7645416}
-      - {x: 0.21025276, y: -0.81552505}
-      - {x: 0.34072685, y: -0.6510582}
-      - {x: 0.38954163, y: -0.30098724}
-  m_UseDelaunayMesh: 0
 --- !u!114 &1991414577068957957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,11 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddc3a3b667412643a8e4446f8fcf74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   detectionRadius: 4
   attackCooldown: 1
-  attackDamage: 10
-  maxHealth: 30
+  attackDamage: 1
+  maxHealth: 15
   coin1Prefab: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
   coin5Prefab: {fileID: 5328336341304546823, guid: cf0462c99c213014e813219c3b6a6c3a, type: 3}
   chanceFor5: 0.1
@@ -194,7 +136,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &3598521668598345038
+--- !u!114 &6989956460612211832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,15 +145,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2154926410604884350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36f0c9f33f32c9045aa9b6f6d8bac0d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e9bdae7dbb763543af886af65d41fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  siPersigue: 1
-  velocidadAtac: 1
-  tiempoEspera: 1
-  siEspera: 0
-  siHerido: 0
+  vidaMaxima: 12
+  vidaActual: 0
 --- !u!50 &4898458752593496837
 Rigidbody2D:
   serializedVersion: 4
