@@ -39,7 +39,7 @@ public class UI_Partida : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        vidaBase = player.GetComponent<Vida>().vidaMax;
+        vidaBase = player.GetComponent<Vida>().vidaBase;
 
         visualVida = GameObject.Find("VisualVidas");
         //Llamar a transformar la imagen de VIDA
