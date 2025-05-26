@@ -258,6 +258,6 @@ MonoBehaviour:
     statType: 4
     value: 3
     collected: 0
-  machineCost: 50
+  machineCost: 10
   itemSpawnPoint: {fileID: 0}
   coinsText: {fileID: 0}

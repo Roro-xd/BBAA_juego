@@ -8,7 +8,11 @@ using UnityEngine.SceneManagement;
 public class Vida : MonoBehaviour
 {
     //OLA SOY RORO YO PONDRÍA vidaBase = 4; y crearía un vidaMax = 10; ADIOS
-    public int vidaMax = 4;
+    public int vidaBase = 4;
+
+    public int vidaMax = 10;
+
+
     public int vidaActual;
     private CharacterStats stats;
 
@@ -20,33 +24,33 @@ public class Vida : MonoBehaviour
     void Start()
     {
         stats = GetComponent<CharacterStats>();
-        vidaMax = (int)stats.health.TotalValue;
-        vidaActual = vidaMax;
+        vidaBase = (int)stats.health.TotalValue;
+        vidaActual = vidaBase;
 
-        stats.OnStatChanged += OnStatChanged;
+        //stats.OnStatChanged += OnStatChanged;
     }
-    void OnDestroy()
+    /*void OnDestroy()
     {
         if (stats != null)
-            stats.OnStatChanged -= OnStatChanged;
-    }
+            stats.OnStatChanged -= OnStatChanged;*/
+    //}
     void OnStatChanged(StatType type, float newValue)
     {
         if (type == StatType.Health)
         {
             int nuevaVidaMax = Mathf.RoundToInt(newValue);
-            int delta = nuevaVidaMax - vidaMax;
-            vidaMax = nuevaVidaMax;
+            int delta = nuevaVidaMax - vidaBase;
+            vidaBase = nuevaVidaMax;
             vidaActual += delta; // opcional: curar vida extra
-            vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
-            Debug.Log("Nueva vida máxima: " + vidaMax);
+            vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
+            Debug.Log("Nueva vida máxima: " + vidaBase);
         }
     }
 
     public void RecibeDano(int cantidad)
     {
         vidaActual -= cantidad;
-        vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
+        vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
 
         Debug.Log("Vida actual: " + vidaActual);
 
@@ -67,18 +71,18 @@ public class Vida : MonoBehaviour
     public void Curar(int cantidad)
     {
         vidaActual += cantidad;
-        vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
+        vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
 
         Debug.Log("Curado. Vida actual: " + vidaActual);
     }
 
     public void AumentoVidaMax(int cantidad, bool curarFull = true)
     {
-        vidaMax += cantidad;
+        vidaBase += cantidad;
         if (curarFull)
-            vidaActual = vidaMax;
+            vidaActual = vidaBase;
 
-        Debug.Log("Nueva vida maxima: " + vidaMax + " | Vida actual: " + vidaActual);
+        Debug.Log("Nueva vida maxima: " + vidaBase + " | Vida actual: " + vidaActual);
     }
 
     private void Muerte()
@@ -98,7 +102,7 @@ public class Vida : MonoBehaviour
 
 
     public int GetCurrentHealth() => vidaActual;
-    public int GetMaxHealth() => vidaMax;
+    public int GetMaxHealth() => vidaBase;
 
 
 

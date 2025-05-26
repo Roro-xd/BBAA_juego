@@ -325,46 +325,32 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 44f041cb3db6e964b95ec14b7a076398, type: 3}
   - nombreSonido: Volver
     clip: {fileID: 8300000, guid: 87c34e2a32f5db546977fc14c0f72d4b, type: 3}
-  - nombreSonido: Atacando
+  - nombreSonido: BunAtaca
     clip: {fileID: 8300000, guid: 9db2523516ea6264fbc117df3246ecfc, type: 3}
-  - nombreSonido: RoroAtaca
-    clip: {fileID: 0}
-  - nombreSonido: BunMuerte
-    clip: {fileID: 0}
-  - nombreSonido: MuerteRoro
-    clip: {fileID: 0}
-  - nombreSonido: MuerteNapo
-    clip: {fileID: 0}
-  - nombreSonido: RoroPupa
-    clip: {fileID: 0}
-  - nombreSonido: BunPupa
-    clip: {fileID: 8300000, guid: 48bdb86ac4894784dbf4db014a74db3a, type: 3}
+  - nombreSonido: MuerteBun
+    clip: {fileID: 8300000, guid: ca2336efeade17d4d83e9e8003ff403d, type: 3}
+  - nombreSonido: DanoBun
+    clip: {fileID: 8300000, guid: ac7a0d862b57a3d48866fbe8cfd77227, type: 3}
   - nombreSonido: habEspecial
-    clip: {fileID: 8300000, guid: fc634670c5cca26408c394277a5be648, type: 3}
-  - nombreSonido: BunCaminar
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 43647a8d23ac55a4c86651a50cccdcc9, type: 3}
   - nombreSonido: MaquinaExp
     clip: {fileID: 8300000, guid: 7c2039ed8b169f64292f18f6fb9c4fee, type: 3}
   - nombreSonido: itemRecoger
     clip: {fileID: 8300000, guid: 697f6480afa56f1478978de375ad7934, type: 3}
   - nombreSonido: dineroRecoger
     clip: {fileID: 8300000, guid: dc3fae245bd665f43a711522a3047971, type: 3}
-  - nombreSonido: vidaRecoger
-    clip: {fileID: 8300000, guid: 63b529a2b1fe9df4391b675316ed964a, type: 3}
   - nombreSonido: Error
     clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
-  - nombreSonido: AdrianaAtaca
-    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
-  - nombreSonido: AdrielAtaca
-    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
-  - nombreSonido: LuismiAtaca
-    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
-  - nombreSonido: NapoAtaca
-    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
-  - nombreSonido: YorAtaca
-    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
-  - nombreSonido: ChurroAtaca
-    clip: {fileID: 8300000, guid: f6b3550c99e88c440804daaf39e335b2, type: 3}
+  - nombreSonido: MuerteChurro
+    clip: {fileID: 8300000, guid: dfefd5d0119573b48a1a64c563884836, type: 3}
+  - nombreSonido: MuerteEnemigo
+    clip: {fileID: 8300000, guid: 20b8976c82e6155468d01f409daf8262, type: 3}
+  - nombreSonido: DanoChurro
+    clip: {fileID: 8300000, guid: ddc9e24552ee8c24babca235b4e0eae9, type: 3}
+  - nombreSonido: AtaqueChurro
+    clip: {fileID: 8300000, guid: eb33ab0f1327d784dbbbe707e10fec30, type: 3}
+  - nombreSonido: DanoEnemigo
+    clip: {fileID: 8300000, guid: ee2b6d525b90e5d4cbc57a0ae2e677ea, type: 3}
   voces:
   - nombreSonido: VozPrueba
     clip: {fileID: 8300000, guid: b32642a8ea979554bae62acd6996b316, type: 3}
@@ -397,6 +383,16 @@ MonoBehaviour:
   otros:
   - nombreSonido: VocesFondo
     clip: {fileID: 8300000, guid: b83c07da9d4d3d74eae8478984a04918, type: 3}
+  - nombreSonido: adrielCamina
+    clip: {fileID: 8300000, guid: 3a969004a1f3fda4891d4329e71e6a90, type: 3}
+  - nombreSonido: caminadoLento
+    clip: {fileID: 8300000, guid: 664898127e857194d8345a4520f26e1c, type: 3}
+  - nombreSonido: caminadoMedio
+    clip: {fileID: 8300000, guid: 26f38b0729ff0ce478a0aafa26ef387b, type: 3}
+  - nombreSonido: caminadoRapido
+    clip: {fileID: 8300000, guid: 1f3e1b60776fa0547ad275949ccbd150, type: 3}
+  - nombreSonido: roroFlota
+    clip: {fileID: 8300000, guid: 680f7343a52c1184c9adbaca59067aac, type: 3}
   musicaSource: {fileID: 7190842299637886227}
   sfxSource: {fileID: 5274133024142157374}
   vocesSource: {fileID: 2091970973800861904}

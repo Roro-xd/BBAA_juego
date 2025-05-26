@@ -42,16 +42,16 @@ public class Persecución : MonoBehaviour
             else { this.GetComponent<SpriteRenderer>().flipX = true; }
         }
 
-        if (siHerido == true)
+       /* if (siHerido == true)
         {
-            Herido();
+            Herido();*/
         }
 
 
 
     }
 
-    void Herido()
+    /*void Herido()
     {
         if (siEspera == false)
         {   siPersigue=false; 
@@ -63,7 +63,7 @@ public class Persecución : MonoBehaviour
 
     }
 
-    IEnumerator TiempoReaccion()
+    /*IEnumerator TiempoReaccion()
     {
         yield return new WaitForSeconds(tiempoEspera);
         transform.position = direccionMov;
@@ -71,6 +71,6 @@ public class Persecución : MonoBehaviour
         siEspera = false;
         siHerido = false;
         siPersigue =true;
-    }
+    }*/
     
-}
+

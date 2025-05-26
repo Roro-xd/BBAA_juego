@@ -45,12 +45,11 @@ public class AudioManager : MonoBehaviour
         else if (escena.name == "Level_1")
         {
             otrosSource.Stop();
-            AudioManager.Instance.PlayMusica("Piso"); //COMPROBAR SI FUFA
+            PlayMusica("Piso");
         }
         else if (escena.name == "BOSS")
         {
             otrosSource.Stop();
-            //AudioManager.Instance.PlayMusica("MiniBoss");
             PlayMusica("MiniBoss");
         }
         else if (escena.name == "Derrota")

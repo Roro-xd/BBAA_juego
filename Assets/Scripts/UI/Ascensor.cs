@@ -25,7 +25,7 @@ public class Ascensor : MonoBehaviour
     //private GameObject zInd;
 
     private bool isPlayerNear;
-    private bool puedoLobby;
+    //private bool puedoLobby;
     private bool puedoLevel1;
 
 
@@ -40,21 +40,21 @@ public class Ascensor : MonoBehaviour
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene escena, LoadSceneMode modoEscena)
     {
 
-        if (escena.name != "Lobby" || escena.name != "PruebaUIPartida")
+        /*if (escena.name != "Lobby")
         {
             puedoLobby = true;
         }
-        else
+        else if (escena.name == "Lobby")
         {
             puedoLobby = false;
-        }
+        }*/
 
 
-        if (escena.name != "Level_1" || escena.name != "Prueba Maquina+")
+        if (escena.name != "Level_1")
         {
             puedoLevel1 = true;
         }
-        else
+        else if (escena.name == "Level_1")
         {
             puedoLevel1 = false;
         }
@@ -104,9 +104,11 @@ public class Ascensor : MonoBehaviour
             AudioManager.Instance.PlaySFX("Botones");
             panelElevator.SetActive(true);
             pisos[pisoSelect].SetActive(true);
+            
+            botLobby.SetActive(true);
 
 
-            if (puedoLobby == false)
+            /*if (puedoLobby == false)
             {
                 botLobbyBlock.SetActive(true);
                 botLobby.SetActive(false);
@@ -115,7 +117,7 @@ public class Ascensor : MonoBehaviour
             {
                 botLobbyBlock.SetActive(false);
                 botLobby.SetActive(true);
-            }
+            }*/
 
 
             if (puedoLevel1 == false)
@@ -124,7 +126,7 @@ public class Ascensor : MonoBehaviour
                 botLobby.SetActive(false);
             }
             else
-            { 
+            {
                 botLevel1Block.SetActive(false);
                 botLevel1.SetActive(true);
             }
@@ -192,14 +194,15 @@ public class Ascensor : MonoBehaviour
 
     public void IrALobby()
     {
-        if (puedoLobby)
+        SceneManager.LoadScene("BOSS");
+        /*if (puedoLobby)
         {
             SceneManager.LoadScene("BOSS");
         }
         else
         {
             AudioManager.Instance.PlaySFX("Error");
-        }
+        }*/
     }
 
     public void IrAPlanta1()
