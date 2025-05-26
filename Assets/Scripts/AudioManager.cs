@@ -45,9 +45,9 @@ public class AudioManager : MonoBehaviour
         else if (escena.name == "Level_1")
         {
             otrosSource.Stop();
-            AudioManager.Instance.PlayMusica("Piso");
+            AudioManager.Instance.PlayMusica("Piso"); //COMPROBAR SI FUFA
         }
-        else if (escena.name == "BOSS") //Cambiar a nombre real
+        else if (escena.name == "BOSS")
         {
             otrosSource.Stop();
             //AudioManager.Instance.PlayMusica("MiniBoss");

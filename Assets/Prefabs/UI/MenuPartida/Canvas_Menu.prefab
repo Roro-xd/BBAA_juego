@@ -2542,7 +2542,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4557430149400114726
 MonoBehaviour:
@@ -2657,6 +2657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaActual: 0
+  dineroActual: 0
   velMov: 0
   velAtk: 0
   dano: 0

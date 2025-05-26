@@ -344,7 +344,7 @@ public class Script_guion_inicio : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         /////audioManager.otrosSource.Stop();
-        SceneManager.LoadScene("Inicio"); //CAMBIAR A PARTIDA CUANDO ESTÉ PREPARADO
+        SceneManager.LoadScene("Level_1");
 
     }
 
