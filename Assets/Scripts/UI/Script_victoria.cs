@@ -16,6 +16,26 @@ public class Script_victoria : MonoBehaviour
     private Animator animYori;
 
 
+    public GameObject[] dialogo;
+    public int lineaDialogo = 0;
+    public GameObject zRegresa;
+    public GameObject xAvanza;
+    public GameObject cuadrotexto;
+
+
+    public GameObject panelN;
+    private Animator animPanelN;
+    public GameObject botonSalir;
+    public GameObject gracias;
+
+    GameObject panelMenu;
+    GameObject panelSeguro;
+    GameObject panelVolumen;
+    GameObject panelControles;
+
+    public GameObject easterEgg;
+
+
     void Start()
     {
         churro = GameObject.Find("Churro");
@@ -27,6 +47,9 @@ public class Script_victoria : MonoBehaviour
         yori = GameObject.Find("Yorique");
         animYori = yori.GetComponent<Animator>();
 
+        panelN = GameObject.Find("Panel_Negro");
+        animPanelN = panelN.GetComponent<Animator>();
+
 
 
         animChurro.SetBool("ChurroCaminaVIC", true);
@@ -34,21 +57,82 @@ public class Script_victoria : MonoBehaviour
         StartCoroutine("ChurroAIdle");
 
 
-        //PONER DONDE TOQUE (AL PRESIONAR TECLA)
-        //animNapo.SetBool("NapoVICCamina", true);
-        //animNapo.SetBool("NapoParada", false);
-        //animYori.SetBool("YoriParado", false);
-        //animYori.SetBool("Yor_VIC_Caminado", true);
+        zRegresa.SetActive(false);
+        xAvanza.SetActive(false);
+        cuadrotexto.SetActive(false);
+        StartCoroutine("ApareceTexto");
 
 
+
+        panelMenu = GameObject.Find("Panel_menu");
+        panelSeguro = GameObject.Find("Panel_seguro");
+        panelVolumen = GameObject.Find("Panel_volumen");
+        panelControles = GameObject.Find("Panel_controles");
+
+        //easterEgg = GameObject.Find("Imagen_Chulo");
     }
 
-    // Update is called once per frame
+
+
     void Update()
     {
+        if (lineaDialogo == 0)
+        {
+            zRegresa.SetActive(false);
+        }
+        else if (lineaDialogo == 3)
+        {
+            animNapo.SetBool("NapoVICCamina", true);
+            animNapo.SetBool("NapoParada", false);
+            animYori.SetBool("YoriParado", false);
+            animYori.SetBool("Yor_VIC_Caminado", true);
+        }
+        else if (lineaDialogo == 6)
+        {
+            zRegresa.SetActive(false);
+            xAvanza.SetActive(false);
+        }
+        else
+        {
+            zRegresa.SetActive(true);
+            xAvanza.SetActive(true);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf)
+        {
+            if (lineaDialogo != 6)
+            {
+                AvanceDialogo();
+            }
+
+            if (lineaDialogo == 6)
+            {
+                //Debug.Log("Has acabado el juego");
+                cuadrotexto.SetActive(false);
+                dialogo[5].SetActive(false);
+                StartCoroutine(AparecePanelN());
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf)
+        {
+            RetrocesoDialogo();
+
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Z) && lineaDialogo == 0)
+        {
+            AudioManager.Instance.PlaySFX("Error");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && gracias.activeSelf)
+        {
+            SalirJuego();
+        }
 
     }
-
 
     IEnumerator ChurroAIdle()
     {
@@ -57,4 +141,65 @@ public class Script_victoria : MonoBehaviour
         animChurro.SetBool("ChurroVICIdle", true);
     }
 
+    IEnumerator ApareceTexto()
+    {
+        yield return new WaitForSeconds(4.5f);
+        cuadrotexto.SetActive(true);
+        xAvanza.SetActive(true);
+        dialogo[0].SetActive(true);
+    }
+
+
+    IEnumerator AparecePanelN()
+    {
+        yield return new WaitForSeconds(1);
+        animPanelN.SetBool("Panel_in", true);
+        StartCoroutine(ApareceGracias());
+    }
+
+    IEnumerator ApareceGracias()
+    {
+        yield return new WaitForSeconds(2.5f);
+        botonSalir.SetActive(true);
+        gracias.SetActive(true);
+    }
+
+
+
+    public void AvanceDialogo()
+    {
+        AudioManager.Instance.PlaySFX("Botones");
+        dialogo[lineaDialogo].SetActive(false);
+        lineaDialogo = (lineaDialogo + 1) % dialogo.Length;
+        dialogo[lineaDialogo].SetActive(true);
+    }
+
+    public void RetrocesoDialogo()
+    {
+        AudioManager.Instance.PlaySFX("Volver");
+        dialogo[lineaDialogo].SetActive(false);
+        lineaDialogo--;
+        if (lineaDialogo < 0)
+        {
+            lineaDialogo += dialogo.Length;
+        }
+
+        dialogo[lineaDialogo].SetActive(true);
+    }
+
+
+    //Easter Egg
+    IEnumerator EasterEgg()
+    {
+        yield return new WaitForSeconds(0.5f);
+        easterEgg.SetActive(false);
+        Debug.Log("Sales del juego");
+        Application.Quit();
+    }
+
+    public void SalirJuego()
+    {
+        easterEgg.SetActive(true);
+        StartCoroutine(EasterEgg());
+    }
 }

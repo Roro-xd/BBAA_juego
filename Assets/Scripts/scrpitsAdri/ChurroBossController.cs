@@ -51,6 +51,14 @@ public class ChurroBossController : MonoBehaviour
 
     private Collider2D jefeCollider;
 
+
+
+    //Cagadas de Rocío
+    private bool modoAtaque = false;
+    public GameObject panelChurroBoss;
+
+
+
     private void Start()
     {
         vidaActual = vidaMaxima;
@@ -67,6 +75,11 @@ public class ChurroBossController : MonoBehaviour
 
     private void Update()
     {
+        if (panelChurroBoss.activeSelf)
+        {
+            modoAtaque = true;
+        }
+        if (modoAtaque == false) return;
         if (jugador == null) return;
 
         if (!segundaFaseActiva)

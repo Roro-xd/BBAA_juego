@@ -1,81 +1,106 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TrianguloQueSigue : MonoBehaviour
 {
-    public new Camera camera;
+    [SerializeField] private Camera mainCamera; // Cambiado el nombre para evitar conflicto
     public Transform spawner;
     private SpriteRenderer spriteRenderer;
-
     private Animator animator;
-
-     private Color colorOriginal;
-    public GameObject player;
-
+    private Color colorOriginal;
+    
+    [SerializeField] private GameObject player; // Mejor usar SerializeField para referencias
+    private AtaqueMelee playerAttack; // Cachear componente
+    
     bool siAtaco = false;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         colorOriginal = spriteRenderer.color;
         animator = GetComponent<Animator>();
-        player = GameObject.FindWithTag("Player");
+        
+        // Buscar cámara automáticamente si no está asignada
+        if(mainCamera == null)
+        {
+            mainCamera = Camera.main;
+            if(mainCamera == null)
+            {
+                Debug.LogError("No se encontró la cámara principal. Asegúrate de tener una cámara con tag 'MainCamera'");
+            }
+        }
+
+        // Buscar jugador y su componente de ataque
+        if(player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }
+        
+        if(player != null)
+        {
+            playerAttack = player.GetComponent<AtaqueMelee>();
+            if(playerAttack == null)
+            {
+                Debug.LogError("El jugador no tiene componente AtaqueMelee");
+            }
+        }
     }
 
     void Update()
     {
         RotateTowardsMouse();
         CheckFiring();
-
-        
     }
 
     private void RotateTowardsMouse()
     {
         float angle = GetAngleTowardsMouse();
-
         transform.rotation = Quaternion.Euler(0, 0, angle);
         spriteRenderer.flipY = angle >= 90 && angle <= 270;
     }
 
     private float GetAngleTowardsMouse()
     {
-        Vector3 mouseWorldPosition = camera.ScreenToWorldPoint(Input.mousePosition);
-
+        if(mainCamera == null) return 0f; // Prevenir error si no hay cámara
+        
+        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3 mouseDirection = mouseWorldPosition - transform.position;
         mouseDirection.z = 0;
 
-        float angle = (Vector3.SignedAngle(Vector3.right, mouseDirection, Vector3.forward) + 360) % 360;
-
-        return angle;
+        return (Vector3.SignedAngle(Vector3.right, mouseDirection, Vector3.forward) + 360) % 360;
     }
 
     private void CheckFiring()
     {
-        //si se puede aracar se pone a color, si no en gris
-        if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco==false){ this.spriteRenderer.color = Color.gray; }
-        else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco == true && player.GetComponent<AtaqueMelee>().siAcierta== false) { spriteRenderer.color = colorOriginal; }
-        else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == false && siAtaco == true && player.GetComponent<AtaqueMelee>().siAcierta== true) { spriteRenderer.color = Color.yellow; }
-        else if (player.GetComponent<AtaqueMelee>().siPuedoAtacar == true) { this.spriteRenderer.color = colorOriginal; }
+        if(playerAttack == null) return;
         
-
-        if (Input.GetMouseButtonDown(0))
+        // Lógica de color optimizada
+        if (!playerAttack.siPuedoAtacar && !siAtaco)
         {
-            if (siAtaco == false)
-            {
-                siAtaco = true;
-                animator.SetBool("siAtaca", true);
-                StartCoroutine(Ataque());
-            }
+            spriteRenderer.color = Color.gray;
+        }
+        else if (siAtaco)
+        {
+            spriteRenderer.color = playerAttack.siAcierta ? Color.yellow : colorOriginal;
+        }
+        else
+        {
+            spriteRenderer.color = colorOriginal;
+        }
+
+        if (Input.GetMouseButtonDown(0) && !siAtaco)
+        {
+            siAtaco = true;
+            animator.SetBool("siAtaca", true);
+            StartCoroutine(Ataque());
         }
     }
 
     IEnumerator Ataque()
     {
         yield return new WaitForSeconds(0.3f);
-        spriteRenderer.color = colorOriginal;
         siAtaco = false;
-        animator.SetBool("siAtaca", false) ;
+        animator.SetBool("siAtaca", false);
+        spriteRenderer.color = colorOriginal;
     }
 }
-

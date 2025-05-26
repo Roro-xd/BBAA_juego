@@ -9,7 +9,8 @@ public class EnemyController : MonoBehaviour
     public int attackDamage = 10;
 
     [Header("Combat Settings")]
-    public int maxHealth = 30;
+    public int maxHealth = 30;  // Salud máxima
+    private int currentHealth;   // Salud actual
 
     [Header("Loot System")]
     public GameObject coin1Prefab;
@@ -26,7 +27,6 @@ public class EnemyController : MonoBehaviour
 
     private Transform playerTarget;
     private Rigidbody2D rb;
-    private int currentHealth;
     private bool isChasing;
     private float lastAttackTime;
 
@@ -34,16 +34,16 @@ public class EnemyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        currentHealth = maxHealth;
+        currentHealth = maxHealth;  // Inicializa la salud
         FindPlayer();
-        
+
         // Auto-referenciar Animator si no está asignado
-        if(animator == null) animator = GetComponent<Animator>();
+        if (animator == null) animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if(playerTarget == null) FindPlayer();
+        if (playerTarget == null) FindPlayer();
         UpdateDetection();
         HandleAnimations();
     }
@@ -56,16 +56,16 @@ public class EnemyController : MonoBehaviour
     void FindPlayer()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if(playerObj != null) playerTarget = playerObj.transform;
+        if (playerObj != null) playerTarget = playerObj.transform;
     }
 
     void UpdateDetection()
     {
-        if(playerTarget == null) return;
+        if (playerTarget == null) return;
 
         Collider2D hit = Physics2D.OverlapCircle(
-            transform.position, 
-            detectionRadius, 
+            transform.position,
+            detectionRadius,
             playerLayer
         );
 
@@ -74,7 +74,7 @@ public class EnemyController : MonoBehaviour
 
     void HandleMovement()
     {
-        if(isChasing && playerTarget != null)
+        if (isChasing && playerTarget != null)
         {
             Vector2 direction = (playerTarget.position - transform.position).normalized;
             rb.velocity = direction * moveSpeed;
@@ -88,7 +88,7 @@ public class EnemyController : MonoBehaviour
 
     void HandleAnimations()
     {
-        if(animator != null)
+        if (animator != null)
         {
             animator.SetBool(moveParam, isChasing);
         }
@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour
 
     void FlipSprite(float xDirection)
     {
-        if(xDirection != 0)
+        if (xDirection != 0)
         {
             transform.localScale = new Vector3(
                 Mathf.Sign(xDirection) * Mathf.Abs(transform.localScale.x),
@@ -108,7 +108,7 @@ public class EnemyController : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player") && 
+        if (collision.gameObject.CompareTag("Player") &&
            Time.time > lastAttackTime + attackCooldown)
         {
             AttackPlayer(collision.gameObject);
@@ -119,32 +119,37 @@ public class EnemyController : MonoBehaviour
     void AttackPlayer(GameObject player)
     {
         CharacterStats playerStats = player.GetComponent<CharacterStats>();
-        if(playerStats != null)
+        if (playerStats != null)
         {
             playerStats.TakeDamage(attackDamage);
-            if(animator != null)
+            if (animator != null)
             {
                 animator.SetTrigger(attackParam);
             }
         }
     }
 
+    // Método para recibir daño del jugador
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if(currentHealth <= 0) Die();
+        currentHealth -= damage;  // Restar la salud actual
+        Debug.Log("Vida del enemigo: " + currentHealth);
+
+        if (currentHealth <= 0) Die();  // Si la salud llega a 0, el enemigo muere
     }
 
+    // Método para la muerte del enemigo
     void Die()
     {
         DropLoot();
-        Destroy(gameObject);
+        Destroy(gameObject);  // Destruir el objeto del enemigo
+        Debug.Log("El enemigo ha muerto");
     }
 
-    void DropLoot()
+    public void DropLoot()
     {
-        if(coin1Prefab == null || coin5Prefab == null) return;
-        
+        if (coin1Prefab == null || coin5Prefab == null) return;
+
         GameObject coinPrefab = Random.value < chanceFor5 ? coin5Prefab : coin1Prefab;
         Instantiate(coinPrefab, transform.position, Quaternion.identity);
     }
@@ -155,3 +160,4 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }
+

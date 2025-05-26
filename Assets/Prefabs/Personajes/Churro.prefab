@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391ff9ae2dc06974faa7d1535d1201ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  baseSpeed: 5
 --- !u!114 &6814685189351543149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,5 +207,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfb1ff4f686e014a858ed2c0c0c06e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 0}
-  healthBar: {fileID: 0}
+  health:
+    baseValue: 100
+    modifier: 0
+  damage:
+    baseValue: 20
+    modifier: 0
+  moveSpeed:
+    baseValue: 5
+    modifier: 0
+  attackSpeed:
+    baseValue: 1
+    modifier: 0
+  projectileQuantity:
+    baseValue: 1
+    modifier: 0
+  dodgeChance:
+    baseValue: 0
+    modifier: 0
+  currentHealth: 0
