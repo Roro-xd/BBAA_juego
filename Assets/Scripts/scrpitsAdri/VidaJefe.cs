@@ -12,6 +12,8 @@ public class VidaJefe : MonoBehaviour
 
     public UnityEvent eventoSegundaFase;
 
+    public bool animHerido = false;//para comprobar que la animación de herido no se esté ejecutando ya
+
     void Start()
     {
         vidaActual = vidaMaxima;
@@ -34,6 +36,14 @@ public class VidaJefe : MonoBehaviour
             eventoSegundaFase.Invoke(); // Dispara la segunda fase
         }
 
+        //Activa la animación de herido
+        if (animHerido == false)
+        {
+            animHerido = true;
+            this.GetComponent<Animator>().SetBool("siHerido", true);
+            StartCoroutine(TiempoAnimacion());
+        }
+
         if (vidaActual <= 0)
         {
             Morir();
@@ -45,5 +55,11 @@ public class VidaJefe : MonoBehaviour
         estaMuerto = true;
         Debug.Log("El jefe ha muerto.");
         gameObject.SetActive(false);
+    }
+
+    IEnumerator TiempoAnimacion() //termina la animación de herido
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.GetComponent<Animator>().SetBool("siHerido",false);
     }
 }
