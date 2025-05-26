@@ -180,9 +180,9 @@ MonoBehaviour:
   detectionRadius: 3
   attackCooldown: 1
   attackDamage: 10
-  maxHealth: 30
-  coin1Prefab: {fileID: 0}
-  coin5Prefab: {fileID: 0}
+  maxHealth: 15
+  coin1Prefab: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+  coin5Prefab: {fileID: 5328336341304546823, guid: cf0462c99c213014e813219c3b6a6c3a, type: 3}
   chanceFor5: 0.1
   animator: {fileID: 0}
   moveParam: IsMoving

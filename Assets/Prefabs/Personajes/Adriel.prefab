@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2450699567268354746}
   - component: {fileID: 3526571615115237509}
   - component: {fileID: 4525206642649341982}
+  - component: {fileID: 1991414577068957957}
   - component: {fileID: 3598521668598345038}
   - component: {fileID: 4898458752593496837}
   - component: {fileID: -1828854265548390660}
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: ac0e81517158a514ea24afd877eeb1c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,6 +168,32 @@ PolygonCollider2D:
       - {x: 0.34072685, y: -0.6510582}
       - {x: 0.38954163, y: -0.30098724}
   m_UseDelaunayMesh: 0
+--- !u!114 &1991414577068957957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154926410604884350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddc3a3b667412643a8e4446f8fcf74f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  detectionRadius: 4
+  attackCooldown: 1
+  attackDamage: 10
+  maxHealth: 30
+  coin1Prefab: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+  coin5Prefab: {fileID: 5328336341304546823, guid: cf0462c99c213014e813219c3b6a6c3a, type: 3}
+  chanceFor5: 0.1
+  animator: {fileID: 0}
+  moveParam: IsMoving
+  attackParam: Attack
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &3598521668598345038
 MonoBehaviour:
   m_ObjectHideFlags: 0
