@@ -7,7 +7,7 @@ public class VidaJefe : MonoBehaviour
 {
     public int vidaMaxima = 10;
     private int vidaActual;
-    private bool estaMuerto = false;
+    public bool estaMuerto = false;
     private bool segundaFaseActivada = false;
 
     public UnityEvent eventoSegundaFase;

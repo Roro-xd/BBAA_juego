@@ -11,8 +11,8 @@ public class Stats_contador : MonoBehaviour
     //Llamo a vida <3
     public int vidaActual;
 
-    /*Llamo al dinero B)
-    private int dineroActual;*/
+    //Llamo al dinero B)
+    public int dineroActual;
 
     //Llamo a la velocidad ¬¬
     public float velMov;
@@ -42,7 +42,7 @@ public class Stats_contador : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         vidaActual = player.GetComponent<Vida>().vidaActual;
-        //DINERO:player.GetComponent<Vida>().vidaActual = vidaActual;
+        dineroActual = player.GetComponent<JugadorMonedas>().monedas;
         velMov = player.GetComponent<Caminar>().velomov;
         velAtk = player.GetComponent<AtaqueMelee>().tiempoUltimoAtaque;
         dano = player.GetComponent<AtaqueMelee>().dano;

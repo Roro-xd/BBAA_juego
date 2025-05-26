@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Vida : MonoBehaviour
@@ -18,28 +19,28 @@ public class Vida : MonoBehaviour
 
     void Start()
     {
-    stats = GetComponent<CharacterStats>();
-    vidaMax = (int)stats.health.TotalValue;
-    vidaActual = vidaMax;
+        stats = GetComponent<CharacterStats>();
+        vidaMax = (int)stats.health.TotalValue;
+        vidaActual = vidaMax;
 
-    stats.OnStatChanged += OnStatChanged;
+        stats.OnStatChanged += OnStatChanged;
     }
     void OnDestroy()
     {
-    if (stats != null)
-        stats.OnStatChanged -= OnStatChanged;
+        if (stats != null)
+            stats.OnStatChanged -= OnStatChanged;
     }
     void OnStatChanged(StatType type, float newValue)
     {
-    if (type == StatType.Health)
-    {
-        int nuevaVidaMax = Mathf.RoundToInt(newValue);
-        int delta = nuevaVidaMax - vidaMax;
-        vidaMax = nuevaVidaMax;
-        vidaActual += delta; // opcional: curar vida extra
-        vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
-        Debug.Log("Nueva vida máxima: " + vidaMax);
-    }
+        if (type == StatType.Health)
+        {
+            int nuevaVidaMax = Mathf.RoundToInt(newValue);
+            int delta = nuevaVidaMax - vidaMax;
+            vidaMax = nuevaVidaMax;
+            vidaActual += delta; // opcional: curar vida extra
+            vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
+            Debug.Log("Nueva vida máxima: " + vidaMax);
+        }
     }
 
     public void RecibeDano(int cantidad)
@@ -90,6 +91,8 @@ public class Vida : MonoBehaviour
             this.GetComponent<Animator>().SetBool("siMuere", true);
             Debug.Log("reproduciendo animación de muerte");
             this.GetComponent<Caminar>().sePuedeMover = false; //hace que el jugador ya no se pueda mover
+            //Entiendo que, al morir, si queremos que vaya a la escena de derrota, debo ponerlo aquí
+            StartCoroutine(LlevarADerrota());
         }
     }
 
@@ -107,12 +110,13 @@ public class Vida : MonoBehaviour
         gameObject.SetActive(false); siEsperamos = false;
     }
 
-    void AnimacionHerido() {
+    void AnimacionHerido()
+    {
         if (siEsperamos == false)
         {
             this.GetComponent<Animator>().SetBool("siHerido", true);
             StartCoroutine(TiempoAnim());
-         
+
         }
     }
     IEnumerator TiempoAnim()
@@ -120,5 +124,11 @@ public class Vida : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         this.GetComponent<Animator>().SetBool("siHerido", false);
         siEsperaDano = false;
+    }
+    
+    IEnumerator LlevarADerrota()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Derrota");
     }
 }
