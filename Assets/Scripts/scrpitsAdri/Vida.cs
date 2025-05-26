@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+
 public class Vida : MonoBehaviour
 {
     //OLA SOY RORO YO PONDRÍA vidaBase = 4; y crearía un vidaMax = 10; ADIOS
     public int vidaMax = 4;
     public int vidaActual;
+    private CharacterStats stats;
 
     public event Action OnDanoRecibido; // evento para notificar dano recibido
 
@@ -16,7 +18,28 @@ public class Vida : MonoBehaviour
 
     void Start()
     {
-        vidaActual = vidaMax;
+    stats = GetComponent<CharacterStats>();
+    vidaMax = (int)stats.health.TotalValue;
+    vidaActual = vidaMax;
+
+    stats.OnStatChanged += OnStatChanged;
+    }
+    void OnDestroy()
+    {
+    if (stats != null)
+        stats.OnStatChanged -= OnStatChanged;
+    }
+    void OnStatChanged(StatType type, float newValue)
+    {
+    if (type == StatType.Health)
+    {
+        int nuevaVidaMax = Mathf.RoundToInt(newValue);
+        int delta = nuevaVidaMax - vidaMax;
+        vidaMax = nuevaVidaMax;
+        vidaActual += delta; // opcional: curar vida extra
+        vidaActual = Mathf.Clamp(vidaActual, 0, vidaMax);
+        Debug.Log("Nueva vida máxima: " + vidaMax);
+    }
     }
 
     public void RecibeDano(int cantidad)
@@ -32,10 +55,11 @@ public class Vida : MonoBehaviour
         {
             Muerte();
         }
-        if (siEsperaDano == false) {
+        if (siEsperaDano == false)
+        {
             siEsperaDano = true;
             AnimacionHerido(); //llama a un método para animar el daño
-            }
+        }
 
     }
 
