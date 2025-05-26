@@ -140,9 +140,6 @@ GameObject:
   - component: {fileID: 4368482245003871884}
   - component: {fileID: 7616711884785750603}
   - component: {fileID: 7656669450840192366}
-  - component: {fileID: 1914209909213237122}
-  - component: {fileID: 1045644533118032069}
-  - component: {fileID: 2933344883700586995}
   m_Layer: 0
   m_Name: BUNUELOFINAL
   m_TagString: Player
@@ -394,59 +391,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6982498, y: 0.67506313}
   m_EdgeRadius: 0
---- !u!114 &1914209909213237122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131062119285939928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36eb70bf13733f44b8f56022d635c02d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1045644533118032069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131062119285939928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dfb1ff4f686e014a858ed2c0c0c06e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health:
-    baseValue: 4
-    modifier: 0
-  damage:
-    baseValue: 1
-    modifier: 0
-  moveSpeed:
-    baseValue: 5
-    modifier: 0
-  attackSpeed:
-    baseValue: 1
-    modifier: 0
-  dodgeChance:
-    baseValue: 0
-    modifier: 0
-  currentHealth: 0
---- !u!114 &2933344883700586995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131062119285939928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8369fe842031ad848bdfbb93f8879472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinValue: 1
 --- !u!1 &9079958471415397016
 GameObject:
   m_ObjectHideFlags: 0
