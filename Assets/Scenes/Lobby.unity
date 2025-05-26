@@ -12490,6 +12490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Adriel
       objectReference: {fileID: 0}
+    - target: {fileID: 2154926410604884350, guid: 56e4c4d56eb48cc42939063a51535923, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3526571615115237509, guid: 56e4c4d56eb48cc42939063a51535923, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -13701,6 +13705,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2749225387448820750, guid: 8ccbcb6b178665241a4d79b63c2b2fe6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2891460657370786239, guid: 8ccbcb6b178665241a4d79b63c2b2fe6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.26
@@ -13972,13 +13980,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8888145069101423647, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
-      propertyPath: vaIzq
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888145069101423647, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
-      propertyPath: seMueve
-      value: 1
+    - target: {fileID: 7530737606189203376, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9079958471415397016, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: m_Layer

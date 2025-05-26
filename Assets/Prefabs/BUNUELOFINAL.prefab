@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velomov: 3
-  vaIzq: 0
-  seMueve: 0
+  vaIzq: 1
+  seMueve: 1
   sePuedeMover: 1
 --- !u!114 &7432394274019400928
 MonoBehaviour:
