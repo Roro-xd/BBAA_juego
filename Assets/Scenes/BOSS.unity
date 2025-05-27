@@ -2197,6 +2197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821589316}
   - component: {fileID: 821589315}
+  - component: {fileID: 821589317}
   m_Layer: 0
   m_Name: ChurroChat
   m_TagString: Untagged
@@ -2271,6 +2272,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &821589317
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821589314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d55be2fcdf344c478b5d1ea9da2e35b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &827251037
 GameObject:
   m_ObjectHideFlags: 0
@@ -26525,7 +26547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4368482245003871884, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: dano
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4538771683562536163, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: camera
