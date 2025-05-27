@@ -46,6 +46,7 @@ public class EnemyController : MonoBehaviour
         if (playerTarget == null) FindPlayer();
         UpdateDetection();
         HandleAnimations();
+
     }
 
     void FixedUpdate()
@@ -76,6 +77,16 @@ public class EnemyController : MonoBehaviour
     {
         if (isChasing && playerTarget != null)
         {
+            /*if (this.gameObject.name == "Asesina")
+            { 
+                AudioManager.Instance.PlayOtros("caminadoRapido");
+            }
+            if (this.gameObject.name == "Tanque")
+            { 
+                AudioManager.Instance.PlayOtros("caminadoLento");
+            }*/
+    
+
             Vector2 direction = (playerTarget.position - transform.position).normalized;
             rb.velocity = direction * moveSpeed;
             FlipSprite(direction.x);

@@ -19,6 +19,7 @@ public class VidaEnemigo : MonoBehaviour
     public void RecibirDano(int cantidad)
     {
         vidaActual -= cantidad;
+        AudioManager.Instance.PlaySFX("DanoEnemigo");
         Debug.Log(gameObject.name + " recibió daño. Vida restante: " + vidaActual);
 
         if (vidaActual <= 0)
@@ -30,6 +31,7 @@ public class VidaEnemigo : MonoBehaviour
     void Morir()
     {
         Debug.Log(gameObject.name + " ha muerto.");
+        AudioManager.Instance.PlaySFX("MuerteEnemigo");
 
         // Llama al DropLoot() del EnemyController antes de destruir al enemigo
         if (enemyController != null)
