@@ -134,12 +134,13 @@ GameObject:
   - component: {fileID: 1880502626286488617}
   - component: {fileID: 2664455921320955574}
   - component: {fileID: 8888145069101423647}
-  - component: {fileID: 7432394274019400928}
   - component: {fileID: 2847643571631064773}
   - component: {fileID: 2184892758345360722}
   - component: {fileID: 4368482245003871884}
+  - component: {fileID: 2525588288018419749}
   - component: {fileID: 7616711884785750603}
   - component: {fileID: 7656669450840192366}
+  - component: {fileID: 6400489214114690813}
   m_Layer: 0
   m_Name: BUNUELOFINAL
   m_TagString: Player
@@ -255,23 +256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea932a845666274ea72ab9639aa3f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velomov: 3
+  velomov: 2
   vaIzq: 1
   seMueve: 1
   sePuedeMover: 1
---- !u!114 &7432394274019400928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131062119285939928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391ff9ae2dc06974faa7d1535d1201ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSpeed: 5
 --- !u!95 &2847643571631064773
 Animator:
   serializedVersion: 5
@@ -305,8 +293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56880ec15a65d2e4abaff448dc5ff9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMax: 4
-  vidaActual: 0
+  vidaBase: 4
+  vidaMax: 10
+  vidaActual: 4
 --- !u!114 &4368482245003871884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +319,18 @@ MonoBehaviour:
   tiempoUltimoAtaque: -999
   siPuedoAtacar: 1
   siAcierta: 0
+--- !u!114 &2525588288018419749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131062119285939928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960d61c0457cd7243acdfa49bb5c53ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7616711884785750603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +392,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6982498, y: 0.67506313}
   m_EdgeRadius: 0
+--- !u!114 &6400489214114690813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131062119285939928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7701727216e6340a61facc4d98f943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monedas: 0
+  conteoMonedas: {fileID: 0}
 --- !u!1 &9079958471415397016
 GameObject:
   m_ObjectHideFlags: 0

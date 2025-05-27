@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class VidaJefe : MonoBehaviour
 {
-    public int vidaMaxima = 10;
+    public int vidaMaxima = 60;
     public int vidaActual;
     public bool estaMuerto = false;
     private bool segundaFaseActivada = false;
