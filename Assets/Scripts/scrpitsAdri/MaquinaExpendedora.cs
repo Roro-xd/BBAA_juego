@@ -4,25 +4,39 @@ using UnityEngine;
 
 public class MaquinaExpendedora : MonoBehaviour
 {
-    public List<GameObject> objetosDisponibles; // Lista editable desde el Inspector
+    public List<GameObject> objetosDisponibles;
     public Transform puntoDeSpawn;
     public float duracionVibracion = 0.5f;
     public float intensidadVibracion = 0.1f;
+    public int costo = 3;
 
     private bool enUso = false;
+    private bool agotada = false;
     private Vector3 posicionOriginal;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         posicionOriginal = transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (enUso) return;
+        if (enUso || agotada) return;
+
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(ActivarMaquina());
+            JugadorMonedas jm = other.GetComponent<JugadorMonedas>();
+            if (jm != null && jm.monedas >= costo)
+            {
+                jm.monedas -= costo;
+                StartCoroutine(ActivarMaquina());
+            }
+            else
+            {
+                Debug.Log("No tienes suficientes monedas.");
+            }
         }
     }
 
@@ -30,7 +44,6 @@ public class MaquinaExpendedora : MonoBehaviour
     {
         enUso = true;
 
-        // Vibración
         float tiempo = 0f;
         while (tiempo < duracionVibracion)
         {
@@ -46,18 +59,23 @@ public class MaquinaExpendedora : MonoBehaviour
 
         transform.position = posicionOriginal;
 
-        // Soltar objeto sin repetir
         if (objetosDisponibles.Count > 0)
         {
             int indice = Random.Range(0, objetosDisponibles.Count);
             GameObject objetoSeleccionado = objetosDisponibles[indice];
 
             Instantiate(objetoSeleccionado, puntoDeSpawn.position, Quaternion.identity);
-            objetosDisponibles.RemoveAt(indice); // Eliminar para que no se repita
+            objetosDisponibles.RemoveAt(indice);
         }
-        else
+
+        if (objetosDisponibles.Count == 0)
         {
-            Debug.Log("La máquina expendedora ya no tiene objetos.");
+            agotada = true;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f); // tono gris
+            }
+            Debug.Log("La máquina expendedora se ha agotado.");
         }
 
         enUso = false;
