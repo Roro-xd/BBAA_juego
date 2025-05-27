@@ -26508,6 +26508,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3854300078723808368, guid: c15c7ed3b619e8c4da5bb415ae61abed, type: 3}
+      propertyPath: m_Mass
+      value: 8.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3854300078723808368, guid: c15c7ed3b619e8c4da5bb415ae61abed, type: 3}
+      propertyPath: m_LinearDrag
+      value: 2.61
+      objectReference: {fileID: 0}
     - target: {fileID: 8923733619002032178, guid: c15c7ed3b619e8c4da5bb415ae61abed, type: 3}
       propertyPath: m_Name
       value: ChurroBoss
