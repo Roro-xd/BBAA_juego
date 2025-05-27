@@ -28,8 +28,8 @@ public class ChurroBossController : MonoBehaviour
     public int enemigosPorSpawn = 3;
 
     // Variable para controlar la cantidad de balas en área
-    public int cantidadBalasArea = 8; 
-    
+    public int cantidadBalasArea = 8;
+
     [Header("Señales Visuales")]
     public SpriteRenderer spriteRenderer;
     public Color colorNormal = Color.white;
@@ -57,7 +57,9 @@ public class ChurroBossController : MonoBehaviour
     private bool modoAtaque = false;
     public GameObject panelChurroBoss;
 
-
+    //cosas de animación
+    public bool animActiva = false; //animación de ataque en marcha
+     
 
     private void Start()
     {
@@ -116,6 +118,8 @@ public class ChurroBossController : MonoBehaviour
         nuevaPos.x = Mathf.Clamp(nuevaPos.x, areaWanderMin.x, areaWanderMax.x);
         nuevaPos.y = Mathf.Clamp(nuevaPos.y, areaWanderMin.y, areaWanderMax.y);
         posicionBase = nuevaPos;
+
+        this.GetComponent<Animator>().SetBool("siCamina", true);//llama a la animación de caminado
     }
 
     private void CambiarDireccion()
@@ -170,6 +174,14 @@ public class ChurroBossController : MonoBehaviour
 
     private void Vibrar()
     {
+        if (animActiva == false)//llama a la animación de ataque
+        {
+            this.GetComponent<Animator>().SetBool("siAtaca", true);
+            animActiva = true;
+            StartCoroutine(AnimAtaque());
+        }
+
+
         float offsetX = Random.Range(-intensidadVibracion, intensidadVibracion);
         float offsetY = Random.Range(-intensidadVibracion, intensidadVibracion);
         offsetVibracion = new Vector3(offsetX, offsetY, 0);
@@ -205,61 +217,61 @@ public class ChurroBossController : MonoBehaviour
         }
     }
 
- private IEnumerator DispararArea()
-{
-    Debug.Log("DispararArea iniciado");
-
-    int balasArea = cantidadBalasArea;
-    float anguloActual = 0f;
-    float incrementoAngulo = 15f; // ángulo que girará cada bala (ajusta para más o menos espiral)
-    float delayEntreBalas = 0.1f; // tiempo entre disparos para efecto visible
-
-    for (int i = 0; i < balasArea; i++)
+    private IEnumerator DispararArea()
     {
-        Vector2 dir = Quaternion.Euler(0, 0, anguloActual) * Vector2.right;
-        GameObject bala = Instantiate(balaAreaPrefab, puntoDisparo.position, Quaternion.Euler(0, 0, anguloActual));
-        Debug.Log("Bala area espiral instanciada en ángulo: " + anguloActual);
+        Debug.Log("DispararArea iniciado");
 
-        Collider2D balaCollider = bala.GetComponent<Collider2D>();
-        if (balaCollider != null && jefeCollider != null)
-        {
-            Physics2D.IgnoreCollision(balaCollider, jefeCollider);
-        }
+        int balasArea = cantidadBalasArea;
+        float anguloActual = 0f;
+        float incrementoAngulo = 15f; // ángulo que girará cada bala (ajusta para más o menos espiral)
+        float delayEntreBalas = 0.1f; // tiempo entre disparos para efecto visible
 
-        // Ignorar colisión entre balas área
-        Collider2D[] colisionadoresBalas = bala.GetComponents<Collider2D>();
-        foreach (var balaCol in colisionadoresBalas)
+        for (int i = 0; i < balasArea; i++)
         {
-            Collider2D[] balasExistentes = FindObjectsOfType<Collider2D>();
-            foreach (var col in balasExistentes)
+            Vector2 dir = Quaternion.Euler(0, 0, anguloActual) * Vector2.right;
+            GameObject bala = Instantiate(balaAreaPrefab, puntoDisparo.position, Quaternion.Euler(0, 0, anguloActual));
+            Debug.Log("Bala area espiral instanciada en ángulo: " + anguloActual);
+
+            Collider2D balaCollider = bala.GetComponent<Collider2D>();
+            if (balaCollider != null && jefeCollider != null)
             {
-                if (col.gameObject.CompareTag("BalaArea") && col != balaCol)
+                Physics2D.IgnoreCollision(balaCollider, jefeCollider);
+            }
+
+            // Ignorar colisión entre balas área
+            Collider2D[] colisionadoresBalas = bala.GetComponents<Collider2D>();
+            foreach (var balaCol in colisionadoresBalas)
+            {
+                Collider2D[] balasExistentes = FindObjectsOfType<Collider2D>();
+                foreach (var col in balasExistentes)
                 {
-                    Physics2D.IgnoreCollision(balaCol, col);
+                    if (col.gameObject.CompareTag("BalaArea") && col != balaCol)
+                    {
+                        Physics2D.IgnoreCollision(balaCol, col);
+                    }
                 }
             }
+
+            Proyectil p = bala.GetComponent<Proyectil>();
+            if (p != null)
+            {
+                p.direccion = dir.normalized;
+                p.velocidad = velocidadProyectil;
+            }
+            else
+            {
+                Debug.LogWarning("Proyectil no encontrado en balaAreaPrefab");
+            }
+
+            anguloActual += incrementoAngulo;
+            if (anguloActual >= 360f)
+                anguloActual -= 360f;
+
+            yield return new WaitForSeconds(delayEntreBalas);
         }
 
-        Proyectil p = bala.GetComponent<Proyectil>();
-        if (p != null)
-        {
-            p.direccion = dir.normalized;
-            p.velocidad = velocidadProyectil;
-        }
-        else
-        {
-            Debug.LogWarning("Proyectil no encontrado en balaAreaPrefab");
-        }
-
-        anguloActual += incrementoAngulo;
-        if (anguloActual >= 360f)
-            anguloActual -= 360f;
-
-        yield return new WaitForSeconds(delayEntreBalas);
+        SpawnEnemigosAleatorios(enemigosPorSpawn);
     }
-
-    SpawnEnemigosAleatorios(enemigosPorSpawn);
-}
     private void SpawnEnemigosAleatorios(int cantidad)
     {
         for (int i = 0; i < cantidad; i++)
@@ -291,4 +303,12 @@ public class ChurroBossController : MonoBehaviour
         segundaFaseActiva = true;
         // Puedes agregar efectos, sonidos o animaciones aquí para la segunda fase
     }
+
+    IEnumerator AnimAtaque() //tiempo de animación de ataque
+    {
+        yield return new WaitForSeconds(1.8f);
+        this.GetComponent<Animator>().SetBool("siAtaca", false);
+        animActiva = false;
+    }
+
 }

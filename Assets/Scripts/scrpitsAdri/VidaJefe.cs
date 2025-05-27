@@ -59,7 +59,8 @@ public class VidaJefe : MonoBehaviour
 
     IEnumerator TiempoAnimacion() //termina la animación de herido
     {
-        yield return new WaitForSeconds(0.5f);
-        this.GetComponent<Animator>().SetBool("siHerido",false);
+        yield return new WaitForSeconds(0.3f);
+        this.GetComponent<Animator>().SetBool("siHerido", false);
+        animHerido = false;
     }
 }
