@@ -1447,7 +1447,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8863817398479150828, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
       insertIndex: -1
       addedObject: {fileID: 169649961}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5042520058747061107, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1020110178}
   m_SourcePrefab: {fileID: 100100000, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
 --- !u!1 &769783732 stripped
 GameObject:
@@ -2834,6 +2837,29 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7140091605581447836, guid: 1a2d2bbe3d8403d4dab281a6410c9063, type: 3}
   m_PrefabInstance: {fileID: 1010923528}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1020110173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5042520058747061107, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+  m_PrefabInstance: {fileID: 769783731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1020110178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020110173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cdfa955c0bdb314992ea3257159ba19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
+  dano: 0
+  dinero: 0
+  stats: {fileID: 921647372}
+  conteoPunt: {fileID: 1535855413}
+  churro: {fileID: 1366034449}
 --- !u!1 &1034235028
 GameObject:
   m_ObjectHideFlags: 0
@@ -11010,7 +11036,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535855413}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cdfa955c0bdb314992ea3257159ba19, type: 3}
   m_Name: 
@@ -11019,6 +11045,7 @@ MonoBehaviour:
   dano: 0
   dinero: 0
   stats: {fileID: 921647372}
+  conteoPunt: {fileID: 0}
   churro: {fileID: 1366034449}
 --- !u!1 &1540335155 stripped
 GameObject:
@@ -11779,6 +11806,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1034168000052839382, guid: c15c7ed3b619e8c4da5bb415ae61abed, type: 3}
+      propertyPath: panelPunt
+      value: 
+      objectReference: {fileID: 169649960}
     - target: {fileID: 1318240214112979035, guid: c15c7ed3b619e8c4da5bb415ae61abed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.17
@@ -11827,6 +11858,10 @@ PrefabInstance:
       propertyPath: jugador
       value: 
       objectReference: {fileID: 1615482183}
+    - target: {fileID: 9163551059425597614, guid: c15c7ed3b619e8c4da5bb415ae61abed, type: 3}
+      propertyPath: enemigoPrefab
+      value: 
+      objectReference: {fileID: 5137211173404945504, guid: d1bee1fd2b3b3ab4092fa9d6e6db6c10, type: 3}
     - target: {fileID: 9163551059425597614, guid: c15c7ed3b619e8c4da5bb415ae61abed, type: 3}
       propertyPath: panelChurroBoss
       value: 

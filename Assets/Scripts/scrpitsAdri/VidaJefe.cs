@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class VidaJefe : MonoBehaviour
 {
     public int vidaMaxima = 10;
-    private int vidaActual;
+    public int vidaActual;
     public bool estaMuerto = false;
     private bool segundaFaseActivada = false;
 
     public UnityEvent eventoSegundaFase;
+
 
     public bool animHerido = false;//para comprobar que la animación de herido no se esté ejecutando ya
 
@@ -47,10 +49,13 @@ public class VidaJefe : MonoBehaviour
         if (vidaActual <= 0)
         {
             Morir();
+            SceneManager.LoadScene("Victoria");
         }
+
     }
 
-    private void Morir()
+
+    public void Morir()
     {
         estaMuerto = true;
         Debug.Log("El jefe ha muerto.");
@@ -60,6 +65,8 @@ public class VidaJefe : MonoBehaviour
     IEnumerator TiempoAnimacion() //termina la animación de herido
     {
         yield return new WaitForSeconds(0.5f);
-        this.GetComponent<Animator>().SetBool("siHerido",false);
+        this.GetComponent<Animator>().SetBool("siHerido", false);
     }
+
+
 }

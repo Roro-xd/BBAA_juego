@@ -24,12 +24,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_3.unity
     guid: 16adbcf62e6642d40a87f6a7168565e9
   - enabled: 1
+    path: Assets/Scenes/BOSS.unity
+    guid: f061dec69a11943459baabd940f0c06e
+  - enabled: 1
     path: Assets/Scenes/Derrota.unity
     guid: 2b01ac8f35cbfca4c9648ff9b3574711
   - enabled: 1
     path: Assets/Scenes/PruebaUIPartida.unity
     guid: 395c76754ef8356459c43bda0ee46105
   - enabled: 1
-    path: Assets/Scenes/BOSS.unity
-    guid: f061dec69a11943459baabd940f0c06e
+    path: Assets/Scenes/Victoria.unity
+    guid: fe01deeb54d4efc469901f9f0cb704dd
   m_configObjects: {}

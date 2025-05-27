@@ -15,11 +15,12 @@ public class PuntuacionFinal : MonoBehaviour
     public int dinero;
 
     public GameObject stats;
+    public GameObject conteoPunt;
 
     private GameObject panelPunt;
 
     public GameObject churro;
-    private bool churroMuerto;
+    //public int vidaChurro;
 
     void Start()
     {
@@ -30,9 +31,11 @@ public class PuntuacionFinal : MonoBehaviour
         panelPunt = GameObject.Find("Panel_Puntuacion");
         panelPunt.SetActive(false);
 
-        churroMuerto = churro.GetComponent<VidaJefe>().estaMuerto;
-    }
+        conteoPunt = GameObject.Find("Punt_conteo");
+        conteoPunt.SetActive(false);
 
+        //vidaChurro = churro.GetComponent<VidaJefe>().vidaActual;
+    }
 
     void Update()
     {
@@ -45,11 +48,13 @@ public class PuntuacionFinal : MonoBehaviour
         puntuacionFinal = punt.ToString();
 
         //Modifico el texto UI que hay en el archivo
-        this.GetComponent<TextMeshProUGUI>().text = puntuacionFinal;
+        conteoPunt.GetComponent<TextMeshProUGUI>().text = puntuacionFinal;
 
-        if (churroMuerto)
+
+        if (churro.activeSelf == false)
         {
-            StartCoroutine(TiempoPuntuacion());
+            panelPunt.SetActive(true);
+            //StartCoroutine(TiempoPuntuacion());
         }
 
         if (panelPunt.activeSelf)
@@ -66,7 +71,7 @@ public class PuntuacionFinal : MonoBehaviour
     IEnumerator TiempoPuntuacion() //Hasta que salga la puntuación
     {
         yield return new WaitForSeconds(1.5f);
-        panelPunt.SetActive(false);
+        panelPunt.SetActive(true);
     }
 
 
