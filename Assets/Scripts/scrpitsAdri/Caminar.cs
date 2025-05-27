@@ -14,6 +14,9 @@ public class Caminar : MonoBehaviour
     public bool sePuedeMover = true; //dicta si se puede mover
 
     private Rigidbody2D rb;
+
+    private bool modoAtaque = false;
+    public GameObject panelChurroBoss;
     void Start()
     {
     rb = GetComponent<Rigidbody2D>();
