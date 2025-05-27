@@ -29,6 +29,11 @@ public class Script_derrota : MonoBehaviour
     public GameObject[] monologo;
     public int lineaMonologo = 0;
 
+    public GameObject panelMenu;
+    public GameObject panelSeguro;
+    public GameObject panelVolumen;
+    public GameObject panelControles;
+
 
 
     void Start()
@@ -57,7 +62,7 @@ public class Script_derrota : MonoBehaviour
 
 
         //Al presionar la tecla indicada(X)
-        if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf)
+        if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             //Si no es la ultima linea, el texto avanza
             if (lineaMonologo != 2)
@@ -77,7 +82,7 @@ public class Script_derrota : MonoBehaviour
 
 
         //Al presionar la tecla indicada(Z)
-        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             //Retroce una linea del monologo
             RetrocesoMonologo();
@@ -87,7 +92,10 @@ public class Script_derrota : MonoBehaviour
         //Da error si se intenta retroceder durante el monologo y la tecla no se indica
         else if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf == false && cuadroTexto.activeSelf)
         {
-            AudioManager.Instance.PlaySFX("Error");
+            if (panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false) { 
+                AudioManager.Instance.PlaySFX("Error");
+            }
+            
         }
 
     }

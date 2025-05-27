@@ -28,12 +28,12 @@ public class Script_victoria : MonoBehaviour
     public GameObject botonSalir;
     public GameObject gracias;
 
-    GameObject panelMenu;
-    GameObject panelSeguro;
-    GameObject panelVolumen;
-    GameObject panelControles;
+    public GameObject panelMenu;
+    public GameObject panelSeguro;
+    public GameObject panelVolumen;
+    public GameObject panelControles;
 
-    public GameObject easterEgg;
+    //public GameObject easterEgg;
 
 
     void Start()
@@ -61,13 +61,6 @@ public class Script_victoria : MonoBehaviour
         xAvanza.SetActive(false);
         cuadrotexto.SetActive(false);
         StartCoroutine("ApareceTexto");
-
-
-
-        panelMenu = GameObject.Find("Panel_menu");
-        panelSeguro = GameObject.Find("Panel_seguro");
-        panelVolumen = GameObject.Find("Panel_volumen");
-        panelControles = GameObject.Find("Panel_controles");
 
         //easterEgg = GameObject.Find("Imagen_Chulo");
     }
@@ -99,7 +92,7 @@ public class Script_victoria : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf)
+        if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             if (lineaDialogo != 6)
             {
@@ -116,13 +109,13 @@ public class Script_victoria : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             RetrocesoDialogo();
 
 
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && lineaDialogo == 0)
+        else if (Input.GetKeyDown(KeyCode.Z) && lineaDialogo == 0 && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             AudioManager.Instance.PlaySFX("Error");
         }
@@ -130,6 +123,14 @@ public class Script_victoria : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && gracias.activeSelf)
         {
             SalirJuego();
+        }
+
+        if (panelN.activeSelf)
+        {
+            panelMenu.SetActive(false);
+            panelControles.SetActive(false);
+            panelVolumen.SetActive(false);
+            panelSeguro.SetActive(false);
         }
 
     }
@@ -189,17 +190,19 @@ public class Script_victoria : MonoBehaviour
 
 
     //Easter Egg
-    IEnumerator EasterEgg()
+    /*IEnumerator EasterEgg()
     {
         yield return new WaitForSeconds(0.5f);
         easterEgg.SetActive(false);
         Debug.Log("Sales del juego");
         Application.Quit();
-    }
+    }*/
 
     public void SalirJuego()
     {
-        easterEgg.SetActive(true);
-        StartCoroutine(EasterEgg());
+        //easterEgg.SetActive(true);
+        //StartCoroutine(EasterEgg());
+        Debug.Log("Sales del juego");
+        Application.Quit();
     }
 }

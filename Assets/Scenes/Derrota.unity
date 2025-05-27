@@ -484,6 +484,10 @@ MonoBehaviour:
   - {fileID: 1718374197}
   - {fileID: 1895321971}
   lineaMonologo: 0
+  panelMenu: {fileID: 1527507743}
+  panelSeguro: {fileID: 551709540}
+  panelVolumen: {fileID: 134706652}
+  panelControles: {fileID: 1756358368}
 --- !u!1 &160166211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,6 +2731,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &551709540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7798923203988295201, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+  m_PrefabInstance: {fileID: 1561410400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &612264137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4133,6 +4142,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313906145}
   m_CullTransparentMesh: 1
+--- !u!1 &1527507743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8960869694980390595, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+  m_PrefabInstance: {fileID: 1561410400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1561410400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5072,6 +5086,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718374197}
   m_CullTransparentMesh: 1
+--- !u!1 &1756358368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4170557242672269936, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+  m_PrefabInstance: {fileID: 1561410400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1778979341
 GameObject:
   m_ObjectHideFlags: 0

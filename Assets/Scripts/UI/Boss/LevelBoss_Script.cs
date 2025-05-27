@@ -14,6 +14,11 @@ public class LevelBoss_Script : MonoBehaviour
     public GameObject panelIndBoss;
     public GameObject textosConj;
 
+    public GameObject panelMenu;
+    public GameObject panelSeguro;
+    public GameObject panelVolumen;
+    public GameObject panelControles;
+
 
     void Start()
     {
@@ -40,7 +45,7 @@ public class LevelBoss_Script : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf)
+        if (Input.GetKeyDown(KeyCode.X) && xAvanza.activeSelf  && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             if (numTexto != 3)
             {
@@ -59,13 +64,13 @@ public class LevelBoss_Script : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf  && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             RetrocesoTexto();
 
 
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && numTexto == 0)
+        else if (Input.GetKeyDown(KeyCode.Z) && numTexto == 0  && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             AudioManager.Instance.PlaySFX("Error");
         }

@@ -1235,6 +1235,10 @@ MonoBehaviour:
   cuadrotexto: {fileID: 97525129}
   panelIndBoss: {fileID: 1554048408}
   textosConj: {fileID: 495676381}
+  panelMenu: {fileID: 1866078678}
+  panelSeguro: {fileID: 1866078677}
+  panelVolumen: {fileID: 743033227}
+  panelControles: {fileID: 1866078676}
 --- !u!1 &743033227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6176223744808063716, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
@@ -11396,6 +11400,21 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4508966903871823941, guid: 5d4ec25f64b851c4f8f0073ed7905eae, type: 3}
   m_PrefabInstance: {fileID: 1858092540}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1866078676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4170557242672269936, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+  m_PrefabInstance: {fileID: 769783731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1866078677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7798923203988295201, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+  m_PrefabInstance: {fileID: 769783731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1866078678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8960869694980390595, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+  m_PrefabInstance: {fileID: 769783731}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1896941221
 PrefabInstance:
