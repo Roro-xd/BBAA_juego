@@ -13,6 +13,7 @@ public class JugadorMonedas : MonoBehaviour
     {
         if (collision.CompareTag("Moneda"))
         {
+            AudioManager.Instance.PlaySFX("dineroRecoger");
             monedas++;
             Destroy(collision.gameObject);
             Debug.Log("Monedas: " + monedas);

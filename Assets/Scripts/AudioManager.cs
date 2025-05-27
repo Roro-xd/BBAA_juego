@@ -145,6 +145,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            otrosSource.Stop();
             otrosSource.clip = s.clip;
             otrosSource.Play();
         }

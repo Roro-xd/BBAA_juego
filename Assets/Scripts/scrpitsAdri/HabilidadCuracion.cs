@@ -75,6 +75,7 @@ public class HabilidadCuracion : MonoBehaviour
     void IniciarCuracion()
     {
         estaCurando = true;
+        AudioManager.Instance.PlaySFX("habEspecial");
         caminar.velomov *= reduccionVelocidad;
         spriteRenderer.color = Color.yellow;
         this.GetComponent<Animator>().SetBool("siCura", true); //Activa la animación

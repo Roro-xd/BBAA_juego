@@ -49,8 +49,22 @@ public class Caminar : MonoBehaviour
         else if (movimiento.x > 0) { vaIzq = false; this.GetComponent<SpriteRenderer>().flipX = false; }
 
         //detecta si el personaje se está moviendo
-        if (movimiento == Vector2.zero) { seMueve = false; }
-        else { seMueve = true; }
+        if (movimiento == Vector2.zero)
+        {   seMueve = false;
+            if (velomov >= 1 && velomov < 2) { 
+                AudioManager.Instance.PlayOtros("caminadoLento");
+            } else if (velomov >= 2 && velomov < 3) { 
+                AudioManager.Instance.PlayOtros("caminadoMedio");
+            } else if (velomov >= 3) { 
+                AudioManager.Instance.PlayOtros("caminadoRapido");
+            }
+            
+        }
+            else
+        {
+            seMueve = true;
+
+        }
 
         //activa la animación de caminado
         this.GetComponent<Animator>().SetBool("siCamina", seMueve);

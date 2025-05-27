@@ -88,6 +88,7 @@ public class Vida : MonoBehaviour
     private void Muerte()
     {
         Debug.Log("El jugador ha muerto.");
+        AudioManager.Instance.PlaySFX("MuerteBun");
         if (siEsperamos == false) //comprueba que la animación de meurte solo se active una vez
         {
             StartCoroutine(TiempoEspera());
@@ -119,6 +120,7 @@ public class Vida : MonoBehaviour
         if (siEsperamos == false)
         {
             this.GetComponent<Animator>().SetBool("siHerido", true);
+            AudioManager.Instance.PlaySFX("DanoBun");
             StartCoroutine(TiempoAnim());
 
         }

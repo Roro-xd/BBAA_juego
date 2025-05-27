@@ -42,6 +42,7 @@ public class VidaJefe : MonoBehaviour
         if (animHerido == false)
         {
             animHerido = true;
+            AudioManager.Instance.PlaySFX("DanoChurro");
             this.GetComponent<Animator>().SetBool("siHerido", true);
             StartCoroutine(TiempoAnimacion());
         }
@@ -57,6 +58,7 @@ public class VidaJefe : MonoBehaviour
 
     public void Morir()
     {
+        AudioManager.Instance.PlaySFX("MuerteChurro");
         estaMuerto = true;
         Debug.Log("El jefe ha muerto.");
         gameObject.SetActive(false);
@@ -68,6 +70,13 @@ public class VidaJefe : MonoBehaviour
         this.GetComponent<Animator>().SetBool("siHerido", false);
         animHerido = false;
     }
+
+
+    /*IEnumerator TiempoMuerteChurro() //termina la animación de herido
+    {
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Victoria");
+    }*/
 
 
 }

@@ -120,12 +120,15 @@ public class ChurroBossController : MonoBehaviour
         posicionBase = nuevaPos;
 
         this.GetComponent<Animator>().SetBool("siCamina", true);//llama a la animación de caminado
+        AudioManager.Instance.PlayOtros("caminadoMedio");
+        
     }
 
     private void CambiarDireccion()
     {
         direccionMovimiento = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         tiempoSiguienteCambioDireccion = Time.time + Random.Range(tiempoCambioDireccionMin, tiempoCambioDireccionMax);
+        //AudioManager.Instance.PlayOtros("caminadoMedio");
     }
 
     private IEnumerator PrepararYDisparar_PrimeraFase()
@@ -196,6 +199,7 @@ public class ChurroBossController : MonoBehaviour
 
         for (int i = 0; i < balasPorRafaga; i++)
         {
+            AudioManager.Instance.PlaySFX("AtaqueChurro");
             float angulo = anguloInicial + i * anguloIncremento;
             Vector2 dir = Quaternion.Euler(0, 0, angulo) * Vector2.right;
             GameObject bala = Instantiate(proyectilPrefab, puntoDisparo.position, Quaternion.identity);
@@ -228,6 +232,7 @@ public class ChurroBossController : MonoBehaviour
 
         for (int i = 0; i < balasArea; i++)
         {
+            AudioManager.Instance.PlaySFX("AtaqueChurro");
             Vector2 dir = Quaternion.Euler(0, 0, anguloActual) * Vector2.right;
             GameObject bala = Instantiate(balaAreaPrefab, puntoDisparo.position, Quaternion.Euler(0, 0, anguloActual));
             Debug.Log("Bala area espiral instanciada en ángulo: " + anguloActual);

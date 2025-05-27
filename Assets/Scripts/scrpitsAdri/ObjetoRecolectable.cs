@@ -37,7 +37,7 @@ public class ObjetoRecolectable : MonoBehaviour
                     modificador.AplicarIncrementoDano(cantidadDano);
                     break;
             }
-
+            AudioManager.Instance.PlaySFX("itemRecoger");
             Destroy(gameObject);
         }
     }

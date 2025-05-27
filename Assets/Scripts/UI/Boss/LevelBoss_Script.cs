@@ -18,6 +18,7 @@ public class LevelBoss_Script : MonoBehaviour
     public GameObject panelSeguro;
     public GameObject panelVolumen;
     public GameObject panelControles;
+    public GameObject sliderChurro;
 
 
     void Start()
@@ -57,6 +58,7 @@ public class LevelBoss_Script : MonoBehaviour
                 cuadrotexto.SetActive(false);
                 //textos[2].SetActive(false);
                 panelIndBoss.SetActive(true);
+                sliderChurro.SetActive(true);
                 //Destroy(panelIndBoss, 3.5f);
                 Destroy(textosConj);
             }

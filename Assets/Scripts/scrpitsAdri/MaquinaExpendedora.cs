@@ -43,6 +43,7 @@ public class MaquinaExpendedora : MonoBehaviour
     private IEnumerator ActivarMaquina()
     {
         enUso = true;
+        AudioManager.Instance.PlaySFX("MaquinaExp");
 
         float tiempo = 0f;
         while (tiempo < duracionVibracion)
