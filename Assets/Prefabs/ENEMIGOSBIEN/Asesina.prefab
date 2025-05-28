@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  detectionRadius: 10
+  detectionRadius: 6
   attackCooldown: 0
   attackDamage: 0
   maxHealth: 0

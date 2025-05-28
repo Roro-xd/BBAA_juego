@@ -119,7 +119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5137211173404945504}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ddc3a3b667412643a8e4446f8fcf74f, type: 3}
   m_Name: 
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9bdae7dbb763543af886af65d41fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 12
+  vidaMaxima: 7
   vidaActual: 0
 --- !u!50 &2411655451444188182
 Rigidbody2D:

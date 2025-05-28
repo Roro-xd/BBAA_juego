@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9bdae7dbb763543af886af65d41fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 8
+  vidaMaxima: 5
   vidaActual: 0
 --- !u!114 &7541540629294989475
 MonoBehaviour:
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  detectionRadius: 10
+  detectionRadius: 5
   attackCooldown: 0
   attackDamage: 0
   maxHealth: 0
