@@ -51,10 +51,10 @@ public class Script_menu : MonoBehaviour
 
 
         //En caso de que esté abierta la primera pantalla del menú
-        if (panelMenu.activeSelf && panelSeguro.activeSelf == false && panelControles.activeSelf == false && panelVolumen.activeSelf == false)
+        /*if (panelMenu.activeSelf && panelSeguro.activeSelf == false && panelControles.activeSelf == false && panelVolumen.activeSelf == false)
         {
             //Interacción de avance con los "botones" del menú
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+           if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 RetrasoBotonMenu();
             }
@@ -94,11 +94,11 @@ public class Script_menu : MonoBehaviour
                 }
             }
 
-        }
+        }*/
 
 
         //Para activar/desactivar los recuadros que indican la selección
-        if (panelMenu.activeSelf == false)
+        /*if (panelMenu.activeSelf == false)
         {
             botonesMenu[bMenuSelect].SetActive(false);
         }
@@ -114,12 +114,12 @@ public class Script_menu : MonoBehaviour
         else
         { 
            botonesSeguro[bSeguroSelect].SetActive(true); 
-        }
+        }*/
 
 
 
         //Interactividad dentro de panel de Seguro (al intentar salir de la partida)
-        if (panelSeguro.activeSelf)
+        /*if (panelSeguro.activeSelf)
         {
             //Interacción de avance con los "botones"
             if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -148,11 +148,11 @@ public class Script_menu : MonoBehaviour
                     SceneManager.LoadScene("Inicio");
                 }
             }
-        }
+        }*/
 
 
         //Para salir del menú de controles
-        if (panelControles.activeSelf && Input.GetKeyDown(KeyCode.Return))
+       /*if (panelControles.activeSelf && Input.GetKeyDown(KeyCode.Return))
         {
             panelControles.SetActive(false);
             panelMenu.SetActive(true);
@@ -165,12 +165,12 @@ public class Script_menu : MonoBehaviour
             panelVolumen.SetActive(false);
             panelMenu.SetActive(true);
             SuenaVolver();
-        }
+        }*/
 
     }
 
     //Interacción con indicadores de MENÚ y SEGURO
-    public void AvanceBotonMenu()
+    /*public void AvanceBotonMenu()
     {
         botonesMenu[bMenuSelect].SetActive(false);
         bMenuSelect = (bMenuSelect + 1) % botonesMenu.Length;
@@ -207,7 +207,7 @@ public class Script_menu : MonoBehaviour
         }
 
         botonesSeguro[bSeguroSelect].SetActive(true);
-    }
+    }*/
 
 
 
