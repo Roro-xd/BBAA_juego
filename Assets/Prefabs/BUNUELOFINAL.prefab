@@ -260,6 +260,7 @@ MonoBehaviour:
   vaIzq: 1
   seMueve: 1
   sePuedeMover: 1
+  panelChurroBoss: {fileID: 0}
 --- !u!95 &2847643571631064773
 Animator:
   serializedVersion: 5
