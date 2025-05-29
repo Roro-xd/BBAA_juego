@@ -318,6 +318,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a87aeb124c9eb1d4f9780edd40cd1db2, type: 3}
   - nombreSonido: Derrota
     clip: {fileID: 8300000, guid: 77d142095b72c3540bdb056f31a2467d, type: 3}
+  - nombreSonido: LobbyLejos
+    clip: {fileID: 8300000, guid: 0d7b93f35ec6c144eb625c527d37e929, type: 3}
   sfx:
   - nombreSonido: "Subt\xEDtulo"
     clip: {fileID: 8300000, guid: cc80e6791306e21419787c02d2f1f6e7, type: 3}

@@ -344,7 +344,7 @@ public class Script_guion_inicio : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         /////audioManager.otrosSource.Stop();
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("EnAscensor");
 
     }
 
@@ -361,7 +361,7 @@ public class Script_guion_inicio : MonoBehaviour
     public void Saltar()
     {
         //audioManager.otrosSource.Stop();
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene("EnAscensor");
     }
 
 }

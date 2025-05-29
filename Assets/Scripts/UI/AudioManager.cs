@@ -57,6 +57,11 @@ public class AudioManager : MonoBehaviour
             otrosSource.Stop();
             PlayMusica("Derrota");
         }
+        else if (escena.name == "EnAscensor")
+        { 
+            otrosSource.Stop();
+            PlayMusica("LobbyLejos");
+        }
         else
         {
             musicaSource.Stop();
