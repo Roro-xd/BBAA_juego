@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdrielLobby : MonoBehaviour
+public class RoroLobby : MonoBehaviour
 {
-    public GameObject xAdriel;
+
+    public GameObject xRoro;
     public GameObject baseTexto;
-    public GameObject textoAdriel;
+    public GameObject textoRoro;
     public GameObject dialogoNadie;
 
 
@@ -21,7 +22,7 @@ public class AdrielLobby : MonoBehaviour
 
     void Start()
     {
-        xAdriel.SetActive(false);
+        xRoro.SetActive(false);
     }
 
     void Update()
@@ -38,19 +39,19 @@ public class AdrielLobby : MonoBehaviour
 
 
 
-        if (xAdriel.activeSelf && Input.GetKeyDown(KeyCode.X) && puedoConversar)
+        if (xRoro.activeSelf && Input.GetKeyDown(KeyCode.X) && puedoConversar)
         {
             baseTexto.SetActive(true);
-            textoAdriel.SetActive(true);
+            textoRoro.SetActive(true);
             dialogoNadie.SetActive(true);
 
-            xAdriel.SetActive(false);
+            xRoro.SetActive(false);
             AudioManager.Instance.PlaySFX("Botones");
         }
-        else if (textoAdriel.activeSelf && Input.GetKeyDown(KeyCode.X) && puedoConversar)
+        else if (textoRoro.activeSelf && Input.GetKeyDown(KeyCode.X) && puedoConversar)
         {
             baseTexto.SetActive(false);
-            textoAdriel.SetActive(false);
+            textoRoro.SetActive(false);
             dialogoNadie.SetActive(false);
             AudioManager.Instance.PlaySFX("Volver");
         }
@@ -62,14 +63,14 @@ public class AdrielLobby : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            xAdriel.SetActive(true);
+            xRoro.SetActive(true);
         }
     }
     
 
     void OnTriggerExit2D(Collider2D col)
     {
-        xAdriel.SetActive(false);
+        xRoro.SetActive(false);
     }
 
 }

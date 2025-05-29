@@ -2601,7 +2601,7 @@ MonoBehaviour:
   vocesSlider: {fileID: 5083176434233668721}
   sliderFondo: []
   sliderSelect: 0
-  panelVolumen: {fileID: 0}
+  panelVolumen: {fileID: 6176223744808063716}
 --- !u!1 &5500533149414186592
 GameObject:
   m_ObjectHideFlags: 0

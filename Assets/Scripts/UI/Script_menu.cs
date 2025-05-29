@@ -14,10 +14,10 @@ public class Script_menu : MonoBehaviour
 
 
     //PROBLEMAS CON BOTONES --- SOLUCION: interactividad con teclado
-    public GameObject[] botonesMenu;
+    /*public GameObject[] botonesMenu;
     public int bMenuSelect = 0;
     public GameObject[] botonesSeguro;
-    public int bSeguroSelect = 0;
+    public int bSeguroSelect = 0;*/
 
 
     void Start()
