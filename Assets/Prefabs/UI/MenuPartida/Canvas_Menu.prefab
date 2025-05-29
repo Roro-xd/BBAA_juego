@@ -3401,6 +3401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FondoVolver1
       objectReference: {fileID: 0}
+    - target: {fileID: 8873120595208423471, guid: 470d7e9f9e2b0a64cb9093f59c14a6b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8896164538121624601, guid: 470d7e9f9e2b0a64cb9093f59c14a6b1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3502,6 +3506,10 @@ PrefabInstance:
     - target: {fileID: 5537608545710432463, guid: f6a3a742113b4cc49a064ce5d073cf17, type: 3}
       propertyPath: m_Name
       value: FondoVolver2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537608545710432463, guid: f6a3a742113b4cc49a064ce5d073cf17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6664189876077320936, guid: f6a3a742113b4cc49a064ce5d073cf17, type: 3}
       propertyPath: m_Pivot.x
@@ -4020,6 +4028,10 @@ PrefabInstance:
     - target: {fileID: 3011447283433463981, guid: 12c4dceb1c780ba4e8536a6eb97bc9de, type: 3}
       propertyPath: m_Name
       value: FondoContinuar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011447283433463981, guid: 12c4dceb1c780ba4e8536a6eb97bc9de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4963,6 +4975,10 @@ PrefabInstance:
     - target: {fileID: 7000075471737467231, guid: b3dda5fe2a413ff4d8896e3fdbd0b1f9, type: 3}
       propertyPath: m_Name
       value: FondosSliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000075471737467231, guid: b3dda5fe2a413ff4d8896e3fdbd0b1f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7787611412746356794, guid: b3dda5fe2a413ff4d8896e3fdbd0b1f9, type: 3}
       propertyPath: m_IsActive
@@ -5935,6 +5951,10 @@ PrefabInstance:
     - target: {fileID: 5360882606393728064, guid: 867b88752e7b1ee4685e1727c8d0adef, type: 3}
       propertyPath: m_Name
       value: FondoNo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5360882606393728064, guid: 867b88752e7b1ee4685e1727c8d0adef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6762541168874517818, guid: 867b88752e7b1ee4685e1727c8d0adef, type: 3}
       propertyPath: m_Pivot.x

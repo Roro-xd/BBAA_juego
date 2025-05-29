@@ -2608,7 +2608,7 @@ PrefabInstance:
       objectReference: {fileID: 1521934513}
     - target: {fileID: 6530556328982388164, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SuenaVolver
+      value: SuenaBoton
       objectReference: {fileID: 0}
     - target: {fileID: 6530556328982388164, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

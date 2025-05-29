@@ -125,13 +125,13 @@ public class Script_victoria : MonoBehaviour
             SalirJuego();
         }
 
-        if (panelN.activeSelf)
+        /*if (panelN.activeSelf)
         {
             panelMenu.SetActive(false);
             panelControles.SetActive(false);
             panelVolumen.SetActive(false);
             panelSeguro.SetActive(false);
-        }
+        }*/
 
     }
 
