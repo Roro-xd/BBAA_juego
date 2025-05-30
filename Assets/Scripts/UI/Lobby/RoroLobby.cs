@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RoroLobby : MonoBehaviour
 {
-
     public GameObject xRoro;
     public GameObject baseTexto;
     public GameObject textoRoro;
