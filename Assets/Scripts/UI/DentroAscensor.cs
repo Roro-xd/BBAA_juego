@@ -22,6 +22,8 @@ public class DentroAscensor : MonoBehaviour
     public GameObject indX;
     public GameObject cuadroDialogo;
 
+    public AudioSource sfxSource;
+
     void Start()
     {
         StartCoroutine(texto());
@@ -40,6 +42,9 @@ public class DentroAscensor : MonoBehaviour
             //textoAleatorio.SetActive(false);
             animPanelN.SetBool("Panel_in", true);
             animPanelN.SetBool("Panel_out", false);
+            sfxSource.Stop();
+            sfxSource.Play();
+            AudioManager.Instance.PlaySFX("AscensorPuerta");
             StartCoroutine(aparecePanelN());
         }
     }
@@ -54,7 +59,8 @@ public class DentroAscensor : MonoBehaviour
 
     IEnumerator texto()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
+        AudioManager.Instance.PlaySFX("Ascensor");
         TextoRandom();
         indX.SetActive(true);
         cuadroDialogo.SetActive(true);
@@ -64,7 +70,7 @@ public class DentroAscensor : MonoBehaviour
 
     IEnumerator aparecePanelN()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Level_1");
     }
 }

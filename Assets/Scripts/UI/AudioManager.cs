@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
             otrosSource.Stop();
             PlayMusica("Intro");
         }
-        else if (escena.name == "InicioLobby" || escena.name == "Level_3" || escena.name == "LobbyReal") //Poner "Lobby" o en la que vaya a estar el lobby realmente
+        else if (escena.name == "InicioLobby" || escena.name == "LobbyInteractuable") //Poner "Lobby" o en la que vaya a estar el lobby realmente
         {
             sfxSource.Stop();
             sfxSource.Play();

@@ -353,6 +353,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb33ab0f1327d784dbbbe707e10fec30, type: 3}
   - nombreSonido: DanoEnemigo
     clip: {fileID: 8300000, guid: ee2b6d525b90e5d4cbc57a0ae2e677ea, type: 3}
+  - nombreSonido: Ascensor
+    clip: {fileID: 8300000, guid: 0a60324a7cfffc448bc4f27b84e781ee, type: 3}
+  - nombreSonido: AscensorPuerta
+    clip: {fileID: 8300000, guid: c090982613a52864ea0c6cbd4ef8525c, type: 3}
   voces:
   - nombreSonido: VozPrueba
     clip: {fileID: 8300000, guid: b32642a8ea979554bae62acd6996b316, type: 3}

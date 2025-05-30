@@ -218,9 +218,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2184892758345360722, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4368482245003871884, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716350678490825628, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400489214114690813, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -277,6 +285,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+--- !u!82 &488711912 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5274133024142157374, guid: 93e14dafed747914c887c990fd9591b6, type: 3}
+  m_PrefabInstance: {fileID: 526941876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &526941876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1666,6 +1679,7 @@ MonoBehaviour:
   panelN: {fileID: 2052060518}
   indX: {fileID: 748665820}
   cuadroDialogo: {fileID: 1124673992}
+  sfxSource: {fileID: 488711912}
 --- !u!1 &1812212606
 GameObject:
   m_ObjectHideFlags: 0

@@ -1714,6 +1714,18 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3605711651148165280, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605711651148165280, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605711651148165280, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3605711651148165280, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1760,6 +1772,30 @@ PrefabInstance:
     - target: {fileID: 3605711651148165280, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887312271241394584, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887312271241394584, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887312271241394584, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887312271241394584, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -132
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887312271241394584, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250423667942862072, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
+      propertyPath: m_characterSpacing
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 5460341117814587526, guid: 94d22c59c7f64a34898440f91e2d3bbb, type: 3}
       propertyPath: m_Name
@@ -4879,6 +4915,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 54280063701170284, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+      propertyPath: camara
+      value: 
+      objectReference: {fileID: 1035909210}
     - target: {fileID: 564178460704514049, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5058,6 +5098,10 @@ PrefabInstance:
     - target: {fileID: 7686369403501376878, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SiQuiero
+      objectReference: {fileID: 0}
+    - target: {fileID: 8390029523009701923, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8696993779051619321, guid: 57b565aaef603574a87fd7f6a96c1d23, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6790,8 +6834,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ah, por cierto. Me he ecnontrado esto por el suelo de la cafe. \xA1Toma,
-    para ti!"
+  m_text: "Ah, por cierto. Me he encontrado esto por el suelo de la cafe. \xA1Toma,
+    para ti!\n(Te da 5 euros)."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1824c3b954ef804b8b85af8fa6d0121, type: 2}
   m_sharedMaterial: {fileID: -8309243434048945938, guid: c1824c3b954ef804b8b85af8fa6d0121, type: 2}
