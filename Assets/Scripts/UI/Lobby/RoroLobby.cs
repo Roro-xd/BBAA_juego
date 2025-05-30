@@ -44,6 +44,7 @@ public class RoroLobby : MonoBehaviour
             textoRoro.SetActive(true);
             dialogoNadie.SetActive(true);
 
+            Debug.Log("X se ha ocultado");
             xRoro.SetActive(false);
             AudioManager.Instance.PlaySFX("Botones");
         }

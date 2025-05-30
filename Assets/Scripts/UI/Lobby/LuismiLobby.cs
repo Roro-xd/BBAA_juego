@@ -44,6 +44,7 @@ public class LuismiLobby : MonoBehaviour
             textoLuismi.SetActive(true);
             dialogoNadie.SetActive(true);
 
+            Debug.Log("X se ha ocultado");
             xLuismi.SetActive(false);
             AudioManager.Instance.PlaySFX("Botones");
         }
@@ -63,12 +64,14 @@ public class LuismiLobby : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             xLuismi.SetActive(true);
+            Debug.Log("La X está activa");
         }
     }
-    
+
 
     void OnTriggerExit2D(Collider2D col)
     {
         xLuismi.SetActive(false);
+        Debug.Log("La X se ha desactivado");
     }
 }

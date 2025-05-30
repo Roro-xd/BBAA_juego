@@ -128,10 +128,9 @@ public class ChurroLobby : MonoBehaviour
         panelElecciones.SetActive(false);
         elecChurro.SetActive(false);
 
-        //lineaChurro = 1;
         AvanceTextoChurro();
-        AudioManager.Instance.PlaySFX("Botones");
-        relaciones.CambioNivelChurro(-1);
+        AudioManager.Instance.PlaySFX("Error");
+        relaciones.CambioNivelChurro(-2);
     }
 
     public void Eleccion2Churro()
@@ -140,8 +139,7 @@ public class ChurroLobby : MonoBehaviour
         elecChurro.SetActive(false);
 
         AvanceTextoChurro();
-        //lineaChurro = 1;
-        AudioManager.Instance.PlaySFX("Botones");
-        relaciones.CambioNivelChurro(0);
+        AudioManager.Instance.PlaySFX("Error");
+        relaciones.CambioNivelChurro(-1);
     }
 }

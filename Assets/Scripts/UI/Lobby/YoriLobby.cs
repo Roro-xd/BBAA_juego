@@ -12,7 +12,7 @@ public class YoriLobby : MonoBehaviour
 
     public GameObject xYori;
     public GameObject baseTexto;
-    //public GameObject textoYori;
+    public GameObject textoYori;
     public GameObject dialogoYori;
 
 
@@ -27,7 +27,7 @@ public class YoriLobby : MonoBehaviour
 
     void Start()
     {
-        textosYori[lineaYori].SetActive(false);
+        textoYori.SetActive(false);
         xYori.SetActive(false);
     }
 
@@ -48,23 +48,23 @@ public class YoriLobby : MonoBehaviour
         {
             //AvanceTextoYori();
             baseTexto.SetActive(true);
-            textosYori[lineaYori].SetActive(true);
+            textoYori.SetActive(true);
             dialogoYori.SetActive(true);
 
             xYori.SetActive(false);
             AudioManager.Instance.PlaySFX("Botones");
         }
-        else if (Input.GetKeyDown(KeyCode.X) && puedoConversar && lineaYori == 0)
+        else if (Input.GetKeyDown(KeyCode.X) && puedoConversar && lineaYori == 0 && textoYori.activeSelf)
         {
             AvanceTextoYori();
             dialogoYori.SetActive(false);
             AudioManager.Instance.PlaySFX("Botones");
         }
-        else if (Input.GetKeyDown(KeyCode.X) && puedoConversar && lineaYori == 1)
+        else if (Input.GetKeyDown(KeyCode.X) && puedoConversar && lineaYori == 1 && textoYori.activeSelf)
         {
             AvanceTextoYori();
             baseTexto.SetActive(false);
-            textosYori[lineaYori].SetActive(false);
+            textoYori.SetActive(false);
             AudioManager.Instance.PlaySFX("Volver");
         }
     }

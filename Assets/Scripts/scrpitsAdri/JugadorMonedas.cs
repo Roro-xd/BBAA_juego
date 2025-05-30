@@ -24,4 +24,10 @@ public class JugadorMonedas : MonoBehaviour
     {
         conteoMonedas.GetComponent<TextMeshProUGUI>().text = monedas.ToString();
     }
+
+
+    public void CambioMonedas(int cambio)
+    {
+        monedas += cambio;
+    }
 }
