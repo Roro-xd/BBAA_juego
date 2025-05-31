@@ -17,21 +17,20 @@ public class PuntuacionFinal : MonoBehaviour
     public GameObject stats;
     public GameObject conteoPunt;
 
-    private GameObject panelPunt;
+    public GameObject panelPunt;
 
     public GameObject churro;
     //public int vidaChurro;
 
     void Start()
     {
+        Debug.Log("Estoy en "+this.gameObject.name);
         stats.GetComponent<Stats_contador>().vidaActual = vidaActual;
         stats.GetComponent<Stats_contador>().dineroActual = dinero;
         stats.GetComponent<Stats_contador>().dano = dano;
 
-        panelPunt = GameObject.Find("Panel_Puntuacion");
         panelPunt.SetActive(false);
 
-        conteoPunt = GameObject.Find("Punt_conteo");
         conteoPunt.SetActive(false);
 
         //vidaChurro = churro.GetComponent<VidaJefe>().vidaActual;
@@ -54,16 +53,16 @@ public class PuntuacionFinal : MonoBehaviour
         if (churro.activeSelf == false)
         {
             panelPunt.SetActive(true);
-            //StartCoroutine(TiempoPuntuacion());
+            StartCoroutine(TiempoPuntuacion());
         }
 
-        if (panelPunt.activeSelf)
+        /*if (panelPunt.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 BotonContinuar();
             }
-        }
+        }*/
     }
 
 
