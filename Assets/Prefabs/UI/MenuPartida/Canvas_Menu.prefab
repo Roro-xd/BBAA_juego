@@ -875,7 +875,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -251.15762, w: -7.480713}
+  m_margin: {x: 0, y: 0, z: -554.2263, w: -7.480713}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2631,7 +2631,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -389.65973, w: -7.480713}
+  m_margin: {x: 0, y: 0, z: -634.90234, w: -7.480713}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4102,11 +4102,11 @@ RectTransform:
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2703834616087174246}
-  - {fileID: 3794719391465225463}
   - {fileID: 2173205189864920459}
   - {fileID: 755767832984591141}
   - {fileID: 6131895584739943339}
+  - {fileID: 2703834616087174246}
+  - {fileID: 3794719391465225463}
   m_Father: {fileID: 3450466350812676007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4683,7 +4683,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -251.15762, w: -7.480713}
+  m_margin: {x: 0, y: 0, z: -632.95447, w: -7.480713}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

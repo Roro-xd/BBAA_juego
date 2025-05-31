@@ -32,9 +32,9 @@ public class Relaciones : MonoBehaviour
 
     void Update()
     {
-        textoNivelCh.GetComponent<TextMeshProUGUI>().text = nivelChurro.ToString();
-        textoNivelN.GetComponent<TextMeshProUGUI>().text = nivelNapo.ToString();
-        textoNivelY.GetComponent<TextMeshProUGUI>().text = nivelYori.ToString();
+        textoNivelCh.GetComponent<TextMeshProUGUI>().text = nivelChurro.ToString() + " punto(s)";
+        textoNivelN.GetComponent<TextMeshProUGUI>().text = nivelNapo.ToString() + " punto(s)";
+        textoNivelY.GetComponent<TextMeshProUGUI>().text = nivelYori.ToString() + " punto(s)";
 
         ActualizarColorChurro();
         ActualizarColorNapo();

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class YoriLobby : MonoBehaviour
 {
+    private Animator yoriAnim;
+    public GameObject yori;
 
     public GameObject[] textosYori;
     public int lineaYori = 1;
-
 
 
     public GameObject xYori;
@@ -27,6 +28,10 @@ public class YoriLobby : MonoBehaviour
 
     void Start()
     {
+        yoriAnim = yori.GetComponent<Animator>();
+        yoriAnim.SetBool("YoriIdle", true);
+        yoriAnim.SetBool("YoriParado", false);
+
         textoYori.SetActive(false);
         xYori.SetActive(false);
     }
