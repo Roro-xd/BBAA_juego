@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 471794dcf691769499bd22c556f476ba
   - enabled: 1
+    path: Assets/Scenes/LobbyInteractuable.unity
+    guid: a303c585bd4af3a45ba147bd864f2461
+  - enabled: 1
     path: Assets/Scenes/EnAscensor.unity
     guid: 01a46c071d95c054eae1a59c41402e6e
   - enabled: 1
