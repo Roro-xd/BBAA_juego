@@ -328,7 +328,7 @@ public class Script_guion_inicio : MonoBehaviour
         yield return new WaitForSeconds(6);
         conversaciones[0].SetActive(true);
         cuadroTexto.SetActive(true);
-        botonSaltar.SetActive(true);
+        //botonSaltar.SetActive(true);
     }
 
     //Aparicion del texto despues de una anim
