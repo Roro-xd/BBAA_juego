@@ -42,8 +42,8 @@ public class DentroAscensor : MonoBehaviour
             //textoAleatorio.SetActive(false);
             animPanelN.SetBool("Panel_in", true);
             animPanelN.SetBool("Panel_out", false);
-            sfxSource.Stop();
-            sfxSource.Play();
+            //sfxSource.Stop();
+            //sfxSource.Play();
             AudioManager.Instance.PlaySFX("AscensorPuerta");
             StartCoroutine(aparecePanelN());
         }
@@ -70,7 +70,25 @@ public class DentroAscensor : MonoBehaviour
 
     IEnumerator aparecePanelN()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+
+        //Debug.Log("Intentando cambiar de escena...");
+        //FinalizarEscenaAscensor();
         SceneManager.LoadScene("Level_1");
     }
+    
+
+    /*void FinalizarEscenaAscensor()
+    {
+        string ultimaEscena = PlayerPrefs.GetString("ultimaEscena");
+
+        if (ultimaEscena == "LobbyInteractuable")
+        {
+            SceneManager.LoadScene("Level_1");
+        }
+        else if (ultimaEscena == "Level_1")
+        {
+            SceneManager.LoadScene("BOSS");
+        }
+    }*/
 }

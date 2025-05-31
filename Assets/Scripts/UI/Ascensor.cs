@@ -154,6 +154,7 @@ public class Ascensor : MonoBehaviour
 
             if (puedoLevel1)
             {
+                //Debug.Log("El script se está ejecutando correctamente.");
                 botonLevel1.SetActive(true);
                 botonLevel1Block.SetActive(false);
             }
@@ -261,10 +262,18 @@ public class Ascensor : MonoBehaviour
     }
 
 
+    /*public void CargarEscenaAscensor()
+    {
+        PlayerPrefs.SetString("ultimaEscena", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("EnAscensor");
+    }*/
+
 
     IEnumerator cargaBOSS()
     {
         yield return new WaitForSeconds(2);
+
+        //CargarEscenaAscensor();
         SceneManager.LoadScene("BOSS");
     }
 
@@ -272,6 +281,8 @@ public class Ascensor : MonoBehaviour
     IEnumerator cargaLevel1()
     {
         yield return new WaitForSeconds(2);
+
+        //CargarEscenaAscensor();
         SceneManager.LoadScene("Level_1");
     }
 
@@ -283,27 +294,4 @@ public class Ascensor : MonoBehaviour
         panelN.GetComponent<Image>().enabled = false;
     }
     
-
-
-    /*public void AvancePiso()
-    {
-        AudioManager.Instance.PlaySFX("Botones");
-        pisos[pisoSelect].SetActive(false);
-        pisoSelect = (pisoSelect + 1) % pisos.Length;
-        pisos[pisoSelect].SetActive(true);
-    }
-
-
-    public void RetrocesoPiso()
-    { 
-        AudioManager.Instance.PlaySFX("Botones");
-        pisos[pisoSelect].SetActive(false);
-        pisoSelect--;
-            if (pisoSelect < 0)
-            {
-                pisoSelect += pisos.Length;
-            }
-
-        pisos[pisoSelect].SetActive(true);
-    }*/
 }
