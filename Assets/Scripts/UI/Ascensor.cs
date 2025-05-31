@@ -9,24 +9,33 @@ using UnityEngine.UI;
 public class Ascensor : MonoBehaviour
 {
 
-    public GameObject[] pisos;
-    public int pisoSelect = 0;
+    /*public GameObject[] pisos;
+    public int pisoSelect = 0;*/
 
+    //Referente al objeto ascensor
     private GameObject panelElevator;
     private GameObject xElevator;
-    //public GameObject xLobby;
-    public GameObject botLobby;
-    private GameObject botLobbyBlock;
-    //public GameObject xLevel1;
-    public GameObject botLevel1;
-    private GameObject botLevel1Block;
 
-    Color colorBlock = new Color(128, 128, 128);
+    //Los botones que aparecen en el panel del ascensor (ambas posibilidades, block y desblock)
+    //public GameObject xLobby;
+    //public GameObject botonLobby;
+    public GameObject botonLobbyBlock;
+    //public GameObject xLevel1;
+    public GameObject botonLevel1;
+    public GameObject botonLevel1Block;
+    public GameObject botonBoss;
+    public GameObject botonBossBlock;
+
+    //Color colorBlock = new Color(128, 128, 128);
     //private GameObject zInd;
 
     private bool isPlayerNear;
     //private bool puedoLobby;
     private bool puedoLevel1;
+    private bool puedoBoss;
+
+    private GameObject panelN;
+    private Animator animPanelN;
 
 
 
@@ -40,22 +49,16 @@ public class Ascensor : MonoBehaviour
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene escena, LoadSceneMode modoEscena)
     {
 
-        /*if (escena.name != "Lobby")
+        if (escena.name == "LobbyInteractuable")
         {
-            puedoLobby = true;
-        }
-        else if (escena.name == "Lobby")
-        {
-            puedoLobby = false;
-        }*/
-
-
-        if (escena.name != "Level_1")
-        {
+            //puedoLobby = false;
+            puedoBoss = false;
             puedoLevel1 = true;
         }
         else if (escena.name == "Level_1")
         {
+            //puedoLobby = false;
+            puedoBoss = true;
             puedoLevel1 = false;
         }
     }
@@ -73,14 +76,12 @@ public class Ascensor : MonoBehaviour
         xElevator = GameObject.Find("xElevator");
         xElevator.SetActive(false);
 
-        botLevel1Block = GameObject.Find("botLevel1_block");
-        botLevel1Block.SetActive(false);
-
-        botLobbyBlock = GameObject.Find("botLobby_block");
-        botLobbyBlock.SetActive(false);
-
         isPlayerNear = false;
 
+        panelN = GameObject.Find("Panel_Negro");
+        //panelN.SetActive(false);
+        animPanelN = panelN.GetComponent<Animator>();
+        StartCoroutine(desPanelN());
     }
 
 
@@ -103,10 +104,9 @@ public class Ascensor : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX("Botones");
             panelElevator.SetActive(true);
-            pisos[pisoSelect].SetActive(true);
+            /*pisos[pisoSelect].SetActive(true);
             
-            botLobby.SetActive(true);
-
+            botLobby.SetActive(true);*/
 
             /*if (puedoLobby == false)
             {
@@ -120,7 +120,7 @@ public class Ascensor : MonoBehaviour
             }*/
 
 
-            if (puedoLevel1 == false)
+            /*if (puedoLevel1 == false)
             {
                 botLobbyBlock.SetActive(true);
                 botLobby.SetActive(false);
@@ -129,7 +129,7 @@ public class Ascensor : MonoBehaviour
             {
                 botLevel1Block.SetActive(false);
                 botLevel1.SetActive(true);
-            }
+            }*/
 
         }
 
@@ -137,8 +137,46 @@ public class Ascensor : MonoBehaviour
         if (panelElevator.activeSelf)
         {
             xElevator.SetActive(false);
+            botonLobbyBlock.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            /*if (puedoLobby)
+            {
+                botonLobby.SetActive(true);
+                botonLobbyBlock.SetActive(false);
+            }
+            else if (puedoLobby == false)
+            {
+                botonLobbyBlock.SetActive(true);
+                botonLobby.SetActive(false);
+            }*/
+
+
+
+            if (puedoLevel1)
+            {
+                botonLevel1.SetActive(true);
+                botonLevel1Block.SetActive(false);
+            }
+            else if (puedoLevel1 == false)
+            {
+                botonLevel1Block.SetActive(true);
+                botonLevel1.SetActive(false);
+            }
+
+
+
+            if (puedoBoss)
+            {
+                botonBoss.SetActive(true);
+                botonBossBlock.SetActive(false);
+            }
+            else if (puedoBoss == false)
+            {
+                botonBossBlock.SetActive(true);
+                botonBoss.SetActive(false);
+            }
+
+            /*if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 RetrocesoPiso();
             }
@@ -159,7 +197,7 @@ public class Ascensor : MonoBehaviour
                 {
                     IrAPlanta1();
                 }
-            }
+            }*/
 
 
             if (Input.GetKeyDown(KeyCode.Z))
@@ -170,6 +208,8 @@ public class Ascensor : MonoBehaviour
         }
 
     }
+
+
 
 
 
@@ -188,38 +228,64 @@ public class Ascensor : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             isPlayerNear = false;
+            Debug.Log("Jugador ha salido de la zona de ascensor");
         }
     }
 
 
-    public void IrALobby()
+    public void IrABoss()
     {
-        SceneManager.LoadScene("BOSS");
-        /*if (puedoLobby)
-        {
-            SceneManager.LoadScene("BOSS");
-        }
-        else
-        {
-            AudioManager.Instance.PlaySFX("Error");
-        }*/
+        //panelN.SetActive(true);
+        AudioManager.Instance.PlaySFX("Botones");
+        panelN.GetComponent<Image>().enabled = true;
+        animPanelN.SetBool("Panel_in", true);
+        panelElevator.SetActive(false);
+        xElevator.SetActive(false);
+        StartCoroutine(cargaBOSS());
     }
 
     public void IrAPlanta1()
     {
-        if (puedoLevel1)
-        {
-            SceneManager.LoadScene("Level_1");
-        }
-        else
-        {
-            AudioManager.Instance.PlaySFX("Error");
-        }
+        //panelN.SetActive(true);
+        AudioManager.Instance.PlaySFX("Botones");
+        panelN.GetComponent<Image>().enabled = true;
+        animPanelN.SetBool("Panel_in", true);
+        panelElevator.SetActive(false);
+        xElevator.SetActive(false);
+        StartCoroutine(cargaLevel1());
+    }
+
+    public void IrError()
+    {
+        AudioManager.Instance.PlaySFX("Error");
+    }
+
+
+
+    IEnumerator cargaBOSS()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("BOSS");
+    }
+
+
+    IEnumerator cargaLevel1()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Level_1");
+    }
+
+
+    IEnumerator desPanelN()
+    {
+        yield return new WaitForSeconds(1.5f);
+        //panelN.SetActive(false);
+        panelN.GetComponent<Image>().enabled = false;
     }
     
 
 
-    public void AvancePiso()
+    /*public void AvancePiso()
     {
         AudioManager.Instance.PlaySFX("Botones");
         pisos[pisoSelect].SetActive(false);
@@ -239,5 +305,5 @@ public class Ascensor : MonoBehaviour
             }
 
         pisos[pisoSelect].SetActive(true);
-    }
+    }*/
 }
