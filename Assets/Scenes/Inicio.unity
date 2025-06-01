@@ -1887,6 +1887,7 @@ MonoBehaviour:
   musicaSlider: {fileID: 1467430014}
   sfxSlider: {fileID: 48748858}
   vocesSlider: {fileID: 901002272}
+  panelVolumen: {fileID: 0}
 --- !u!1 &339572067
 GameObject:
   m_ObjectHideFlags: 0
@@ -11858,7 +11859,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ffd310a3df686e143b605486ae224621, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08691010643662a40ac41bf16748535b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11885,15 +11886,15 @@ RectTransform:
   m_GameObject: {fileID: 1702435999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1874768138}
   m_Father: {fileID: 2070445332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.4, y: 0}
+  m_AnchoredPosition: {x: 3.4, y: -5.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1710816574
@@ -13754,14 +13755,14 @@ RectTransform:
   m_GameObject: {fileID: 1874768137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.10000002, y: 0.10000002, z: 0.10000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1702436002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.7999983, y: 75.2}
+  m_AnchoredPosition: {x: -4.5333323, y: 53.86666}
   m_SizeDelta: {x: 707.77, y: 48.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874768139
