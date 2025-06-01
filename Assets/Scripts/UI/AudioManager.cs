@@ -34,13 +34,26 @@ public class AudioManager : MonoBehaviour
             otrosSource.Stop();
             PlayMusica("Intro");
         }
-        else if (escena.name == "InicioLobby" || escena.name == "LobbyInteractuable") //Poner "Lobby" o en la que vaya a estar el lobby realmente
+        else if (escena.name == "InicioLobby")
         {
             sfxSource.Stop();
             sfxSource.Play();
             otrosSource.Play();
             PlayMusica("Lobby");
             PlayOtros("VocesFondo");
+        }
+        //EN ESTA ESCENA NO PUEDEN SONAR LAS VOCES PORQUE YA ESTÁ SONANDO EL CAMINADO DEL PERSONAJE DESDE EL MISMO AUDIOSOURCE
+        //Ya es tarde para cambiarlo todo
+        else if (escena.name == "LobbyInteractuable")
+        {
+            if (!musicaSource.isPlaying)
+            {
+                PlayMusica("Lobby");
+            }
+
+            /*if (!otrosSource.isPlaying) {
+                PlayOtros("vocesFondo");
+            }*/
         }
         else if (escena.name == "Level_1")
         {
@@ -58,7 +71,7 @@ public class AudioManager : MonoBehaviour
             PlayMusica("Derrota");
         }
         else if (escena.name == "EnAscensor")
-        { 
+        {
             otrosSource.Stop();
             PlayMusica("LobbyLejos");
         }

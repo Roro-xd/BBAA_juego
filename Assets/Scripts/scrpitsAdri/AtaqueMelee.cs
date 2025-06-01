@@ -162,10 +162,10 @@ public class AtaqueMelee : MonoBehaviour
 
     IEnumerator AnimacionAtac()
     {
+        AudioManager.Instance.PlaySFX("BunAtaca");
         yield return new WaitForSeconds(0.3f);
         siEsperaAtaque = false;
         animator.SetBool("siAtaca", false);
-        AudioManager.Instance.PlaySFX("BunAtaca");
         siAcierta = false;
     }
 
