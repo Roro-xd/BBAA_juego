@@ -10,18 +10,20 @@ public class AtaqueMelee : MonoBehaviour
     public int dano = 1;
     public LayerMask capaEnemigos;
 
-    public float cooldownBase = 1f;  // Cooldown inicial
+    public float cooldownBase = 1f;
     private float cooldownActual;
     public float tiempoUltimoAtaque = -999f;
 
     private Camera camara;
     private Animator animator;
 
-    private CharacterStats stats; // ← Nuevo
+    private CharacterStats stats;
 
     bool siEsperaAtaque = false;
     public bool siPuedoAtacar = true;
     public bool siAcierta = false;
+
+    public bool sePuedeAtacar = true; // ← NUEVO
 
     void Start()
     {
@@ -39,11 +41,13 @@ public class AtaqueMelee : MonoBehaviour
             stats.OnStatChanged += OnStatChanged;
         }
     }
+
     void OnDestroy()
     {
         if (stats != null)
             stats.OnStatChanged -= OnStatChanged;
     }
+
     void OnStatChanged(StatType type, float newValue)
     {
         switch (type)
@@ -63,6 +67,8 @@ public class AtaqueMelee : MonoBehaviour
 
     void Update()
     {
+        if (!sePuedeAtacar) return; // ← NUEVO: si no puede atacar, sale
+
         if (Input.GetMouseButtonDown(0) && Time.time >= tiempoUltimoAtaque + cooldownActual)
         {
             siPuedoAtacar = true;
@@ -71,61 +77,58 @@ public class AtaqueMelee : MonoBehaviour
 
             if (animator != null)
             {
-
-            }
-
-            if (siEsperaAtaque == false)
-            {//Llama a la animación de ataque solo cuando se ataca
                 animator.SetBool("siAtaca", true);
                 siEsperaAtaque = true;
                 StartCoroutine(AnimacionAtac());
             }
         }
 
-        if (Time.time >= tiempoUltimoAtaque + cooldownActual) { siPuedoAtacar = true; } else { siPuedoAtacar = false; } //determina si está en cooldown o no
+        if (Time.time >= tiempoUltimoAtaque + cooldownActual)
+            siPuedoAtacar = true;
+        else
+            siPuedoAtacar = false;
     }
 
     void Atacar()
-{
-    Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
-    Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
-
-    Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, capaEnemigos);
-
-    foreach (Collider2D enemigo in enemigosCerca)
     {
-        Vector2 direccionAlEnemigo = (Vector2)(enemigo.transform.position - puntoAtaque.position);
-        float anguloEntre = Vector2.Angle(direccionAtaque, direccionAlEnemigo);
+        Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
 
-        if (anguloEntre <= anguloCono / 2f)
+        Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, capaEnemigos);
+
+        foreach (Collider2D enemigo in enemigosCerca)
         {
-            var vidaEnemigo = enemigo.GetComponent<VidaEnemigo>();
-            if (vidaEnemigo != null)
+            Vector2 direccionAlEnemigo = (Vector2)(enemigo.transform.position - puntoAtaque.position);
+            float anguloEntre = Vector2.Angle(direccionAtaque, direccionAlEnemigo);
+
+            if (anguloEntre <= anguloCono / 2f)
             {
-                vidaEnemigo.RecibirDano(dano);
-            }
-            else
-            {
-                var jefe = enemigo.GetComponent<VidaJefe>();
-                if (jefe != null)
+                var vidaEnemigo = enemigo.GetComponent<VidaEnemigo>();
+                if (vidaEnemigo != null)
                 {
-                    jefe.RecibirDano(dano);
+                    vidaEnemigo.RecibirDano(dano);
                 }
+                else
+                {
+                    var jefe = enemigo.GetComponent<VidaJefe>();
+                    if (jefe != null)
+                    {
+                        jefe.RecibirDano(dano);
+                    }
+                }
+
+                enemigo.GetComponent<Persecución>().siHerido = true;
+                siAcierta = true;
+
+                Debug.Log("Golpe");
             }
-
-            enemigo.GetComponent<Persecución>().siHerido = true;
-            siAcierta = true;
-
-            Debug.Log("Golpe");
         }
     }
-}
-
 
     public void ReducirCooldown(float cantidad)
     {
         cooldownActual -= cantidad;
-        cooldownActual = Mathf.Clamp(cooldownActual, 0.1f, cooldownBase); // no menos de 0.1 ni más que base
+        cooldownActual = Mathf.Clamp(cooldownActual, 0.1f, cooldownBase);
         Debug.Log("Cooldown reducido a: " + cooldownActual);
     }
 
@@ -157,8 +160,6 @@ public class AtaqueMelee : MonoBehaviour
             Gizmos.DrawLine(puntoAtaque.position, puntoAtaque.position + (Vector3)derecha * radioAtaque);
         }
     }
-
-
 
     IEnumerator AnimacionAtac()
     {

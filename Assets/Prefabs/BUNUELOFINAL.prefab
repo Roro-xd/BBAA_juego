@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 7656669450840192366}
   - component: {fileID: 6400489214114690813}
   - component: {fileID: 5716350678490825628}
+  - component: {fileID: 1889176902187586938}
   m_Layer: 0
   m_Name: BUNUELOFINAL
   m_TagString: Player
@@ -420,12 +421,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd5a592a8ec8cf4a973d2c5e396773f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nivelChurro: 0
+  nivelNapo: 0
+  nivelYori: 0
   textoNivelCh: {fileID: 0}
   textoNivelN: {fileID: 0}
   textoNivelY: {fileID: 0}
-  relChurro: {fileID: 0}
-  relNapo: {fileID: 0}
-  relYori: {fileID: 0}
+  colorNegativo: {r: 0.62, g: 0.14, b: 0.043, a: 1}
+  colorCero: {r: 1, g: 1, b: 1, a: 1}
+  colorPositivo: {r: 0.0666, g: 0.443, b: 0.325, a: 1}
+--- !u!114 &1889176902187586938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131062119285939928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7135af1f2d44cb0409090c750d754e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puedeMoverse: 1
+  puedeAtacar: 1
+  menu: {fileID: 0}
 --- !u!1 &9079958471415397016
 GameObject:
   m_ObjectHideFlags: 0
