@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2411655451444188182}
   - component: {fileID: 360586498343139783}
   - component: {fileID: 2214771827443798875}
-  - component: {fileID: 3180937634947724526}
+  - component: {fileID: 1327823617840278900}
   m_Layer: 6
   m_Name: Tanque
   m_TagString: Enemy
@@ -138,6 +138,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  isChasing: 0
+  pito: 0
+  menuAbierto: 0
 --- !u!114 &4956430766545541532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,14 +163,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5137211173404945504}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3.96
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -178,7 +181,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &360586498343139783
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -228,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dano: 1
   tiempoEntreDanos: 1
---- !u!114 &3180937634947724526
+--- !u!114 &1327823617840278900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,12 +240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5137211173404945504}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36f0c9f33f32c9045aa9b6f6d8bac0d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b7038ac0cd4ee146a0a09ffb33f894c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2131062119285939928, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
-  siPersigue: 1
-  velocidadAtac: 0.5
-  tiempoEspera: 1
-  siEspera: 0
-  siHerido: 0
+  puedeMoverse: 1

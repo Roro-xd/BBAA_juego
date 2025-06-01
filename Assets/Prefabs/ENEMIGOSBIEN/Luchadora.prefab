@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3310342208009552805}
   - component: {fileID: 7541540629294989475}
   - component: {fileID: 8358844408532736253}
+  - component: {fileID: -5770549453670082823}
   m_Layer: 6
   m_Name: Luchadora
   m_TagString: Enemigo
@@ -246,3 +247,15 @@ MonoBehaviour:
   tiempoEspera: 1
   siEspera: 0
   siHerido: 0
+--- !u!114 &-5770549453670082823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229447822684048014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7038ac0cd4ee146a0a09ffb33f894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

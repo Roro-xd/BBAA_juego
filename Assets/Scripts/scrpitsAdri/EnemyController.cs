@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyController : MonoBehaviour
 {
@@ -27,11 +28,30 @@ public class EnemyController : MonoBehaviour
 
     private Transform playerTarget;
     private Rigidbody2D rb;
-    private bool isChasing;
+    public bool isChasing;
+
+    public bool pito;
+
+    public bool menuAbierto;
+
+    private GameObject panelMenu;
+    private GameObject panelSeguro;
+    private GameObject panelVolumen;
+    private GameObject panelControles;
+
     private float lastAttackTime;
 
     void Start()
     {
+        panelMenu = GameObject.Find("Panel_menu");
+        
+        panelSeguro = GameObject.Find("Panel_seguro");
+        
+        panelVolumen = GameObject.Find("Panel_volumen");
+        
+        panelControles = GameObject.Find("Panel_controles");
+
+
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         currentHealth = maxHealth;  // Inicializa la salud
@@ -43,11 +63,25 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (playerTarget == null) FindPlayer();
-        UpdateDetection();
-        HandleAnimations();
+        
 
-    }
+        
+       if (panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
+        {
+            menuAbierto = false;
+        }
+        else
+        {
+            menuAbierto = true;
+        }
+
+
+            if (playerTarget == null) FindPlayer();
+            UpdateDetection();
+            HandleAnimations();
+
+        }
+    
 
     void FixedUpdate()
     {
@@ -56,12 +90,17 @@ public class EnemyController : MonoBehaviour
 
     void FindPlayer()
     {
+
+        if (menuAbierto) return;
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) playerTarget = playerObj.transform;
     }
 
     void UpdateDetection()
     {
+        if (menuAbierto) return;
+
         if (playerTarget == null) return;
 
         Collider2D hit = Physics2D.OverlapCircle(
@@ -75,25 +114,22 @@ public class EnemyController : MonoBehaviour
 
     void HandleMovement()
     {
-        if (isChasing && playerTarget != null)
-        {
-            /*if (this.gameObject.name == "Asesina")
-            { 
-                AudioManager.Instance.PlayOtros("caminadoRapido");
-            }
-            if (this.gameObject.name == "Tanque")
-            { 
-                AudioManager.Instance.PlayOtros("caminadoLento");
-            }*/
-    
+        if (menuAbierto) return;
 
-            Vector2 direction = (playerTarget.position - transform.position).normalized;
-            rb.velocity = direction * moveSpeed;
-            FlipSprite(direction.x);
-        }
-        else
+        
         {
-            rb.velocity = Vector2.zero;
+
+            if (isChasing && playerTarget != null)
+            {
+
+                Vector2 direction = (playerTarget.position - transform.position).normalized;
+                rb.velocity = direction * moveSpeed;
+                FlipSprite(direction.x);
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 
@@ -139,6 +175,7 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+    
 
     // Método para recibir daño del jugador
     public void TakeDamage(int damage)
