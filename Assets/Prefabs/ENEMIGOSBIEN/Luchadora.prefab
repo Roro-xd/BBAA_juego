@@ -159,8 +159,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0073621273, y: 0.121474266}
-  m_Size: {x: 0.72024107, y: 1.0368104}
+  m_Offset: {x: 0.0073621273, y: -0.0064125657}
+  m_Size: {x: 0.72024107, y: 0.95417583}
   m_Direction: 0
 --- !u!50 &3344197321000659963
 Rigidbody2D:
@@ -229,6 +229,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  isChasing: 0
+  pito: 0
+  menuAbierto: 0
 --- !u!114 &8358844408532736253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,3 +262,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7038ac0cd4ee146a0a09ffb33f894c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puedeMoverse: 1

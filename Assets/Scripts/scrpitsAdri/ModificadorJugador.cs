@@ -6,10 +6,9 @@ public class ModificadorJugador : MonoBehaviour
 {
     public void AplicarIncrementoVida(int cantidad)
     {
-        Vida vida = GetComponent<Vida>();
-        if (vida != null)
+        if (Vida.Instance != null)
         {
-            vida.AumentoVidaMax(cantidad);
+            Vida.Instance.AumentoVidaMax(cantidad);
         }
     }
 

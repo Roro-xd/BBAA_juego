@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SubeStats : MonoBehaviour
-{
+
+{}
+
+/*{
 
     //todos los valores enteros y float pueden ser negativos para restar en lugar de sumar
-    public int aumentaVidaMax = 0; // Cifra  en la que aumenta el valor máximo de vida
+    *public int aumentaVidaMax = 0; // Cifra  en la que aumenta el valor máximo de vida
     public bool siCuraVidaMax = false; //si a parte de subir la vida máxima la cura al completo
     public float reduceCooldownAtaque = 0f; //en cuantos segundos redece el cooldown de ataque
     public int seCuraTanto = 0; //numero de corazones que cura el objeto
@@ -37,6 +40,7 @@ public class SubeStats : MonoBehaviour
 
         //Activa la animación de haber tomado el objeto y lo destruye
         this.GetComponent<Animator> ().SetBool("siUsado",true);
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject, 1f);/*
     }
-}
+*/
+ 

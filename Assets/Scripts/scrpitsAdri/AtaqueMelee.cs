@@ -7,8 +7,8 @@ public class AtaqueMelee : MonoBehaviour
     public Transform puntoAtaque;
     public float radioAtaque = 2f;
     public float anguloCono = 60f;
-    public int dano = 1;
     public LayerMask capaEnemigos;
+    public int dano = 1;
 
     public float cooldownBase = 1f;
     private float cooldownActual;
@@ -16,14 +16,12 @@ public class AtaqueMelee : MonoBehaviour
 
     private Camera camara;
     private Animator animator;
-
     private CharacterStats stats;
 
     bool siEsperaAtaque = false;
     public bool siPuedoAtacar = true;
     public bool siAcierta = false;
-
-    public bool sePuedeAtacar = true; // ← NUEVO
+    public bool sePuedeAtacar = true; 
 
     void Start()
     {
@@ -34,11 +32,15 @@ public class AtaqueMelee : MonoBehaviour
         stats = GetComponent<CharacterStats>();
         if (stats != null)
         {
-            dano = Mathf.RoundToInt(stats.damage.TotalValue);
             cooldownBase = 1f / stats.attackSpeed.TotalValue;
             cooldownActual = cooldownBase;
-
             stats.OnStatChanged += OnStatChanged;
+        }
+
+        // **Usando Vida.Instance para obtener el daño**
+        if (Vida.Instance != null)
+        {
+            Vida.Instance.dano = Mathf.RoundToInt(stats.damage.TotalValue);
         }
     }
 
@@ -53,8 +55,11 @@ public class AtaqueMelee : MonoBehaviour
         switch (type)
         {
             case StatType.Damage:
-                dano = Mathf.RoundToInt(newValue);
-                Debug.Log("Daño actualizado: " + dano);
+                if (Vida.Instance != null)
+                {
+                    Vida.Instance.dano = Mathf.RoundToInt(newValue);
+                    Debug.Log("Daño actualizado: " + Vida.Instance.dano);
+                }
                 break;
 
             case StatType.AttackSpeed:
@@ -67,7 +72,7 @@ public class AtaqueMelee : MonoBehaviour
 
     void Update()
     {
-        if (!sePuedeAtacar) return; // ← NUEVO: si no puede atacar, sale
+        if (!sePuedeAtacar) return;
 
         if (Input.GetMouseButtonDown(0) && Time.time >= tiempoUltimoAtaque + cooldownActual)
         {
@@ -91,6 +96,8 @@ public class AtaqueMelee : MonoBehaviour
 
     void Atacar()
     {
+        if (Vida.Instance == null) return; // Aseguramos que Vida.Instance existe
+
         Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
 
@@ -106,14 +113,14 @@ public class AtaqueMelee : MonoBehaviour
                 var vidaEnemigo = enemigo.GetComponent<VidaEnemigo>();
                 if (vidaEnemigo != null)
                 {
-                    vidaEnemigo.RecibirDano(dano);
+                    vidaEnemigo.RecibirDano(Vida.Instance.dano); // Usamos Vida.Instance
                 }
                 else
                 {
                     var jefe = enemigo.GetComponent<VidaJefe>();
                     if (jefe != null)
                     {
-                        jefe.RecibirDano(dano);
+                        jefe.RecibirDano(Vida.Instance.dano);
                     }
                 }
 
@@ -124,55 +131,20 @@ public class AtaqueMelee : MonoBehaviour
             }
         }
     }
-
-    public void ReducirCooldown(float cantidad)
-    {
-        cooldownActual -= cantidad;
-        cooldownActual = Mathf.Clamp(cooldownActual, 0.1f, cooldownBase);
-        Debug.Log("Cooldown reducido a: " + cooldownActual);
-    }
-
-    public void ResetearCooldown()
-    {
-        cooldownActual = cooldownBase;
-        Debug.Log("Cooldown reseteado a base: " + cooldownBase);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (puntoAtaque == null) return;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(puntoAtaque.position, radioAtaque);
-
-        if (camara != null && Application.isPlaying)
+        IEnumerator AnimacionAtac()
         {
-            Vector3 mousePos = camara.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direccion = (mousePos - puntoAtaque.position).normalized;
-
-            float halfAngle = anguloCono / 2f;
-
-            Vector2 izquierda = Quaternion.Euler(0, 0, -halfAngle) * direccion;
-            Vector2 derecha = Quaternion.Euler(0, 0, halfAngle) * direccion;
-
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(puntoAtaque.position, puntoAtaque.position + (Vector3)izquierda * radioAtaque);
-            Gizmos.DrawLine(puntoAtaque.position, puntoAtaque.position + (Vector3)derecha * radioAtaque);
+            AudioManager.Instance.PlaySFX("BunAtaca");
+            yield return new WaitForSeconds(0.3f);
+            siEsperaAtaque = false;
+            animator.SetBool("siAtaca", false);
+            siAcierta = false;
         }
-    }
-
-    IEnumerator AnimacionAtac()
-    {
-        AudioManager.Instance.PlaySFX("BunAtaca");
-        yield return new WaitForSeconds(0.3f);
-        siEsperaAtaque = false;
-        animator.SetBool("siAtaca", false);
-        siAcierta = false;
-    }
-
     public void SubeAtaque(int cantidad)
     {
-        dano += cantidad;
-        Debug.Log("Tu ataque ahora hace esta cantidad de daño:" + dano);
+        if (Vida.Instance != null)
+        {
+            Vida.Instance.dano += cantidad;
+            Debug.Log("Tu ataque ahora hace esta cantidad de daño: " + Vida.Instance.dano);
+        }
     }
 }

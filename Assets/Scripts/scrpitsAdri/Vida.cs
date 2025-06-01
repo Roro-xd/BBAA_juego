@@ -1,49 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class Vida : MonoBehaviour
 {
-    //OLA SOY RORO YO PONDRÍA vidaBase = 4; y crearía un vidaMax = 10; ADIOS
+    public static Vida Instance; // ← Ahora está definida correctamente
+
     public int vidaBase = 4;
-
     public int vidaMax = 10;
-
-
     public int vidaActual;
+    public int dano = 1; // ← Añadimos daño para compatibilidad con AtaqueMelee
     private CharacterStats stats;
 
-    public event Action OnDanoRecibido; // evento para notificar dano recibido
+    public event Action OnDanoRecibido;
 
-    bool siEsperamos = false;//variable para espera de la animación de muerte
+    bool siEsperamos = false;
     bool siEsperaDano = false;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
         stats = GetComponent<CharacterStats>();
-        vidaBase = (int)stats.health.TotalValue;
-        vidaActual = vidaBase;
-
-        //stats.OnStatChanged += OnStatChanged;
-    }
-    /*void OnDestroy()
-    {
         if (stats != null)
-            stats.OnStatChanged -= OnStatChanged;*/
-    //}
-    void OnStatChanged(StatType type, float newValue)
-    {
-        if (type == StatType.Health)
         {
-            int nuevaVidaMax = Mathf.RoundToInt(newValue);
-            int delta = nuevaVidaMax - vidaBase;
-            vidaBase = nuevaVidaMax;
-            vidaActual += delta; // opcional: curar vida extra
-            vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
-            Debug.Log("Nueva vida máxima: " + vidaBase);
+            vidaBase = (int)stats.health.TotalValue;
+            vidaActual = vidaBase;
+            dano = Mathf.RoundToInt(stats.damage.TotalValue); // ← Inicializamos daño
         }
     }
 
@@ -53,26 +49,24 @@ public class Vida : MonoBehaviour
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
 
         Debug.Log("Vida actual: " + vidaActual);
-
-        OnDanoRecibido?.Invoke(); // aviso que se recibio dano
+        OnDanoRecibido?.Invoke();
 
         if (vidaActual <= 0)
         {
             Muerte();
         }
-        if (siEsperaDano == false)
+
+        if (!siEsperaDano)
         {
             siEsperaDano = true;
-            AnimacionHerido(); //llama a un método para animar el daño
+            AnimacionHerido();
         }
-
     }
 
     public void Curar(int cantidad)
     {
         vidaActual += cantidad;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
-
         Debug.Log("Curado. Vida actual: " + vidaActual);
     }
 
@@ -82,59 +76,60 @@ public class Vida : MonoBehaviour
         if (curarFull)
             vidaActual = vidaBase;
 
-        Debug.Log("Nueva vida maxima: " + vidaBase + " | Vida actual: " + vidaActual);
+        Debug.Log("Nueva vida máxima: " + vidaBase + " | Vida actual: " + vidaActual);
+    }
+
+    public void SubeAtaque(int cantidad)
+    {
+        dano += cantidad; // ← Ahora puedes modificar el daño correctamente
+        Debug.Log("Tu ataque ahora hace esta cantidad de daño: " + dano);
     }
 
     private void Muerte()
     {
         Debug.Log("El jugador ha muerto.");
         AudioManager.Instance.PlaySFX("MuerteBun");
-        if (siEsperamos == false) //comprueba que la animación de meurte solo se active una vez
+
+        if (!siEsperamos)
         {
             StartCoroutine(TiempoEspera());
             siEsperamos = true;
-            this.GetComponent<Animator>().SetBool("siMuere", true);
-            Debug.Log("reproduciendo animación de muerte");
-            this.GetComponent<Caminar>().sePuedeMover = false; //hace que el jugador ya no se pueda mover
-            //Entiendo que, al morir, si queremos que vaya a la escena de derrota, debo ponerlo aquí
+            GetComponent<Animator>().SetBool("siMuere", true);
+            GetComponent<Caminar>().sePuedeMover = false;
             StartCoroutine(LlevarADerrota());
         }
     }
 
-
-    public int GetCurrentHealth() => vidaActual;
-    public int GetMaxHealth() => vidaBase;
-
-
-
-    //tiempo a esperar para que se vea la animación de muerte
     IEnumerator TiempoEspera()
     {
-
         yield return new WaitForSeconds(4f);
-        gameObject.SetActive(false); siEsperamos = false;
+        gameObject.SetActive(false);
+        siEsperamos = false;
     }
 
     void AnimacionHerido()
     {
-        if (siEsperamos == false)
+        if (!siEsperamos)
         {
-            this.GetComponent<Animator>().SetBool("siHerido", true);
+            GetComponent<Animator>().SetBool("siHerido", true);
             AudioManager.Instance.PlaySFX("DanoBun");
             StartCoroutine(TiempoAnim());
-
         }
     }
+
     IEnumerator TiempoAnim()
     {
         yield return new WaitForSeconds(0.4f);
-        this.GetComponent<Animator>().SetBool("siHerido", false);
+        GetComponent<Animator>().SetBool("siHerido", false);
         siEsperaDano = false;
     }
-    
+
     IEnumerator LlevarADerrota()
     {
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("Derrota");
     }
+
+    public int GetCurrentHealth() => vidaActual;
+    public int GetMaxHealth() => vidaBase;
 }
