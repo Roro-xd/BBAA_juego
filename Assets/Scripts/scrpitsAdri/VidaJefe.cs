@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class VidaJefe : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class VidaJefe : MonoBehaviour
     public int vidaActual;
     public bool estaMuerto = false;
     private bool segundaFaseActivada = false;
+
+
+    //Para su barra de vida 
+    public Slider vidaChurroSlider;
 
     public UnityEvent eventoSegundaFase;
 
@@ -19,6 +24,7 @@ public class VidaJefe : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
+        CambioVidaChurro();
     }
 
     public void RecibirDano(int cantidad)
@@ -27,6 +33,7 @@ public class VidaJefe : MonoBehaviour
 
         vidaActual -= cantidad;
         vidaActual = Mathf.Max(vidaActual, 0);
+        CambioVidaChurro();
 
         Debug.Log($"Jefe recibió {cantidad} de daño. Vida actual: {vidaActual}");
 
@@ -77,6 +84,14 @@ public class VidaJefe : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Victoria");
     }*/
+
+    private void CambioVidaChurro()
+    {
+        if (vidaChurroSlider != null)
+        {
+            vidaChurroSlider.value = (float)vidaActual / vidaMaxima;
+        }
+    }
 
 
 }
