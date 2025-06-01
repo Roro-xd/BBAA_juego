@@ -74,8 +74,8 @@ public class Caminar : MonoBehaviour
         // Activa la animación de caminar
         this.GetComponent<Animator>().SetBool("siCamina", seMueve);
 
-        // Sonidos de caminar cuando no se mueve
-        if (!seMueve)
+        // LOS SONIDOS DE CAMINADO FUNCIONAN A LA INVERSA
+        /*if (!seMueve)
         {
             if (velomov >= 1 && velomov < 2)
             {
@@ -89,7 +89,7 @@ public class Caminar : MonoBehaviour
             {
                 AudioManager.Instance.PlayOtros("caminadoRapido");
             }
-        }
+        }*/
     }
 
     void FixedUpdate()

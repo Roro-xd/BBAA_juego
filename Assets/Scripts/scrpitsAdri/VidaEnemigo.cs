@@ -20,6 +20,10 @@ public class VidaEnemigo : MonoBehaviour
     {
         vidaActual -= cantidad;
         AudioManager.Instance.PlaySFX("DanoEnemigo");
+
+        this.GetComponent<SpriteRenderer>().color = Color.red;
+        StartCoroutine(colorOriginal());
+
         Debug.Log(gameObject.name + " recibió daño. Vida restante: " + vidaActual);
 
         if (vidaActual <= 0)
@@ -42,4 +46,11 @@ public class VidaEnemigo : MonoBehaviour
         // Destruir el objeto enemigo después de que haya soltado el loot
         Destroy(gameObject);
     }
+
+
+    IEnumerator colorOriginal()
+    {
+        yield return new WaitForSeconds(0.25f);
+        this.GetComponent<SpriteRenderer>().color = Color.white;
+     }
 }
