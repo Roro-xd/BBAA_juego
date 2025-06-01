@@ -7,13 +7,18 @@ using UnityEngine.UI;
 
 public class AscensorLobby : MonoBehaviour
 {
+    //Indicadores del ascensor
     private GameObject panelElevator;
     private GameObject xElevator;
 
+    //Bool de entrada en rango de ascensor
     private bool isPlayerNear;
 
+    //Panel negro para cambio de escena
     private GameObject panelN;
     private Animator animPanelN;
+
+
     void Start()
     {
         panelElevator = GameObject.Find("Panel_Ascensor");
@@ -25,14 +30,15 @@ public class AscensorLobby : MonoBehaviour
         isPlayerNear = false;
 
         panelN = GameObject.Find("Panel_Negro");
-        //panelN.SetActive(false);
         animPanelN = panelN.GetComponent<Animator>();
+        //"Desactivar" el panel tras la primera anim (desactivarlo por completo me daba problemas)
         StartCoroutine(desPanelN());
     }
 
 
     void Update()
     {
+        //Activar posibilidad de ascensor si se entra en su rango
         if (isPlayerNear)
         {
             xElevator.SetActive(true);
@@ -43,7 +49,7 @@ public class AscensorLobby : MonoBehaviour
         }
 
 
-
+        //Abrir el panel de elección de pisos
         if (xElevator.activeSelf && Input.GetKeyDown(KeyCode.X))
         {
             AudioManager.Instance.PlaySFX("Botones");
@@ -55,6 +61,7 @@ public class AscensorLobby : MonoBehaviour
         {
             xElevator.SetActive(false);
 
+            //Salir del panel
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 panelElevator.SetActive(false);
@@ -67,6 +74,7 @@ public class AscensorLobby : MonoBehaviour
     }
 
 
+    //Entrar en su rango
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
@@ -77,6 +85,7 @@ public class AscensorLobby : MonoBehaviour
     }
 
 
+    //Salir de su rango
     void OnTriggerExit2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
@@ -86,7 +95,9 @@ public class AscensorLobby : MonoBehaviour
         }
     }
 
-public void IrAPlanta1()
+
+    //BOTÓN PARA IR A LA PLANTA 1
+    public void IrAPlanta1()
     {
         //panelN.SetActive(true);
         AudioManager.Instance.PlaySFX("Botones");
@@ -97,25 +108,25 @@ public void IrAPlanta1()
         StartCoroutine(cargaLevel1());
     }
 
+    //BOTÓN DE ERROR (no se puede ir a ese piso)
     public void IrError()
     {
         AudioManager.Instance.PlaySFX("Error");
     }
 
 
+    //Tiempo de espera antes de cambiar de escena
     IEnumerator cargaLevel1()
     {
         yield return new WaitForSeconds(2);
-
-        //CargarEscenaAscensor();
         SceneManager.LoadScene("Level_1");
     }
     
 
+    //"Desactivar" panel negro
     IEnumerator desPanelN()
     {
         yield return new WaitForSeconds(1.5f);
-        //panelN.SetActive(false);
         panelN.GetComponent<Image>().enabled = false;
     }
 

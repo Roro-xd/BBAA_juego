@@ -41,6 +41,7 @@ public class Stats_contador : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
+        //COGER VALORES DE SUS SCRIPTS ORIGINALES
         vidaActual = player.GetComponent<Vida>().vidaActual;
         dineroActual = player.GetComponent<JugadorMonedas>().monedas;
         velMov = player.GetComponent<Caminar>().velomov;
@@ -49,17 +50,21 @@ public class Stats_contador : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+
+
     void Update()
     {
+        //Como la velocidad de ataque va con cifras un poco etrañas, las mappeo para que visualmente se entiendan mejor
         float velAtkMap = Map(velAtk, -999, 0, 1, 10);
         velAtkMap = (int)velAtkMap;
 
+        //Establezco los valores con sus textos en el menú
         textoDano.GetComponent<TextMeshProUGUI>().text = dano.ToString();
         textoVel.GetComponent<TextMeshProUGUI>().text = velMov.ToString();
         textoVelAtk.GetComponent<TextMeshProUGUI>().text = velAtkMap.ToString();
     }
 
+    //Forma de hacer el mappeo
     static public float Map(float value, float inicioA, float finalA, float inicioB, float finalB)
     {
         return inicioB + (finalB - inicioB) * ((value - inicioA) / (finalA - inicioA));

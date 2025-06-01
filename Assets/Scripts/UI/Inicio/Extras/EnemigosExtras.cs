@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class EnemigosExtras : MonoBehaviour
 {
+
+    //TABLA DE ENEMIGOS
     public GameObject[] enemigos;
     public int selectedEnemigo = 0;
 
+    //Movimiento de la tabla de enemigos
     public GameObject flachePrev;
     public GameObject flacheNext;
 
 
     void Update()
     {
+        //No poder ir hacia atrás en el primero que salga (básicamente, no dejar ir del primero al último)
         if (selectedEnemigo == 0)
         {
             flacheNext.SetActive(true);
             flachePrev.SetActive(false);
         }
+        //No poder ir hacia delante en el último que salga (básicamente, no dejar ir del último al primero)
         else if (selectedEnemigo == 3)
         {
             flachePrev.SetActive(true);
             flacheNext.SetActive(false);
         }
+        //Tener ambas posibilidades en cualquier otro caso
         else
         {
             flacheNext.SetActive(true);

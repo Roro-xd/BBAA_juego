@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Script_derrota : MonoBehaviour
 {
-
-    //ME FALTA QUITAR LA MÚSICA DEL INICIO
-    //EN ESTA ESCENA NO SONARÍA NADA, CREO QUE ASÍ LE DA UN TOQUE TODAVÍA MÁS TRISTE
-
     //Referenciar al panel negro
     public GameObject panelNegro;
     private Animator animPanelNegro;

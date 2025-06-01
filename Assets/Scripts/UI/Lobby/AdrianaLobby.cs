@@ -8,12 +8,8 @@ public class AdrianaLobby : MonoBehaviour
 
     void Start()
     {
+        //Solo para establecerle una animación concreta de esta escena
         adrianaAnim = this.GetComponent<Animator>();
         adrianaAnim.SetBool("A_Inquieta", true);
-    }
-
-    void Update()
-    {
-        
     }
 }
