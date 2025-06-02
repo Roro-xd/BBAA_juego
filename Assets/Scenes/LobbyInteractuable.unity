@@ -4199,7 +4199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (Te da 15 euros).
+  m_text: (Te da 5 euros).
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f4ab879acb654c440a49add5fdefbde7, type: 2}
   m_sharedMaterial: {fileID: 22656527754773132, guid: f4ab879acb654c440a49add5fdefbde7, type: 2}
