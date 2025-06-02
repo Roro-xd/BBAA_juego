@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,11 +9,12 @@ public class PlayerStateManager : MonoBehaviour
     public bool puedeMoverse = true;
     public bool puedeAtacar = true;
 
-     public GameObject panelMenu;
+    public GameObject panelMenu;
     public GameObject panelSeguro;
     public GameObject panelVolumen;
     public GameObject panelControles;
 
+    
     private bool menuAbierto;
 
 
@@ -21,12 +23,28 @@ public class PlayerStateManager : MonoBehaviour
 
     void Start()
     {
+        panelMenu = CanvasMenu.Instance.panelMenu;
+        panelSeguro = CanvasMenu.Instance.panelSeguro;
+        panelVolumen = CanvasMenu.Instance.panelVolumen;
+        panelControles = CanvasMenu.Instance.panelControles;
+
         jugadorMovimiento = GetComponent<Caminar>();
         jugadorAtaque = GetComponent<AtaqueMelee>();
     }
 
     void Update()
     {
+
+        if(panelMenu == null || panelSeguro == null || panelVolumen == null || panelControles == null)
+        {
+            panelMenu = CanvasMenu.Instance.panelMenu;
+            panelSeguro = CanvasMenu.Instance.panelSeguro;
+            panelVolumen = CanvasMenu.Instance.panelVolumen;
+            panelControles = CanvasMenu.Instance.panelControles;
+            Debug.LogWarning("Paneles no encontrados, actualizando referencias.");
+            return;
+        }
+
         // Ejemplo: en escenas llamadas "Lobby" no puede atacar pero sí moverse
         if (SceneManager.GetActiveScene().name == "LobbyInteractuable")
         {
@@ -41,7 +59,6 @@ public class PlayerStateManager : MonoBehaviour
 
         // Si el menú está activo, no puede ni moverse ni atacar
         if(menuAbierto)
-
         {
             puedeMoverse = false;
             puedeAtacar = false;

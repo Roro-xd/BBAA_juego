@@ -168,14 +168,17 @@ MonoBehaviour:
   coin5Prefab: {fileID: 5328336341304546823, guid: cf0462c99c213014e813219c3b6a6c3a, type: 3}
   chanceFor5: 0.889
   animator: {fileID: 0}
-  moveParam: IsMoving
-  attackParam: Attack
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
   isChasing: 0
   pito: 0
   menuAbierto: 0
+  Canvas_Menu: {fileID: 0}
+  panelMenu: {fileID: 0}
+  panelSeguro: {fileID: 0}
+  panelVolumen: {fileID: 0}
+  panelControles: {fileID: 0}
 --- !u!50 &8852402160447748218
 Rigidbody2D:
   serializedVersion: 4
@@ -238,7 +241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4182546272442751328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b7038ac0cd4ee146a0a09ffb33f894c, type: 3}
   m_Name: 

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Sliders : MonoBehaviour
 {
+
+
+
     //Referencia a los sliders
     public Slider musicaSlider, sfxSlider, vocesSlider;
 
@@ -20,6 +23,8 @@ public class Sliders : MonoBehaviour
     {
         musicaSlider.value = PlayerPrefs.GetFloat("MusicaGuardada", 1f);
     }*/
+
+
 
 
 

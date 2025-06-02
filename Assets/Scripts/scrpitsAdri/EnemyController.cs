@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private Animator animator;
-   //[SerializeField] private string moveParam = "IsMoving";
+    //[SerializeField] private string moveParam = "IsMoving";
     //[SerializeField] private string attackParam = "Attack";
 
     [Header("Layer Settings")]
@@ -34,22 +34,18 @@ public class EnemyController : MonoBehaviour
 
     public bool menuAbierto;
 
-    private GameObject panelMenu;
-    private GameObject panelSeguro;
-    private GameObject panelVolumen;
-    private GameObject panelControles;
+    [SerializeField] private GameObject Canvas_Menu;
+    [SerializeField] private GameObject panelMenu;
+    [SerializeField] private GameObject panelSeguro;
+    [SerializeField] private GameObject panelVolumen;
+    [SerializeField] private GameObject panelControles;
 
     private float lastAttackTime;
 
     void Start()
     {
-        panelMenu = GameObject.Find("Panel_menu");
-        
-        panelSeguro = GameObject.Find("Panel_seguro");
-        
-        panelVolumen = GameObject.Find("Panel_volumen");
-        
-        panelControles = GameObject.Find("Panel_controles");
+
+        FindPaneles();  
 
 
         rb = GetComponent<Rigidbody2D>();
@@ -63,10 +59,14 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        
 
-        
-       if (panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = Time.timeScale == 1 ? 0 : 1; 
+        }
+/*
+        if (panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             menuAbierto = false;
         }
@@ -74,14 +74,14 @@ public class EnemyController : MonoBehaviour
         {
             menuAbierto = true;
         }
+*/
 
+        if (playerTarget == null) FindPlayer();
+        UpdateDetection();
+        HandleAnimations();
 
-            if (playerTarget == null) FindPlayer();
-            UpdateDetection();
-            HandleAnimations();
+    }
 
-        }
-    
 
     void FixedUpdate()
     {
@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour
     {
         if (menuAbierto) return;
 
-        
+
         {
 
             if (isChasing && playerTarget != null)
@@ -137,7 +137,7 @@ public class EnemyController : MonoBehaviour
     {
         if (animator != null)
         {
-           // animator.SetBool(moveParam, isChasing);
+            // animator.SetBool(moveParam, isChasing);
         }
     }
 
@@ -153,39 +153,39 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-   /* void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") &&
-           Time.time > lastAttackTime + attackCooldown)
-        {
-            AttackPlayer(collision.gameObject);
-            lastAttackTime = Time.time;
-        }
-    }
+    /* void OnCollisionStay2D(Collision2D collision)
+     {
+         if (collision.gameObject.CompareTag("Player") &&
+            Time.time > lastAttackTime + attackCooldown)
+         {
+             AttackPlayer(collision.gameObject);
+             lastAttackTime = Time.time;
+         }
+     }
 
-    /*void AttackPlayer(GameObject player)
-    {
-        CharacterStats playerStats = player.GetComponent<CharacterStats>();
-        if (playerStats != null)
-        {
-            playerStats.TakeDamage(attackDamage);
-            if (animator != null)
-            {
-                animator.SetTrigger(attackParam);
-            }
-        }
-    }
-    */
+     /*void AttackPlayer(GameObject player)
+     {
+         CharacterStats playerStats = player.GetComponent<CharacterStats>();
+         if (playerStats != null)
+         {
+             playerStats.TakeDamage(attackDamage);
+             if (animator != null)
+             {
+                 animator.SetTrigger(attackParam);
+             }
+         }
+     }
+     */
 
     // Método para recibir daño del jugador
-   /* public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;  // Restar la salud actual
-        Debug.Log("Vida del enemigo: " + currentHealth);
+    /* public void TakeDamage(int damage)
+     {
+         currentHealth -= damage;  // Restar la salud actual
+         Debug.Log("Vida del enemigo: " + currentHealth);
 
-        if (currentHealth <= 0) Die();  // Si la salud llega a 0, el enemigo muere
-    }
-*/
+         if (currentHealth <= 0) Die();  // Si la salud llega a 0, el enemigo muere
+     }
+ */
     // Método para la muerte del enemigo
     void Die()
     {
@@ -207,5 +207,16 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
+    
+    void FindPaneles()
+    {
+        Debug.Log("Buscando paneles...");
+        Canvas_Menu = GameObject.Find("Canvas_Menu");
+        panelMenu = CanvasMenu.Instance.panelMenu;
+        panelSeguro = CanvasMenu.Instance.panelSeguro;
+        panelVolumen = CanvasMenu.Instance.panelVolumen;
+        panelControles = CanvasMenu.Instance.panelControles;
+    }
+
 }
 
