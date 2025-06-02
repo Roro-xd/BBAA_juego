@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AtaqueMelee : MonoBehaviour
 {
@@ -25,24 +26,37 @@ public class AtaqueMelee : MonoBehaviour
     public bool siPuedoAtacar = true;
     public bool siAcierta = false;
 
-    void Start()
-{
-    camara = Camera.main;
-    animator = GetComponent<Animator>();
-    cooldownActual = cooldownBase;
 
-}
-
-        /*stats = GetComponent<CharacterStats>();
-        if (stats != null)
-        {
-            dano = Mathf.RoundToInt(stats.damage.TotalValue);
-            cooldownBase = 1f / stats.attackSpeed.TotalValue;
-            cooldownActual = cooldownBase;
-
-            stats.OnStatChanged += OnStatChanged;
-        }*/
+    void Awake() // Es buena práctica suscribirse a eventos en Awake
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        // Intenta encontrar la cámara inicialmente también, por si acaso
+        FindMainCamera();
+    }
     
+    void OnDestroy() // Importante desuscribirse para evitar errores
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void Start()
+    {
+        camara = Camera.main;
+        animator = GetComponent<Animator>();
+        cooldownActual = cooldownBase;
+
+    }
+
+    /*stats = GetComponent<CharacterStats>();
+    if (stats != null)
+    {
+        dano = Mathf.RoundToInt(stats.damage.TotalValue);
+        cooldownBase = 1f / stats.attackSpeed.TotalValue;
+        cooldownActual = cooldownBase;
+
+        stats.OnStatChanged += OnStatChanged;
+    }*/
+
     /*void OnDestroy()
     {
         if (stats != null)
@@ -65,8 +79,16 @@ public class AtaqueMelee : MonoBehaviour
         }
     }
 */
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        FindMainCamera();
+    }
+
     void Update()
     {
+
+
         if (Input.GetMouseButtonDown(0) && Time.time >= tiempoUltimoAtaque + cooldownActual)
         {
             siPuedoAtacar = true;
@@ -90,41 +112,41 @@ public class AtaqueMelee : MonoBehaviour
     }
 
     void Atacar()
-{
-    Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
-    Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
-
-    Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, capaEnemigos);
-
-    foreach (Collider2D enemigo in enemigosCerca)
     {
-        Vector2 direccionAlEnemigo = (Vector2)(enemigo.transform.position - puntoAtaque.position);
-        float anguloEntre = Vector2.Angle(direccionAtaque, direccionAlEnemigo);
+        Vector3 posicionMouse = camara.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direccionAtaque = (posicionMouse - puntoAtaque.position).normalized;
 
-        if (anguloEntre <= anguloCono / 2f)
+        Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, capaEnemigos);
+
+        foreach (Collider2D enemigo in enemigosCerca)
         {
-            var vidaEnemigo = enemigo.GetComponent<VidaEnemigo>();
-            if (vidaEnemigo != null)
-            {
-               vidaEnemigo.RecibirDano(Dano);
+            Vector2 direccionAlEnemigo = (Vector2)(enemigo.transform.position - puntoAtaque.position);
+            float anguloEntre = Vector2.Angle(direccionAtaque, direccionAlEnemigo);
 
-            }
-            else
+            if (anguloEntre <= anguloCono / 2f)
             {
-                var jefe = enemigo.GetComponent<VidaJefe>();
-                if (jefe != null)
+                var vidaEnemigo = enemigo.GetComponent<VidaEnemigo>();
+                if (vidaEnemigo != null)
                 {
-                    jefe.RecibirDano(Dano);
+                    vidaEnemigo.RecibirDano(Dano);
+
                 }
+                else
+                {
+                    var jefe = enemigo.GetComponent<VidaJefe>();
+                    if (jefe != null)
+                    {
+                        jefe.RecibirDano(Dano);
+                    }
+                }
+
+                enemigo.GetComponent<Persecución>().siHerido = true;
+                siAcierta = true;
+
+                Debug.Log("Golpe");
             }
-
-            enemigo.GetComponent<Persecución>().siHerido = true;
-            siAcierta = true;
-
-            Debug.Log("Golpe");
         }
     }
-}
 
 
     public void ReducirCooldown(float cantidad)
@@ -180,4 +202,14 @@ public class AtaqueMelee : MonoBehaviour
         Debug.Log("Tu ataque ahora hace esta cantidad de daño:" + Vida.Instance.dano);
 
     }
+
+
+    void FindMainCamera()
+    {
+        if (camara == null)
+        {
+            camara = Camera.main;
+        }
+    }
+
 }

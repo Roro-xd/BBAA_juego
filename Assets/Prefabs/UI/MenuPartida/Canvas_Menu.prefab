@@ -3696,6 +3696,7 @@ GameObject:
   - component: {fileID: 4557430149400114726}
   - component: {fileID: 3232547718001666162}
   - component: {fileID: 1508810432704498854}
+  - component: {fileID: 3053437198940325178}
   m_Layer: 5
   m_Name: Canvas_Menu
   m_TagString: Untagged
@@ -3807,6 +3808,18 @@ MonoBehaviour:
   sfxSlider: {fileID: 5528049972383293058}
   vocesSlider: {fileID: 5083176434233668721}
   panelVolumen: {fileID: 6176223744808063716}
+--- !u!114 &3053437198940325178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042520058747061107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a3140d22f596c84a9a4933c3f93c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5341586439437645835
 GameObject:
   m_ObjectHideFlags: 0

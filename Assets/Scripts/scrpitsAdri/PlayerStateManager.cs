@@ -13,6 +13,7 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject panelVolumen;
     public GameObject panelControles;
 
+    
     private bool menuAbierto;
 
 
@@ -21,11 +22,10 @@ public class PlayerStateManager : MonoBehaviour
 
     void Start()
     {
-
-        panelMenu = GameObject.Find("Panel_menu");
-        panelSeguro = GameObject.Find("Panel_seguro");
-        panelVolumen = GameObject.Find("Panel_volumen");
-        panelControles = GameObject.Find("Panel_controles");
+        panelMenu = CanvasMenu.Instance.panelMenu;
+        panelSeguro = CanvasMenu.Instance.panelSeguro;
+        panelVolumen = CanvasMenu.Instance.panelVolumen;
+        panelControles = CanvasMenu.Instance.panelControles;
 
         jugadorMovimiento = GetComponent<Caminar>();
         jugadorAtaque = GetComponent<AtaqueMelee>();

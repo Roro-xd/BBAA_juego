@@ -18,6 +18,7 @@ public class LevelBoss_Script : MonoBehaviour
     public GameObject textosConj;
 
     //Referencia al menú para que se pueda pausar la conver mientras se está en pausa
+    public GameObject Canvas_Menu;
     public GameObject panelMenu;
     public GameObject panelSeguro;
     public GameObject panelVolumen;
@@ -31,6 +32,13 @@ public class LevelBoss_Script : MonoBehaviour
     {
         //Aparicion de la conver con un poco de retraso
         StartCoroutine(AparicionTexto());
+        FindPaneles();
+    }
+
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        FindPaneles();
     }
 
     void Update()
@@ -78,11 +86,9 @@ public class LevelBoss_Script : MonoBehaviour
 
 
         //Retroceder conver (Z)
-        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf  && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
+        if (Input.GetKeyDown(KeyCode.Z) && zRegresa.activeSelf && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
         {
             RetrocesoTexto();
-
-
         }
         //Que de error si se intenta retroceder en el primer mensaje
         else if (Input.GetKeyDown(KeyCode.Z) && numTexto == 0 && panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
@@ -125,6 +131,17 @@ public class LevelBoss_Script : MonoBehaviour
         xAvanza.SetActive(true);
         cuadrotexto.SetActive(true);
         textos[0].SetActive(true);
+    }
+
+
+    void FindPaneles()
+    {
+        Debug.Log("Buscando paneles...");
+        Canvas_Menu = GameObject.Find("Canvas_Menu");
+        panelMenu = CanvasMenu.Instance.panelMenu;
+        panelSeguro = CanvasMenu.Instance.panelSeguro;
+        panelVolumen = CanvasMenu.Instance.panelVolumen;
+        panelControles = CanvasMenu.Instance.panelControles;
     }
 
 }
