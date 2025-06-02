@@ -17,6 +17,8 @@ public class Vida : MonoBehaviour
     public int nivelNapo = 0;
     public int nivelYori = 0;
     public int monedas = 0; // ← Ahora las monedas son parte del Singleton
+    public float cooldownActual = 1f;
+
 
     public event Action OnDanoRecibido;
 

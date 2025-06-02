@@ -29,9 +29,11 @@ public class AtaqueMelee : MonoBehaviour
 {
     camara = Camera.main;
     animator = GetComponent<Animator>();
-    cooldownActual = cooldownBase;
 
+    cooldownActual = cooldownBase; // ← Usa siempre el mismo valor base
 }
+
+
 
         /*stats = GetComponent<CharacterStats>();
         if (stats != null)
@@ -67,7 +69,8 @@ public class AtaqueMelee : MonoBehaviour
 */
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time >= tiempoUltimoAtaque + cooldownActual)
+        if (Input.GetMouseButtonDown(0) && Time.time >= tiempoUltimoAtaque + cooldownBase)
+
         {
             siPuedoAtacar = true;
             Atacar();
@@ -86,7 +89,8 @@ public class AtaqueMelee : MonoBehaviour
             }
         }
 
-        if (Time.time >= tiempoUltimoAtaque + cooldownActual) { siPuedoAtacar = true; } else { siPuedoAtacar = false; } //determina si está en cooldown o no
+       if (Time.time >= tiempoUltimoAtaque + cooldownBase) { siPuedoAtacar = true; } else { siPuedoAtacar = false; }
+
     }
 
     void Atacar()
@@ -126,20 +130,6 @@ public class AtaqueMelee : MonoBehaviour
     }
 }
 
-
-    public void ReducirCooldown(float cantidad)
-    {
-        cooldownActual -= cantidad;
-        cooldownActual = Mathf.Clamp(cooldownActual, 0.1f, cooldownBase); // no menos de 0.1 ni más que base
-        Debug.Log("Cooldown reducido a: " + cooldownActual);
-    }
-
-    public void ResetearCooldown()
-    {
-        cooldownActual = cooldownBase;
-        Debug.Log("Cooldown reseteado a base: " + cooldownBase);
-    }
-
     private void OnDrawGizmosSelected()
     {
         if (puntoAtaque == null) return;
@@ -162,7 +152,6 @@ public class AtaqueMelee : MonoBehaviour
             Gizmos.DrawLine(puntoAtaque.position, puntoAtaque.position + (Vector3)derecha * radioAtaque);
         }
     }
-
 
 
     IEnumerator AnimacionAtac()
