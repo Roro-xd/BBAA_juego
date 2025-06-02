@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject jugadorPrefab; // Asigna el prefab del jugador en el Inspector
-
     void Start()
     {
-        if (jugadorPrefab != null)
+        Debug.Log("Buscando al jugador...");
+        GameObject jugador = GameObject.FindGameObjectWithTag("Player");
+
+        if (jugador != null)
         {
-            GameObject nuevoJugador = Instantiate(jugadorPrefab, transform.position, Quaternion.identity);
-            Debug.Log("Jugador instanciado en SpawnPoint.");
+            jugador.transform.position = transform.position; // Mueve al jugador al SpawnPoint
+            Debug.Log("Jugador movido al SpawnPoint: " + transform.position);
         }
         else
         {
-            Debug.LogError("No se asignó el prefab del jugador en el SpawnManager.");
+            Debug.LogError("No se encontró un objeto con el tag 'Jugador'. Revisa el tag en el Inspector.");
         }
     }
 }
