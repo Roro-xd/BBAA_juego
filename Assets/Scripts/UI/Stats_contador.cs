@@ -9,19 +9,19 @@ public class Stats_contador : MonoBehaviour
 
     //LLAMO A CADA STAT
     //Llamo a vida <3
-    public int vidaActual;
+    //public int vidaActual;
 
     //Llamo al dinero B)
-    public int dineroActual;
+    //public int dineroActual;
 
     //Llamo a la velocidad ¬¬
-    public float velMov;
+    //public float velMov;
 
     //Llamo a la velocidad de ataque ¬* ¬*
     public float velAtk;
 
     //Llamo al daño de ataque ¬* ¬*
-    public int dano;
+    //public int dano;
 
     //Los scripts pertenecen al player
     private GameObject player;
@@ -41,17 +41,18 @@ public class Stats_contador : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
 
-        /*if (Vida.Instance != null)
+        if (Vida.Instance != null)
         {
             Vida.Instance.monedas = 0;
-        }*/
+            Vida.Instance.dano = 1;
+        }
 
         //COGER VALORES DE SUS SCRIPTS ORIGINALES
-        vidaActual = player.GetComponent<Vida>().vidaActual;
-        dineroActual = player.GetComponent<Vida>().monedas;
-        velMov = Vida.Instance.velomov;
+        //vidaActual = Vida.Instance.vidaActual;
+        //dineroActual = Vida.Instance.monedas;
+        //velMov = Vida.Instance.velomov;
         velAtk = player.GetComponent<AtaqueMelee>().tiempoUltimoAtaque;
-        dano = player.GetComponent<AtaqueMelee>().Dano;
+        //dano = Vida.Instance.dano;
 
     }
 
@@ -64,8 +65,8 @@ public class Stats_contador : MonoBehaviour
         velAtkMap = (int)velAtkMap;
 
         //Establezco los valores con sus textos en el menú
-        textoDano.GetComponent<TextMeshProUGUI>().text = dano.ToString();
-        textoVel.GetComponent<TextMeshProUGUI>().text = velMov.ToString();
+        textoDano.GetComponent<TextMeshProUGUI>().text = Vida.Instance.dano.ToString();
+        textoVel.GetComponent<TextMeshProUGUI>().text = Vida.Instance.velomov.ToString();
         textoVelAtk.GetComponent<TextMeshProUGUI>().text = velAtkMap.ToString();
     }
 

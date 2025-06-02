@@ -25,9 +25,9 @@ public class PuntuacionFinal : MonoBehaviour
     void Start()
     {
         Debug.Log("Estoy en "+this.gameObject.name);
-        stats.GetComponent<Stats_contador>().vidaActual = vidaActual;
-        stats.GetComponent<Stats_contador>().dineroActual = dinero;
-        stats.GetComponent<Stats_contador>().dano = dano;
+        //stats.GetComponent<Stats_contador>().vidaActual = vidaActual;
+        //stats.GetComponent<Stats_contador>().dineroActual = dinero;
+        //stats.GetComponent<Stats_contador>().dano = dano;
 
         panelPunt.SetActive(false);
 
