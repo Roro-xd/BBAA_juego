@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class SingleTone : MonoBehaviour
+/*public class SingleTone : MonoBehaviour
 {
     public static SingleTone Instance;
 
@@ -21,5 +21,5 @@ public class SingleTone : MonoBehaviour
         }
     }
 }
-    
+    */
     
