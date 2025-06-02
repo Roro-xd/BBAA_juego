@@ -10,6 +10,14 @@ public class infoRelaciones : MonoBehaviour
     public Camera camara;
 
 
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        FindMainCamera();
+    }
+
+    
+
     void Start()
     {
         //Ocultar explicación al inicio
@@ -33,6 +41,15 @@ public class infoRelaciones : MonoBehaviour
         else
         {
             explicacionRel.SetActive(false);
+        }
+    }
+
+
+    void FindMainCamera()
+    {
+        if (camara == null)
+        {
+            camara = Camera.main;
         }
     }
 }

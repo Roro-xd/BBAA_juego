@@ -34,11 +34,12 @@ public class UI_Partida : MonoBehaviour
 
 
 
-
-
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        if (player == null) return;
+
+
         vidaBase = player.GetComponent<Vida>().vidaBase;
 
         visualVida = GameObject.Find("VisualVidas");

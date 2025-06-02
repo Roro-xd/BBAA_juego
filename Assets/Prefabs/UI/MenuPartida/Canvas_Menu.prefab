@@ -3820,6 +3820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a3140d22f596c84a9a4933c3f93c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelMenu: {fileID: 0}
+  panelSeguro: {fileID: 0}
+  panelVolumen: {fileID: 0}
+  panelControles: {fileID: 0}
 --- !u!1 &5341586439437645835
 GameObject:
   m_ObjectHideFlags: 0
@@ -6341,20 +6345,28 @@ PrefabInstance:
       value: Boton_controles
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AbriControles
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
+    - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SuenaBoton
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AbriControles
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5744751172622891252, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_Color.b
@@ -7596,20 +7608,28 @@ PrefabInstance:
       value: Boton_volumen
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AbrirVol
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
+    - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SuenaBoton
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: AbrirVol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5744751172622891252, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_Color.b
@@ -8096,20 +8116,28 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ContinuarJuego
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
+    - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SuenaVolver
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ContinuarJuego
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5202766151495241733, guid: 99abd8c9e664bb348a0e3d6fe6cd7e5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -8246,24 +8274,32 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
+    - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3053437198940325178}
+    - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SalirJuego
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SuenaBoton
       objectReference: {fileID: 0}
     - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SalirJuego
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Script_menu, Assembly-CSharp
+      value: CanvasMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4268403317819444501, guid: 26b823395da88fa48ba5179c23a50ff4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

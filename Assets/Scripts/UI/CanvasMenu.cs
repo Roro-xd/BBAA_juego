@@ -8,6 +8,7 @@ public class CanvasMenu : MonoBehaviour
 
 
     //Control de los paneles
+    public GameObject panelPartida;
     public GameObject panelMenu;
     public GameObject panelSeguro;
     public GameObject panelVolumen;
@@ -24,12 +25,25 @@ public class CanvasMenu : MonoBehaviour
     }
 
 
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        if (scene.name == "Inicio" || scene.name == "Victoria" || scene.name == "Derrota" || scene.name == "InicioLobby")
+        {
+            panelPartida.gameObject.SetActive(false);
+        }
+        else
+        {
+            panelPartida.gameObject.SetActive(true);
+        }
+    }
+
+
     // Start is called before the first frame update    
     void Start()
     {
 
         panelMenu = GameObject.Find("Panel_menu");
-        panelMenu.SetActive(false); 
+        panelMenu.SetActive(false);
 
         panelSeguro = GameObject.Find("Panel_seguro");
         panelSeguro.SetActive(false);
@@ -39,6 +53,9 @@ public class CanvasMenu : MonoBehaviour
 
         panelControles = GameObject.Find("Panel_controles");
         panelControles.SetActive(false);
+
+        panelPartida = GameObject.Find("Panel_UI_Partida");
+        panelPartida.SetActive(false);
 
     }
 

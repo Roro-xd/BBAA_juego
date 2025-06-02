@@ -14,6 +14,8 @@ public class Script_guion_inicio : MonoBehaviour
     public GameObject indicarXmod;
     public GameObject botonSaltar;
     public GameObject cuadroTexto;
+
+    public GameObject Canvas_Menu;
     public GameObject panelMenu;
     public GameObject panelSeguro;
     public GameObject panelVolumen;
@@ -55,6 +57,8 @@ public class Script_guion_inicio : MonoBehaviour
     void Start()
     {
         //Llamo a cada Animator
+        FindPaneles();
+        
         animPersonajes = personajes.GetComponent<Animator>();
         animLobby = lobby.GetComponent<Animator>();
         animPanelN = panelN.GetComponent<Animator>();
@@ -80,7 +84,7 @@ public class Script_guion_inicio : MonoBehaviour
             indicarXmod.SetActive(false);
         }
         else if (selectedDialogue >= 6 && selectedDialogue <= 19 && cuadroTexto.activeSelf == true)
-        { 
+        {
             indicarXbase.SetActive(false);
             indicarXmod.SetActive(true);
         }
@@ -119,7 +123,7 @@ public class Script_guion_inicio : MonoBehaviour
             churroAnim.SetBool("ChurroCamina", false);
             napoAnim.SetBool("NapoIdle", true);
             napoAnim.SetBool("NapoParada", false); //Cambiar por NapoCamina cuando esté
-            yoriAnim.SetBool("YoriIdle", true); 
+            yoriAnim.SetBool("YoriIdle", true);
             yoriAnim.SetBool("YoriParado", false); //Cambiar por YoriCamina
 
         }
@@ -362,6 +366,18 @@ public class Script_guion_inicio : MonoBehaviour
     {
         //audioManager.otrosSource.Stop();
         SceneManager.LoadScene("LobbyInteractuable");
+    }
+    
+
+
+    void FindPaneles()
+    {
+        Debug.Log("Buscando paneles...");
+        Canvas_Menu = GameObject.Find("Canvas_Menu");
+        panelMenu = CanvasMenu.Instance.panelMenu;
+        panelSeguro = CanvasMenu.Instance.panelSeguro;
+        panelVolumen = CanvasMenu.Instance.panelVolumen;
+        panelControles = CanvasMenu.Instance.panelControles;
     }
 
 }
