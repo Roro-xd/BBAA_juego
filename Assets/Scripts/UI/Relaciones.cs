@@ -23,30 +23,45 @@ public class Relaciones : MonoBehaviour
 
 
 
+    void Start()
+    {
+        if (Vida.Instance != null)
+        {
+            Vida.Instance.nivelChurro = 0;
+            Vida.Instance.nivelNapo = 0;
+            Vida.Instance.nivelYori = 0;
+        }
+    }
+
+
+
+
+
     //SOLO CHURRO Y NAPO PUEDEN VARIAR SU NIVEL EN LA DEMO --- funciones correspondientes
     public void CambioNivelChurro(int cambio)
     {
-        nivelChurro += cambio;
+        Vida.Instance.nivelChurro += cambio;
     }
 
     public void CambioNivelNapo(int cambio)
     {
-        nivelNapo += cambio;
+        Vida.Instance.nivelNapo += cambio;
     }
 
 
 
     void Update()
     {
-
+        //Cuando el menú no está abierto, al estar en update porque sino no lo encuentra al cambiar de escena, da "error",
+        //pero no lo es realmente
         textoNivelCh = GameObject.Find("Ch_punt");
         textoNivelN = GameObject.Find("Napo_punt");
         textoNivelY = GameObject.Find("Yor_punt");
 
         //CAMBIO CONSTANTE DE LOS NIVELES + CAMBIAR RESPECTIVOS TEXTOS
-        textoNivelCh.GetComponent<TextMeshProUGUI>().text = nivelChurro.ToString() + " punto(s)";
-        textoNivelN.GetComponent<TextMeshProUGUI>().text = nivelNapo.ToString() + " punto(s)";
-        textoNivelY.GetComponent<TextMeshProUGUI>().text = nivelYori.ToString() + " punto(s)";
+        textoNivelCh.GetComponent<TextMeshProUGUI>().text = Vida.Instance.nivelChurro.ToString() + " punto(s)";
+        textoNivelN.GetComponent<TextMeshProUGUI>().text = Vida.Instance.nivelNapo.ToString() + " punto(s)";
+        textoNivelY.GetComponent<TextMeshProUGUI>().text = Vida.Instance.nivelYori.ToString() + " punto(s)";
 
         ActualizarColorChurro();
         ActualizarColorNapo();
@@ -56,11 +71,11 @@ public class Relaciones : MonoBehaviour
     //Actualización de color según nivel --- CHURRO
     public void ActualizarColorChurro()
     {
-        if (nivelChurro < 0)
+        if (Vida.Instance.nivelChurro < 0)
         {
             textoNivelCh.GetComponent<TextMeshProUGUI>().color = colorNegativo;
         }
-        else if (nivelChurro == 0)
+        else if (Vida.Instance.nivelChurro == 0)
         {
             textoNivelCh.GetComponent<TextMeshProUGUI>().color = colorCero;
         }
@@ -74,11 +89,11 @@ public class Relaciones : MonoBehaviour
     //Actualización de color según nivel --- NAPO
     public void ActualizarColorNapo()
     {
-        if (nivelNapo < 0)
+        if (Vida.Instance.nivelNapo < 0)
         {
             textoNivelN.GetComponent<TextMeshProUGUI>().color = colorNegativo;
         }
-        else if (nivelNapo == 0)
+        else if (Vida.Instance.nivelNapo == 0)
         {
             textoNivelN.GetComponent<TextMeshProUGUI>().color = colorCero;
         }

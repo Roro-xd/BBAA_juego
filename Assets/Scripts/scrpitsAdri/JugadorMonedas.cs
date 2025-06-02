@@ -12,6 +12,10 @@ public class JugadorMonedas : MonoBehaviour
 
     void Start()
     {
+        if (Vida.Instance != null)
+        {
+            Vida.Instance.monedas = 0;
+        }
     }
 
 
@@ -20,21 +24,21 @@ public class JugadorMonedas : MonoBehaviour
         if (collision.CompareTag("Moneda"))
         {
             AudioManager.Instance.PlaySFX("dineroRecoger");
-            monedas++;
+            Vida.Instance.monedas++;
             Destroy(collision.gameObject);
-            Debug.Log("Monedas: " + monedas);
+            Debug.Log("Monedas: " + Vida.Instance.monedas);
         }
     }
 
     void Update()
     {
         conteoMonedas = GameObject.Find("Conteo_dinero");
-        conteoMonedas.GetComponent<TextMeshProUGUI>().text = monedas.ToString();
+        conteoMonedas.GetComponent<TextMeshProUGUI>().text = Vida.Instance.monedas.ToString();
     }
 
 
     public void CambioMonedas(int cambio)
     {
-        monedas += cambio;
+        Vida.Instance.monedas += cambio;
     }
 }

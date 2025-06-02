@@ -13,6 +13,10 @@ public class Vida : MonoBehaviour
     public int vidaActual;
     public int dano = 1; // ← Ahora daño es parte del Singleton
     public float velomov = 2f; // ← Ahora la velocidad es parte del Singleton
+    public int nivelChurro = 0; // ← Ahora los niveles de relaciones son parte del Singleton
+    public int nivelNapo = 0;
+    public int nivelYori = 0;
+    public int monedas = 0; // ← Ahora las monedas son parte del Singleton
 
     public event Action OnDanoRecibido;
 

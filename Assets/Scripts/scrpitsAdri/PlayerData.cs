@@ -12,6 +12,11 @@ public class PlayerData : MonoBehaviour
     public float vidaActual = 4f;
     public float velomov= 2f;
     public int dano = 1;
+
+    public int nivelChurro = 0;
+    public int nivelNapo = 0;
+    public int nivelYori = 0;
+
    
 
     void Awake()
