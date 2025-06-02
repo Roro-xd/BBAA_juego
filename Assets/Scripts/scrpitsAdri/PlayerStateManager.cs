@@ -8,7 +8,7 @@ public class PlayerStateManager : MonoBehaviour
     public bool puedeMoverse = true;
     public bool puedeAtacar = true;
 
-     public GameObject panelMenu;
+    public GameObject panelMenu;
     public GameObject panelSeguro;
     public GameObject panelVolumen;
     public GameObject panelControles;
@@ -21,12 +21,19 @@ public class PlayerStateManager : MonoBehaviour
 
     void Start()
     {
+
+        panelMenu = GameObject.Find("Panel_menu");
+        panelSeguro = GameObject.Find("Panel_seguro");
+        panelVolumen = GameObject.Find("Panel_volumen");
+        panelControles = GameObject.Find("Panel_controles");
+
         jugadorMovimiento = GetComponent<Caminar>();
         jugadorAtaque = GetComponent<AtaqueMelee>();
     }
 
     void Update()
     {
+
         // Ejemplo: en escenas llamadas "Lobby" no puede atacar pero sí moverse
         if (SceneManager.GetActiveScene().name == "LobbyInteractuable")
         {
@@ -41,7 +48,6 @@ public class PlayerStateManager : MonoBehaviour
 
         // Si el menú está activo, no puede ni moverse ni atacar
         if(menuAbierto)
-
         {
             puedeMoverse = false;
             puedeAtacar = false;

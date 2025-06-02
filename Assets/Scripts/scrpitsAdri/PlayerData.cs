@@ -17,18 +17,15 @@ public class PlayerData : MonoBehaviour
     public int nivelNapo = 0;
     public int nivelYori = 0;
 
-   
+
 
     void Awake()
     {
-        if (Instance == null)
-        {
+        if(Instance != null && Instance != this){
+            Destroy(this.gameObject);
+        }else{
             Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject); 
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 }
