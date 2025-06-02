@@ -2,8 +2,8 @@ using UnityEngine;
 using System;
 
 public class CharacterStats : MonoBehaviour
-{
-    public event Action<StatType, float> OnStatChanged;
+{ }
+    /*public event Action<StatType, float> OnStatChanged;
 
     [System.Serializable]
     public class Stat
@@ -97,4 +97,4 @@ public class CharacterStats : MonoBehaviour
         Debug.Log("Player died!");
         // Lógica de game over
     }
-}
+}*/

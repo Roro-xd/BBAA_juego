@@ -4,40 +4,21 @@ using UnityEngine;
 
 public class Caminar : MonoBehaviour
 {
-    public float velomov = 5f;
     private Vector2 movimiento;
-    private CharacterStats stats;
+    private Rigidbody2D rb;
 
     public bool vaIzq = false;
     public bool seMueve = false;
-
-    public bool sePuedeMover = true; 
-    private Rigidbody2D rb;
-
-    private bool modoAtaque = false;
+    public bool sePuedeMover = true;
     public GameObject panelChurroBoss;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        stats = GetComponent<CharacterStats>();
-        if (stats != null)
+
+        if (Vida.Instance != null)
         {
-            velomov = stats.moveSpeed.TotalValue;
-            stats.OnStatChanged += OnStatChanged;
-        }
-    }
-    void OnDestroy()
-    {
-        if (stats != null)
-            stats.OnStatChanged -= OnStatChanged;
-    }
-    void OnStatChanged(StatType type, float newValue)
-    {
-        if (type == StatType.MoveSpeed)
-        {
-            velomov = newValue;
-            Debug.Log("Velocidad actualizada a: " + velomov);
+            Vida.Instance.velomov = 2f;
         }
     }
 
@@ -45,10 +26,9 @@ public class Caminar : MonoBehaviour
     {
         if (!sePuedeMover)
         {
-            // No permitimos movimiento ni animación caminando
             movimiento = Vector2.zero;
             seMueve = false;
-            this.GetComponent<Animator>().SetBool("siCamina", false);
+            GetComponent<Animator>().SetBool("siCamina", false);
             return;
         }
 
@@ -60,53 +40,28 @@ public class Caminar : MonoBehaviour
         if (movimiento.x < 0)
         {
             vaIzq = true;
-            this.GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (movimiento.x > 0)
         {
             vaIzq = false;
-            this.GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        // Detecta si el personaje se está moviendo
         seMueve = movimiento != Vector2.zero;
 
-        // Activa la animación de caminar
-        this.GetComponent<Animator>().SetBool("siCamina", seMueve);
-
-        // LOS SONIDOS DE CAMINADO FUNCIONAN A LA INVERSA
-        /*if (!seMueve)
-        {
-            if (velomov >= 1 && velomov < 2)
-            {
-                AudioManager.Instance.PlayOtros("caminadoLento");
-            }
-            else if (velomov >= 2 && velomov < 3)
-            {
-                AudioManager.Instance.PlayOtros("caminadoMedio");
-            }
-            else if (velomov >= 3)
-            {
-                AudioManager.Instance.PlayOtros("caminadoRapido");
-            }
-        }*/
+        GetComponent<Animator>().SetBool("siCamina", seMueve);
     }
 
     void FixedUpdate()
     {
-        if (sePuedeMover)
+        if (sePuedeMover && Vida.Instance != null)
         {
-            rb.velocity = movimiento * velomov;
+            rb.velocity = movimiento * Vida.Instance.velomov; // ← Ahora usa la velocidad del Singleton
         }
         else
         {
             rb.velocity = Vector2.zero;
         }
-    }
-
-    public void AumentaVelocidad(float cantidad)
-    {
-        velomov += cantidad;
-        Debug.Log("Ha subido la velocidad en " + cantidad);
     }
 }

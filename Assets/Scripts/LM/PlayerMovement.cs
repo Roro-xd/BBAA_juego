@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float baseSpeed = 5f;
+/*    public float baseSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
     private CharacterStats stats;
@@ -23,5 +23,5 @@ public class PlayerMovement : MonoBehaviour
     {
         float currentSpeed = stats != null ? stats.moveSpeed.TotalValue : baseSpeed;
         rb.MovePosition(rb.position + movement.normalized * currentSpeed * Time.fixedDeltaTime);
-    }
+    }*/
 }

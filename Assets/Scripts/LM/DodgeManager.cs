@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DodgeManager : MonoBehaviour
 {
-    public static DodgeManager Instance;
+    /*public static DodgeManager Instance;
 
     private CharacterStats characterStats;
     private float dodgeProbability;
@@ -47,7 +47,7 @@ public class DodgeManager : MonoBehaviour
         }
 
         return false; // El personaje no esquiva el ataque
-    }
+    }*/
 }
 
 

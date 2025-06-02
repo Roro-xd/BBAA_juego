@@ -44,9 +44,9 @@ public class Stats_contador : MonoBehaviour
         //COGER VALORES DE SUS SCRIPTS ORIGINALES
         vidaActual = player.GetComponent<Vida>().vidaActual;
         dineroActual = player.GetComponent<JugadorMonedas>().monedas;
-        velMov = player.GetComponent<Caminar>().velomov;
+        velMov = Vida.Instance.velomov;
         velAtk = player.GetComponent<AtaqueMelee>().tiempoUltimoAtaque;
-        dano = player.GetComponent<AtaqueMelee>().dano;
+        dano = player.GetComponent<AtaqueMelee>().Dano;
 
     }
 

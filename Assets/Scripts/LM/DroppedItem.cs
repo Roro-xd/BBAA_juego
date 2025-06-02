@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
-    public ItemData itemData;
+    /*public ItemData itemData;
     private bool canAbsorb;
 
     void Update()
@@ -40,5 +40,5 @@ public class DroppedItem : MonoBehaviour
             canAbsorb = false;
             GameManager.Instance.HideInteractPrompt();
         }
-    }
+    }*/
 }

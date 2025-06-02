@@ -20,8 +20,8 @@ public class EnemyController : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private Animator animator;
-    [SerializeField] private string moveParam = "IsMoving";
-    [SerializeField] private string attackParam = "Attack";
+   //[SerializeField] private string moveParam = "IsMoving";
+    //[SerializeField] private string attackParam = "Attack";
 
     [Header("Layer Settings")]
     [SerializeField] private LayerMask playerLayer;
@@ -137,7 +137,7 @@ public class EnemyController : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.SetBool(moveParam, isChasing);
+           // animator.SetBool(moveParam, isChasing);
         }
     }
 
@@ -153,7 +153,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+   /* void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") &&
            Time.time > lastAttackTime + attackCooldown)
@@ -163,7 +163,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void AttackPlayer(GameObject player)
+    /*void AttackPlayer(GameObject player)
     {
         CharacterStats playerStats = player.GetComponent<CharacterStats>();
         if (playerStats != null)
@@ -175,17 +175,17 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-    
+    */
 
     // Método para recibir daño del jugador
-    public void TakeDamage(int damage)
+   /* public void TakeDamage(int damage)
     {
         currentHealth -= damage;  // Restar la salud actual
         Debug.Log("Vida del enemigo: " + currentHealth);
 
         if (currentHealth <= 0) Die();  // Si la salud llega a 0, el enemigo muere
     }
-
+*/
     // Método para la muerte del enemigo
     void Die()
     {

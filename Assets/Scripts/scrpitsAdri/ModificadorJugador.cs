@@ -14,19 +14,18 @@ public class ModificadorJugador : MonoBehaviour
 
     public void AplicarIncrementoVelocidad(float cantidad)
     {
-        Caminar caminar = GetComponent<Caminar>();
-        if (caminar != null)
-        {
-            caminar.velomov += cantidad;
-        }
+       if (Vida.Instance != null)
+{
+    Vida.Instance.AumentoVelocidad(cantidad);
+}
     }
 
     public void AplicarIncrementoDano(int cantidad)
+{
+    if (Vida.Instance != null)
     {
-        AtaqueMelee ataque = GetComponent<AtaqueMelee>();
-        if (ataque != null)
-        {
-            ataque.SubeAtaque(cantidad);
-        }
+        Vida.Instance.SubeAtaque(cantidad);
     }
+}
+
 }

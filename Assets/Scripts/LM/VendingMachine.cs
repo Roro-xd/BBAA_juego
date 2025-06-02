@@ -4,8 +4,8 @@ using TMPro;
 
 
 public class VendingMachine : MonoBehaviour
-{
-    [System.Serializable]
+{ }
+   /* [System.Serializable]
     public class ShopItem
     {
         public string itemName;
@@ -180,4 +180,4 @@ public class VendingMachine : MonoBehaviour
             }
         }
     }
-}
+}*/

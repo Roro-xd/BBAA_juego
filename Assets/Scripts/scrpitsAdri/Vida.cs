@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Vida : MonoBehaviour
 {
-    public static Vida Instance; // ← Ahora está definida correctamente
+    public static Vida Instance;
 
     public int vidaBase = 4;
     public int vidaMax = 10;
     public int vidaActual;
-    public int dano = 1; // ← Añadimos daño para compatibilidad con AtaqueMelee
-    private CharacterStats stats;
+    public int dano = 1; // ← Ahora daño es parte del Singleton
+    public float velomov = 2f; // ← Ahora la velocidad es parte del Singleton
 
     public event Action OnDanoRecibido;
 
@@ -20,37 +20,36 @@ public class Vida : MonoBehaviour
     bool siEsperaDano = false;
 
     void Awake()
+{
+    if (Instance == null)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
 
     void Start()
     {
-        stats = GetComponent<CharacterStats>();
-        if (stats != null)
-        {
-            vidaBase = (int)stats.health.TotalValue;
-            vidaActual = vidaBase;
-            dano = Mathf.RoundToInt(stats.damage.TotalValue); // ← Inicializamos daño
-        }
+         if (Vida.Instance != null)
+    {
+        Debug.Log("Vida inicializada con: " + vidaActual);
+        Debug.Log("Ataque inicial: " + dano);
+        Debug.Log("Velocidad inicial: " + velomov);
+    }
+
     }
 
     public void RecibeDano(int cantidad)
     {
         vidaActual -= cantidad;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
-
         Debug.Log("Vida actual: " + vidaActual);
         OnDanoRecibido?.Invoke();
-
+        
         if (vidaActual <= 0)
         {
             Muerte();
@@ -79,9 +78,15 @@ public class Vida : MonoBehaviour
         Debug.Log("Nueva vida máxima: " + vidaBase + " | Vida actual: " + vidaActual);
     }
 
+    public void AumentoVelocidad(float cantidad)
+    {
+        velomov += cantidad;
+        Debug.Log("Velocidad aumentada en " + cantidad + ". Nueva velocidad: " + velomov);
+    }
+
     public void SubeAtaque(int cantidad)
     {
-        dano += cantidad; // ← Ahora puedes modificar el daño correctamente
+        dano += cantidad;
         Debug.Log("Tu ataque ahora hace esta cantidad de daño: " + dano);
     }
 

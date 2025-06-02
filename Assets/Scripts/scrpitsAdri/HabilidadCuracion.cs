@@ -33,7 +33,8 @@ public class HabilidadCuracion : MonoBehaviour
         vida = GetComponent<Vida>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         colorOriginal = spriteRenderer.color;
-        velocidadOriginal = caminar.velomov;
+        velocidadOriginal = Vida.Instance.velomov;
+
 
         vida.OnDanoRecibido += CancelarCuracion;
 
@@ -76,7 +77,7 @@ public class HabilidadCuracion : MonoBehaviour
     {
         estaCurando = true;
         AudioManager.Instance.PlaySFX("habEspecial");
-        caminar.velomov *= reduccionVelocidad;
+        Vida.Instance.velomov *= reduccionVelocidad;
         spriteRenderer.color = Color.yellow;
         this.GetComponent<Animator>().SetBool("siCura", true); //Activa la animación
         animBarra.SetBool("HabUsando", true);
@@ -86,7 +87,7 @@ public class HabilidadCuracion : MonoBehaviour
     void TerminarCuracion()
     {
         estaCurando = false;
-        caminar.velomov = velocidadOriginal;
+        Vida.Instance.velomov = velocidadOriginal;
         spriteRenderer.color = colorOriginal;
         this.GetComponent<Animator>().SetBool("siCura", false);//termina la animación
     }

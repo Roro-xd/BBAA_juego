@@ -57,7 +57,7 @@ public class PlayerStateManager : MonoBehaviour
 
 
         if (jugadorAtaque != null)
-            jugadorAtaque.sePuedeAtacar = puedeAtacar;
+            jugadorAtaque.siPuedoAtacar = puedeAtacar;
             
         
         if (panelMenu.activeSelf == false && panelSeguro.activeSelf == false && panelVolumen.activeSelf == false && panelControles.activeSelf == false)
