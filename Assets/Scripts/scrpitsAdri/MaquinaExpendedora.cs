@@ -19,6 +19,11 @@ public class MaquinaExpendedora : MonoBehaviour
     {
         posicionOriginal = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        /*if (Vida.Instance != null)
+        {
+            Vida.Instance.monedas = 0;
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +32,7 @@ public class MaquinaExpendedora : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            JugadorMonedas jm = other.GetComponent<JugadorMonedas>();
+            Vida jm = other.GetComponent<Vida>();
             if (jm != null && jm.monedas >= costo)
             {
                 jm.monedas -= costo;

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class JugadorMonedas : MonoBehaviour
 {
-    public int monedas = 0;
     private GameObject conteoMonedas;
 
 

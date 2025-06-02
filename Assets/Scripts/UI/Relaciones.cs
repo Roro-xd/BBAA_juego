@@ -5,15 +5,11 @@ using UnityEngine;
 
 public class Relaciones : MonoBehaviour
 {
-    //NIVELES INICIALES DE CADA PERSONAJE
-    public int nivelChurro = 0;
-    public int nivelNapo = 0;
-    public int nivelYori = 0;
 
     //Enlace con su texto en el Canvas
-    private GameObject textoNivelCh;
-    private GameObject textoNivelN;
-    private GameObject textoNivelY;
+    public GameObject textoNivelCh;
+    public GameObject textoNivelN;
+    public GameObject textoNivelY;
 
 
     //Cambio de color según niveles
@@ -52,12 +48,6 @@ public class Relaciones : MonoBehaviour
 
     void Update()
     {
-        //Cuando el menú no está abierto, al estar en update porque sino no lo encuentra al cambiar de escena, da "error",
-        //pero no lo es realmente
-        textoNivelCh = GameObject.Find("Ch_punt");
-        textoNivelN = GameObject.Find("Napo_punt");
-        textoNivelY = GameObject.Find("Yor_punt");
-
         //CAMBIO CONSTANTE DE LOS NIVELES + CAMBIAR RESPECTIVOS TEXTOS
         textoNivelCh.GetComponent<TextMeshProUGUI>().text = Vida.Instance.nivelChurro.ToString() + " punto(s)";
         textoNivelN.GetComponent<TextMeshProUGUI>().text = Vida.Instance.nivelNapo.ToString() + " punto(s)";
