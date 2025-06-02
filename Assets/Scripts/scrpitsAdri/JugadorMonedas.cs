@@ -7,7 +7,13 @@ using UnityEngine;
 public class JugadorMonedas : MonoBehaviour
 {
     public int monedas = 0;
-    public GameObject conteoMonedas;
+    private GameObject conteoMonedas;
+
+
+    void Start()
+    {
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +28,7 @@ public class JugadorMonedas : MonoBehaviour
 
     void Update()
     {
+        conteoMonedas = GameObject.Find("Conteo_dinero");
         conteoMonedas.GetComponent<TextMeshProUGUI>().text = monedas.ToString();
     }
 

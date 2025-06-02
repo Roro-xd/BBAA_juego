@@ -11,15 +11,15 @@ public class Relaciones : MonoBehaviour
     public int nivelYori = 0;
 
     //Enlace con su texto en el Canvas
-    public TextMeshProUGUI textoNivelCh;
-    public TextMeshProUGUI textoNivelN;
-    public TextMeshProUGUI textoNivelY;
+    private GameObject textoNivelCh;
+    private GameObject textoNivelN;
+    private GameObject textoNivelY;
 
 
     //Cambio de color según niveles
-    public Color colorNegativo = new Color(0.62f, 0.14f, 0.043f);
-    public Color colorCero = Color.white;
-    public Color colorPositivo = new Color(0.0666f, 0.443f, 0.325f);
+    private Color colorNegativo = new Color(0.62f, 0.14f, 0.043f);
+    private Color colorCero = Color.white;
+    private Color colorPositivo = new Color(0.0666f, 0.443f, 0.325f);
 
 
 
@@ -38,6 +38,11 @@ public class Relaciones : MonoBehaviour
 
     void Update()
     {
+
+        textoNivelCh = GameObject.Find("Ch_punt");
+        textoNivelN = GameObject.Find("Napo_punt");
+        textoNivelY = GameObject.Find("Yor_punt");
+
         //CAMBIO CONSTANTE DE LOS NIVELES + CAMBIAR RESPECTIVOS TEXTOS
         textoNivelCh.GetComponent<TextMeshProUGUI>().text = nivelChurro.ToString() + " punto(s)";
         textoNivelN.GetComponent<TextMeshProUGUI>().text = nivelNapo.ToString() + " punto(s)";
@@ -53,15 +58,15 @@ public class Relaciones : MonoBehaviour
     {
         if (nivelChurro < 0)
         {
-            textoNivelCh.color = colorNegativo;
+            textoNivelCh.GetComponent<TextMeshProUGUI>().color = colorNegativo;
         }
         else if (nivelChurro == 0)
         {
-            textoNivelCh.color = colorCero;
+            textoNivelCh.GetComponent<TextMeshProUGUI>().color = colorCero;
         }
         else
         {
-            textoNivelCh.color = colorPositivo;
+            textoNivelCh.GetComponent<TextMeshProUGUI>().color = colorPositivo;
         }
     }
 
@@ -71,15 +76,15 @@ public class Relaciones : MonoBehaviour
     {
         if (nivelNapo < 0)
         {
-            textoNivelN.color = colorNegativo;
+            textoNivelN.GetComponent<TextMeshProUGUI>().color = colorNegativo;
         }
         else if (nivelNapo == 0)
         {
-            textoNivelN.color = colorCero;
+            textoNivelN.GetComponent<TextMeshProUGUI>().color = colorCero;
         }
         else
         {
-            textoNivelN.color = colorPositivo;
+            textoNivelN.GetComponent<TextMeshProUGUI>().color = colorPositivo;
         }
     }
 }
