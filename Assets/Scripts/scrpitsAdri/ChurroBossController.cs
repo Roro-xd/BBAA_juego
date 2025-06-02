@@ -63,6 +63,7 @@ public class ChurroBossController : MonoBehaviour
 
     private void Start()
     {
+        jugador = GameObject.FindGameObjectWithTag("Player").transform;
         vidaActual = vidaMaxima;
         posicionBase = transform.position;
         CambiarDireccion();

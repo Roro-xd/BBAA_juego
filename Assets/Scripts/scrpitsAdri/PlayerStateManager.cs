@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +34,16 @@ public class PlayerStateManager : MonoBehaviour
 
     void Update()
     {
+
+        if(panelMenu == null || panelSeguro == null || panelVolumen == null || panelControles == null)
+        {
+            panelMenu = CanvasMenu.Instance.panelMenu;
+            panelSeguro = CanvasMenu.Instance.panelSeguro;
+            panelVolumen = CanvasMenu.Instance.panelVolumen;
+            panelControles = CanvasMenu.Instance.panelControles;
+            Debug.LogWarning("Paneles no encontrados, actualizando referencias.");
+            return;
+        }
 
         // Ejemplo: en escenas llamadas "Lobby" no puede atacar pero sí moverse
         if (SceneManager.GetActiveScene().name == "LobbyInteractuable")
