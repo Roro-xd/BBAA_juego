@@ -115,8 +115,8 @@ public class ChurroBossController : MonoBehaviour
             CambiarDireccion();
 
         Vector2 nuevaPos = (Vector2)posicionBase + direccionMovimiento * velocidadMovimiento * Time.deltaTime;
-        nuevaPos.x = Mathf.Clamp(nuevaPos.x, areaWanderMin.x, areaWanderMax.x);
-        nuevaPos.y = Mathf.Clamp(nuevaPos.y, areaWanderMin.y, areaWanderMax.y);
+        nuevaPos.x = Mathf.Clamp(nuevaPos.x, areaWanderMin.x-8f, areaWanderMax.x-8f);
+        nuevaPos.y = Mathf.Clamp(nuevaPos.y, areaWanderMin.y-65f, areaWanderMax.y-65f);
         posicionBase = nuevaPos;
 
         this.GetComponent<Animator>().SetBool("siCamina", true);//llama a la animación de caminado

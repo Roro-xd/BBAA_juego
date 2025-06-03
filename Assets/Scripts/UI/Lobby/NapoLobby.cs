@@ -136,7 +136,7 @@ public class NapoLobby : MonoBehaviour
         {
             textoNapoNivel.SetActive(false);
             AudioManager.Instance.PlaySFX("dineroRecoger");
-            dinero.CambioMonedas(15);
+            dinero.CambioMonedas(5);
             dialogoNapo.SetActive(false);
             baseTexto.SetActive(false);
             Destroy(textoNapoNivel);

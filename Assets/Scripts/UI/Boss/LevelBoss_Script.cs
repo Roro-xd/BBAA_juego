@@ -26,11 +26,10 @@ public class LevelBoss_Script : MonoBehaviour
     //Vida visual de Churro
     public GameObject sliderChurro;
 
-
     void Start()
     {
         //Aparicion de la conver con un poco de retraso
-        StartCoroutine(AparicionTexto());
+        //StartCoroutine(AparicionTexto());
     }
 
     void Update()
@@ -125,6 +124,7 @@ public class LevelBoss_Script : MonoBehaviour
         xAvanza.SetActive(true);
         cuadrotexto.SetActive(true);
         textos[0].SetActive(true);
+
     }
 
 }

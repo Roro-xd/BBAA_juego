@@ -8,6 +8,9 @@ public class AscensorLevel1 : MonoBehaviour
 {
     //Indicadores del ascensor
     private GameObject panelElevator;
+
+    private GameObject player;
+    private GameObject spawn;
     private GameObject xElevator;
 
     //Bool de entrada en rango de ascensor
@@ -17,9 +20,18 @@ public class AscensorLevel1 : MonoBehaviour
     private GameObject panelN;
     private Animator animPanelN;
 
+    public GameObject churro;
+    public GameObject xAvanza;
+    public GameObject cuadrotexto;
+    public GameObject textos;
+
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        spawn = GameObject.FindGameObjectWithTag("Spawn");
+
         panelElevator = GameObject.Find("Panel_Ascensor");
         panelElevator.SetActive(false);
 
@@ -119,11 +131,23 @@ public class AscensorLevel1 : MonoBehaviour
     IEnumerator cargaBOSS()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("BOSS");
+        // SceneManager.LoadScene("BOSS");
+        player.transform.position = spawn.transform.position;
+        churro.SetActive(true);
+        StartCoroutine(AparicionTexto());
+    }
+
+    IEnumerator AparicionTexto()
+    {
+        yield return new WaitForSeconds(0.5f);
+        xAvanza.SetActive(true);
+        cuadrotexto.SetActive(true);
+        textos.SetActive(true);
+        Destroy (panelN,1f);
     }
     
-
     //"Desactivar" panel negro
+
     IEnumerator desPanelN()
     {
         yield return new WaitForSeconds(1.5f);

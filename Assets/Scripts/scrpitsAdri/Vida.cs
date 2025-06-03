@@ -14,7 +14,7 @@ public class Vida : MonoBehaviour
 
 
     public int vidaActual;
-    private CharacterStats stats;
+    //private CharacterStats stats;
 
     public event Action OnDanoRecibido; // evento para notificar dano recibido
 
@@ -23,8 +23,8 @@ public class Vida : MonoBehaviour
 
     void Start()
     {
-        stats = GetComponent<CharacterStats>();
-        vidaBase = (int)stats.health.TotalValue;
+        //stats = GetComponent<CharacterStats>();
+        //vidaBase = (int)stats.health.TotalValue;
         vidaActual = vidaBase;
 
         //stats.OnStatChanged += OnStatChanged;
