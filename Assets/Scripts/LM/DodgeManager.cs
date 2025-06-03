@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class DodgeManager : MonoBehaviour
 {
@@ -48,7 +48,7 @@ public class DodgeManager : MonoBehaviour
 
         return false; // El personaje no esquiva el ataque
     }
-}
+}*/
 
 
 

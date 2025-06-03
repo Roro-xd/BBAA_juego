@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
@@ -15,4 +15,4 @@ public class ItemButton : MonoBehaviour
         priceText.text = price;
         priceText.color = textColor;
     }
-}
+}*/

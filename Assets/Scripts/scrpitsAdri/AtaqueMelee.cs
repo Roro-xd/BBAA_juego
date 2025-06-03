@@ -17,7 +17,7 @@ public class AtaqueMelee : MonoBehaviour
     private Camera camara;
     private Animator animator;
 
-    private CharacterStats stats;
+   // private CharacterStats stats;
 
     bool siEsperaAtaque = false;
     public bool siPuedoAtacar = true;
@@ -31,24 +31,24 @@ public class AtaqueMelee : MonoBehaviour
         animator = GetComponent<Animator>();
         cooldownActual = cooldownBase;
 
-        stats = GetComponent<CharacterStats>();
-        if (stats != null)
+        //stats = GetComponent<CharacterStats>();
+       // if (stats != null)
         {
-            dano = Mathf.RoundToInt(stats.damage.TotalValue);
-            cooldownBase = 1f / stats.attackSpeed.TotalValue;
+       //     dano = Mathf.RoundToInt(stats.damage.TotalValue);
+        //    cooldownBase = 1f / stats.attackSpeed.TotalValue;
             cooldownActual = cooldownBase;
 
-            stats.OnStatChanged += OnStatChanged;
+      //      stats.OnStatChanged += OnStatChanged;
         }
     }
 
     void OnDestroy()
     {
-        if (stats != null)
-            stats.OnStatChanged -= OnStatChanged;
+       // if (stats != null)
+        //    stats.OnStatChanged -= OnStatChanged;
     }
 
-    void OnStatChanged(StatType type, float newValue)
+   /* void OnStatChanged(StatType type, float newValue)
     {
         switch (type)
         {
@@ -63,7 +63,7 @@ public class AtaqueMelee : MonoBehaviour
                 Debug.Log("Nuevo cooldown base: " + cooldownBase);
                 break;
         }
-    }
+    }*/
 
     void Update()
     {
@@ -117,10 +117,10 @@ public class AtaqueMelee : MonoBehaviour
                     }
                 }
 
-                enemigo.GetComponent<Persecución>().siHerido = true;
+               /* enemigo.GetComponent<Persecución>().siHerido = true;
                 siAcierta = true;
 
-                Debug.Log("Golpe");
+                Debug.Log("Golpe");*/
             }
         }
     }

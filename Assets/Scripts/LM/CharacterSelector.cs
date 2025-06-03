@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine; // Añade esta línea para usar Cinemachine
 
@@ -70,4 +70,4 @@ public class CharacterSelector : MonoBehaviour
         virtualCamera.Follow = target;
         virtualCamera.LookAt = target;
     }
-}
+}*/

@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
@@ -41,4 +41,4 @@ public class DroppedItem : MonoBehaviour
             GameManager.Instance.HideInteractPrompt();
         }
     }
-}
+}*/

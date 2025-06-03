@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewItem", menuName = "Items/Item Data")]
 public class ItemData : ScriptableObject
@@ -37,4 +37,4 @@ public enum StatType
     ProjectileQuantity,
     DodgeChance,
     SpecialAbilityUnlock
-}
+}*/

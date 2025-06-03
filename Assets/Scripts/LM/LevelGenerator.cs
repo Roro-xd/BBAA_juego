@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections.Generic;
 
 public class LevelGenerator : MonoBehaviour
@@ -37,4 +37,4 @@ public class LevelGenerator : MonoBehaviour
 
         // 3. Conectar habitaciones (implementar lógica de puertas)
     }
-}
+}*/

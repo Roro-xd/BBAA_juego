@@ -6,7 +6,7 @@ public class Caminar : MonoBehaviour
 {
     public float velomov = 5f;
     private Vector2 movimiento;
-    private CharacterStats stats;
+   // private CharacterStats stats;
 
     public bool vaIzq = false;
     public bool seMueve = false;
@@ -20,14 +20,14 @@ public class Caminar : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        stats = GetComponent<CharacterStats>();
+      /* // stats = GetComponent<CharacterStats>();
         if (stats != null)
         {
             velomov = stats.moveSpeed.TotalValue;
             stats.OnStatChanged += OnStatChanged;
-        }
+        }*/
     }
-    void OnDestroy()
+   /* void OnDestroy()
     {
         if (stats != null)
             stats.OnStatChanged -= OnStatChanged;
@@ -39,7 +39,7 @@ public class Caminar : MonoBehaviour
             velomov = newValue;
             Debug.Log("Velocidad actualizada a: " + velomov);
         }
-    }
+    }*/
 
     void Update()
     {

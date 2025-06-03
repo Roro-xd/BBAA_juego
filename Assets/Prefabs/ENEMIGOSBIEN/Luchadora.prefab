@@ -221,14 +221,17 @@ MonoBehaviour:
   attackDamage: 0
   maxHealth: 0
   coin1Prefab: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
-  coin5Prefab: {fileID: 5328336341304546823, guid: cf0462c99c213014e813219c3b6a6c3a, type: 3}
-  chanceFor5: 0.1
+  coin5Prefab: {fileID: 1411894218852751716, guid: dc12de7e4cfd2274bbffb7c57533bdd0, type: 3}
+  chanceFor5: 1
   animator: {fileID: 0}
   moveParam: IsMoving
   attackParam: Attack
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  isChasing: 0
+  pito: 0
+  menuAbierto: 0
 --- !u!114 &8358844408532736253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,3 +262,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7038ac0cd4ee146a0a09ffb33f894c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puedeMoverse: 1

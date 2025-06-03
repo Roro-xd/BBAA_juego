@@ -1,5 +1,5 @@
 // CharacterData.cs
-using UnityEngine;
+/*using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewCharacter", menuName = "Character Data")]
 public class CharacterData : ScriptableObject
@@ -30,4 +30,4 @@ public class CharacterData : ScriptableObject
     public float TotalAttackSpeed => attackSpeed + attackSpeedModifier;
     public int TotalProjectiles => projectileQuantity + projectileModifier;
     public float TotalDodge => Mathf.Clamp(dodgeChance + dodgeModifier, 0f, 0.8f); // Máximo 80%
-}
+}*/

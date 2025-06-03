@@ -9629,6 +9629,22 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1889176902187586938, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: panelMenu
+      value: 
+      objectReference: {fileID: 2049472106}
+    - target: {fileID: 1889176902187586938, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: panelSeguro
+      value: 
+      objectReference: {fileID: 678353840}
+    - target: {fileID: 1889176902187586938, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: panelVolumen
+      value: 
+      objectReference: {fileID: 1979448942}
+    - target: {fileID: 1889176902187586938, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
+      propertyPath: panelControles
+      value: 
+      objectReference: {fileID: 554789254}
     - target: {fileID: 2131062119285939928, guid: a6c39692db07cf3468db6c1b8e2e3572, type: 3}
       propertyPath: m_Name
       value: BUNUELOFINAL

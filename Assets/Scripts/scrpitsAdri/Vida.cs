@@ -34,7 +34,7 @@ public class Vida : MonoBehaviour
         if (stats != null)
             stats.OnStatChanged -= OnStatChanged;*/
     //}
-    void OnStatChanged(StatType type, float newValue)
+    /*void OnStatChanged(StatType type, float newValue)
     {
         if (type == StatType.Health)
         {
@@ -45,7 +45,7 @@ public class Vida : MonoBehaviour
             vidaActual = Mathf.Clamp(vidaActual, 0, vidaBase);
             Debug.Log("Nueva vida máxima: " + vidaBase);
         }
-    }
+    }*/
 
     public void RecibeDano(int cantidad)
     {

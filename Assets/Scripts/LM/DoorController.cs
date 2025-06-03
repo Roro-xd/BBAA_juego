@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
@@ -22,4 +22,4 @@ public class DoorController : MonoBehaviour
             door.SetActive(false); // Desactiva colliders
         }
     }
-}
+}*/

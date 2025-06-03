@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System;
 
 public class CharacterStats : MonoBehaviour
@@ -97,4 +97,4 @@ public class CharacterStats : MonoBehaviour
         Debug.Log("Player died!");
         // Lógica de game over
     }
-}
+}*/
